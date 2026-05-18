@@ -1,0 +1,290 @@
+{
+  "seed": 42,
+  "strata": {
+    "hEDS-only": 3,
+    "POTS-only": 2,
+    "MCAS-only": 2,
+    "Triad": 3
+  },
+  "aggregate": {
+    "tp": 51,
+    "fp": 3,
+    "fn": 4,
+    "precision": 0.944,
+    "recall": 0.927,
+    "f1": 0.936
+  },
+  "articles": [
+    {
+      "pmcid": "PMC6052501",
+      "stratum": "hEDS-only",
+      "independent_count": 5,
+      "pipeline_count": 4,
+      "tp": 4,
+      "fp": 0,
+      "fn": 1,
+      "independent": [
+        "easy_bruising",
+        "headache_migraine",
+        "joint_hypermobility",
+        "skin_hyperextensibility",
+        "subluxations_dislocations"
+      ],
+      "pipeline": [
+        "headache_migraine",
+        "joint_hypermobility",
+        "skin_hyperextensibility",
+        "subluxations_dislocations"
+      ],
+      "false_positives": [],
+      "false_negatives": [
+        "easy_bruising"
+      ]
+    },
+    {
+      "pmcid": "PMC12047577",
+      "stratum": "hEDS-only",
+      "independent_count": 4,
+      "pipeline_count": 4,
+      "tp": 4,
+      "fp": 0,
+      "fn": 0,
+      "independent": [
+        "chronic_pain",
+        "joint_hypermobility",
+        "skin_hyperextensibility",
+        "subluxations_dislocations"
+      ],
+      "pipeline": [
+        "chronic_pain",
+        "joint_hypermobility",
+        "skin_hyperextensibility",
+        "subluxations_dislocations"
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "pmcid": "PMC13067300",
+      "stratum": "hEDS-only",
+      "independent_count": 3,
+      "pipeline_count": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0,
+      "independent": [
+        "headache_migraine",
+        "joint_hypermobility",
+        "skin_hyperextensibility"
+      ],
+      "pipeline": [
+        "headache_migraine",
+        "joint_hypermobility",
+        "skin_hyperextensibility"
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "pmcid": "PMC9871405",
+      "stratum": "POTS-only",
+      "independent_count": 5,
+      "pipeline_count": 5,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "independent": [
+        "gi_symptoms",
+        "neuropathy",
+        "orthostatic_intolerance",
+        "syncope",
+        "tachycardia"
+      ],
+      "pipeline": [
+        "gi_symptoms",
+        "neuropathy",
+        "orthostatic_intolerance",
+        "syncope",
+        "tachycardia"
+      ],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "pmcid": "PMC12462795",
+      "stratum": "POTS-only",
+      "independent_count": 3,
+      "pipeline_count": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 1,
+      "independent": [
+        "chronic_pain",
+        "fatigue",
+        "tachycardia"
+      ],
+      "pipeline": [
+        "fatigue",
+        "tachycardia"
+      ],
+      "false_positives": [],
+      "false_negatives": [
+        "chronic_pain"
+      ]
+    },
+    {
+      "pmcid": "PMC10647312",
+      "stratum": "MCAS-only",
+      "independent_count": 10,
+      "pipeline_count": 11,
+      "tp": 10,
+      "fp": 1,
+      "fn": 0,
+      "independent": [
+        "anaphylaxis",
+        "chronic_pain",
+        "fatigue",
+        "flushing",
+        "gi_symptoms",
+        "headache_migraine",
+        "palpitations",
+        "syncope",
+        "tachycardia",
+        "urticaria"
+      ],
+      "pipeline": [
+        "anaphylaxis",
+        "chronic_pain",
+        "fatigue",
+        "flushing",
+        "gi_symptoms",
+        "headache_migraine",
+        "medication_sensitivity",
+        "palpitations",
+        "syncope",
+        "tachycardia",
+        "urticaria"
+      ],
+      "false_positives": [
+        "medication_sensitivity"
+      ],
+      "false_negatives": []
+    },
+    {
+      "pmcid": "PMC12030918",
+      "stratum": "MCAS-only",
+      "independent_count": 0,
+      "pipeline_count": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "independent": [],
+      "pipeline": [],
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "pmcid": "PMC12437428",
+      "stratum": "Triad",
+      "independent_count": 4,
+      "pipeline_count": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 1,
+      "independent": [
+        "chronic_pain",
+        "fatigue",
+        "joint_hypermobility",
+        "tachycardia"
+      ],
+      "pipeline": [
+        "fatigue",
+        "joint_hypermobility",
+        "tachycardia"
+      ],
+      "false_positives": [],
+      "false_negatives": [
+        "chronic_pain"
+      ]
+    },
+    {
+      "pmcid": "PMC11613559",
+      "stratum": "Triad",
+      "independent_count": 10,
+      "pipeline_count": 10,
+      "tp": 9,
+      "fp": 1,
+      "fn": 1,
+      "independent": [
+        "chiari",
+        "chronic_pain",
+        "fatigue",
+        "gi_symptoms",
+        "headache_migraine",
+        "joint_hypermobility",
+        "neuropathy",
+        "subluxations_dislocations",
+        "syncope",
+        "tachycardia"
+      ],
+      "pipeline": [
+        "chiari",
+        "chronic_pain",
+        "fatigue",
+        "headache_migraine",
+        "joint_hypermobility",
+        "neuropathy",
+        "skin_hyperextensibility",
+        "subluxations_dislocations",
+        "syncope",
+        "tachycardia"
+      ],
+      "false_positives": [
+        "skin_hyperextensibility"
+      ],
+      "false_negatives": [
+        "gi_symptoms"
+      ]
+    },
+    {
+      "pmcid": "PMC9131024",
+      "stratum": "Triad",
+      "independent_count": 11,
+      "pipeline_count": 12,
+      "tp": 11,
+      "fp": 1,
+      "fn": 0,
+      "independent": [
+        "brain_fog",
+        "fatigue",
+        "flushing",
+        "gi_symptoms",
+        "joint_hypermobility",
+        "neuropathy",
+        "orthostatic_intolerance",
+        "palpitations",
+        "skin_hyperextensibility",
+        "syncope",
+        "tachycardia"
+      ],
+      "pipeline": [
+        "brain_fog",
+        "chronic_pain",
+        "fatigue",
+        "flushing",
+        "gi_symptoms",
+        "joint_hypermobility",
+        "neuropathy",
+        "orthostatic_intolerance",
+        "palpitations",
+        "skin_hyperextensibility",
+        "syncope",
+        "tachycardia"
+      ],
+      "false_positives": [
+        "chronic_pain"
+      ],
+      "false_negatives": []
+    }
+  ]
+}
