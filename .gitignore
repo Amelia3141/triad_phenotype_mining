@@ -36,3 +36,7 @@ data/raw/fulltext/
 
 # Run logs
 logs/fulltext_access_log.jsonl
+
+# Local-only artifacts (kept on disk, not tracked)
+outputs/preliminary_literature_phenotyping_EDITS.pdf
+scripts/10b_build_edits_pdf.py
