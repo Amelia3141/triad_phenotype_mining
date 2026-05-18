@@ -1,0 +1,7415 @@
+[
+  {
+    "pmcid": "PMC13079633",
+    "conditions": [
+      "EDS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC13070550",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC13067300",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC13059101",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC13045598",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC13037643",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC13033888",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC13026537",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12991944",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12969107",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12966997",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12958675",
+    "conditions": [
+      "EDS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12892912",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12841094",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12773402",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12793884",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12765413",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12744369",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12712790",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12688513",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12677986",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12639752",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12619029",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12615188",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12565033",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12551611",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12488752",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12464579",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12465098",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12459581",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12441394",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12441329",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12420492",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12417854",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12409755",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12327914",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12296389",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12291538",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12276532",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12225415",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12209458",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12200703",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12195525",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12180213",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12159619",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12055390",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12047577",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12028372",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11918753",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11905011",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11885547",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11879130",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11862159",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11841416",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11829448",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11783490",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11769844",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11751598",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11750457",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11697121",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11666444",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11650402",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11646906",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11641481",
+    "conditions": [
+      "EDS",
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11623363",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11618054",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11610443",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11587892",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11585818",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11581960",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11545606",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11532648",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11528175",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11527182",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11515420",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11461980",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11458247",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11459387",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11440296",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11426177",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11423452",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11421124",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11410636",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11408771",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11365123",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11343928",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11341037",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11331821",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11320472",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11109350",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11268287",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11195703",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11188628",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11188875",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11143781",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11120992",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11095771",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11082880",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11058070",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11010766",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10988040",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10974947",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10941705",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10940564",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10917428",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10906948",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10853051",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10784750",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10782094",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10781429",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10765638",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10761464",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10725090",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10695548",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10584354",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10554791",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10513349",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10510186",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10488471",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10472575",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10473008",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10455523",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10426500",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10406510",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10397162",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10368949",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10369693",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10315244",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10294281",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10298114",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10264792",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10246933",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10238461",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10208411",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10199502",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10182206",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10166575",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10149087",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10140053",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10147518",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10062526",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10035622",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9981282",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9980260",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9969762",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9885422",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9870015",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9842784",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9796896",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9724511",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9710336",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9701907",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9703103",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9690363",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9689626",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9649364",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9634265",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9609512",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9128968",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9552984",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9544979",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9544160",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9482467",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9470354",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9408984",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9397026",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10663891",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9334134",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9303620",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9302035",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9298068",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9265176",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9270900",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9241136",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9214343",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9207203",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9195107",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9131024",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9091396",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9122800",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC9112583",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9110592",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9071330",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9017971",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8958401",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8894232",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8858776",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8881606",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8861852",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8844402",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8835098",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8791763",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8787077",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8777155",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8575340",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "mastocytosis_only"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC8546774",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8547026",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8405372",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8393798",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8312172",
+    "conditions": [
+      "EDS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8299862",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8220633",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8212839",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8235512",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8190580",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8184110",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8149255",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8135155",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8121728",
+    "conditions": [
+      "EDS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8110803",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8080291",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7988026",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7939736",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7841968",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7786113",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7764306",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7724010",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7709068",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7709055",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7606394",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7607204",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7559544",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7575778",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7560634",
+    "conditions": [
+      "unclear"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7530213",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7449847",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7443168",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7425819",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7415034",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7388171",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7371387",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7320209",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7288446",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7225616",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7061590",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7021465",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7019116",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7015111",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7016348",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6955026",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6933463",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6899330",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6874507",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6848165",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6770791",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6796720",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6771693",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6761414",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6699327",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6652450",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6664867",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6677863",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6601149",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6580888",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6551759",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6501436",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6452458",
+    "conditions": [
+      "EDS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6409156",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6394365",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6394140",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6335977",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6313834",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6292952",
+    "conditions": [
+      "EDS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6282529",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6250522",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6265373",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6230631",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6159307",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6136482",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6087563",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6099022",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6100124",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6083619",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6061067",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6052501",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6050812",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6050467",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6019721",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6016292",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5993673",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5829370",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5828290",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5773269",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5747760",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5675945",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5530413",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5538080",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5458014",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5396425",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5097948",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5258806",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5226192",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5096520",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5088665",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4932739",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4896234",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4887635",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4782065",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4748196",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4699009",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4508704",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4549537",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4499396",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4484843",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4477102",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4422098",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4356030",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4300890",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4327794",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4300794",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4223622",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4199079",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4069127",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4049028",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4009270",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC3809367",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC3789896",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC3435946",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC3736514",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC3670523",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC3571520",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC3567970",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC3512326",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC3412739",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC3362267",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC3258236",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC3141693",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC3134995",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC3026338",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC2829519",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC2697526",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC2693823",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC2575416",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC2262905",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC1971255",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC529450",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC13023622",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12998959",
+    "conditions": [
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12982215",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12949424",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12892731",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12864418",
+    "conditions": [
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12813278",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12802868",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12793844",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12711217",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12743803",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12736109",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12714501",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12640735",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12640326",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12574150",
+    "conditions": [
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12554255",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12520903",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12515974",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12504783",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12495029",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12462795",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12441330",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12399260",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12335401",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12294965",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12280984",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12283190",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12245418",
+    "conditions": [
+      "unclear"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12197400",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12148095",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12112802",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12071195",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11775448",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11771442",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11646465",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11608111",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11565627",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11562304",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11440135",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11270463",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11276651",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11050777",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11051445",
+    "conditions": [
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10990027",
+    "conditions": [
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10981078",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10849078",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10767774",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10762669",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10755912",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10562791",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10481607",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10467287",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10464593",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10382909",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10357168",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10332885",
+    "conditions": [
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10259876",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10224806",
+    "conditions": [
+      "POTS",
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10199303",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10187582",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10090716",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10065129",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10032659",
+    "conditions": [
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9963391",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9871405",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9839201",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9821608",
+    "conditions": [
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9795856",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9732766",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9602558",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9548822",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9498034",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9444584",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9413809",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9345651",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9323926",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9287587",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9270602",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "mastocytosis_only"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC9208536",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9174810",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9021422",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8976261",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8931464",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8866568",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8779641",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC8778312",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8716749",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8679991",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8721424",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8687482",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8621226",
+    "conditions": [
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8506054",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8510689",
+    "conditions": [
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8555928",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8387908",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8405341",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8204164",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8137224",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8112930",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8121406",
+    "conditions": [
+      "EDS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8117457",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8091396",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8076737",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8050227",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8045944",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8009458",
+    "conditions": [
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7976723",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7946344",
+    "conditions": [
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7936931",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7888977",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7813764",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7792263",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7685310",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7274189",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7255540",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7139175",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6806054",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5926514",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5845505",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5778345",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5414293",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5209415",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4930805",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4528866",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4502630",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4452321",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4177336",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC3443665",
+    "conditions": [
+      "EDS",
+      "POTS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC3200026",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC2995161",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC2602994",
+    "conditions": [
+      "POTS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC13062802",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC13059005",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC13051026",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC13019796",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12981734",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12971857",
+    "conditions": [
+      "POTS",
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12971043",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12958415",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12922065",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12896522",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12884832",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12881254",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12856509",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12796541",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12790910",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12757523",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12741435",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12741381",
+    "conditions": [
+      "POTS",
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12675999",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12641438",
+    "conditions": [
+      "EDS",
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12633608",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12614038",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12615035",
+    "conditions": [
+      "POTS",
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": true,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12539782",
+    "conditions": [
+      "EDS",
+      "mastocytosis_only"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12525111",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12512096",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12433324",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12432041",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12405650",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12404107",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12371744",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12347703",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12343066",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12334448",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12296355",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12264227",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12246164",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12202291",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12076930",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12052678",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12030918",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11869997",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11825596",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11803904",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11773267",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11771440",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11676300",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11671108",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11662473",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11651727",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11625085",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11607125",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11596688",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11470813",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11465966",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11444605",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11439156",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11434177",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11361272",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11303256",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11236357",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11187405",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11177828",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11154339",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11127591",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC11090565",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10890967",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10875270",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10871832",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10854835",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10852104",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10829777",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10814743",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10814166",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10803124",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10781526",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10725995",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10718195",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10712720",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10686014",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10607143",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10647312",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10580978",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10580708",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10469220",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10425246",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10381535",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10372046",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10352544",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10337288",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10328639",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10315773",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10313892",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10309087",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10298540",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10248858",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10220212",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10220213",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10220894",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10123330",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10099671",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC10046872",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC9918867",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC9917416",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC9892685",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC9839392",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC9834603",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC9806352",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC9795958",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC9784954",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC9763144",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC9724157",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC9649302",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC9483819",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC9410418",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC9228930",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC9092525",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC8947295",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC8740000",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC8750954",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC8690422",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC8684076",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC8587177",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC8556140",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC7903504",
+    "conditions": [
+      "EDS",
+      "mastocytosis_only"
+    ],
+    "has_eds": true,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC8533777",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC8467046",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC8425380",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC8404676",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC8342167",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8193587",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC8135458",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC8008611",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC8001403",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC7962052",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC7961806",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC7962470",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC7898829",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC7911219",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC7873102",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC7869399",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC7813119",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7688994",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC7687689",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7649174",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC7646220",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC7327752",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC7252834",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC7171446",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC7021538",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC7000442",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC6886439",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC6854920",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC6851912",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC6766258",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC6768441",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC6756067",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC6743404",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC6472224",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC6387409",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC6380077",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC6250909",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC6220989",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC6159113",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC6147426",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC6157556",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC6132108",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC6057401",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC6002427",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5987329",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5946163",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5881244",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5727626",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5739150",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5715414",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5637574",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5640882",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5620310",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5589409",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5467965",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5428180",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5451335",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5419203",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5402659",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5402055",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5323235",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5340655",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5311425",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5209625",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5121168",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5123301",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5126489",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5112577",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5097803",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5062667",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5064901",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC5014939",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC5014931",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC4998476",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC4945533",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC4903110",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC4884845",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC4856249",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC4852953",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC4771862",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC4727661",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC4721669",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC4616764",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC4478337",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC4453286",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC4370013",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC4369969",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4338389",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC4324745",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC4304775",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC4238232",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC4211494",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC4208443",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC4198120",
+    "conditions": [
+      "MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC4035675",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC4033021",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC3923619",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC3830880",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC3787002",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC3761194",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC3663351",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC3636968",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC3513068",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC3400919",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC3172922",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC3069946",
+    "conditions": [
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC3014834",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC2904792",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC2841250",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC2713498",
+    "conditions": [
+      "mastocytosis_only"
+    ],
+    "has_eds": false,
+    "has_pots": false,
+    "has_mcas": false,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC13062037",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12942574",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12633589",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12541780",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12437428",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12063504",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC12048102",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  },
+  {
+    "pmcid": "PMC12043455",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11809041",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11755520",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11613559",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC11033372",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10806170",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": false
+  },
+  {
+    "pmcid": "PMC10672129",
+    "conditions": [
+      "EDS",
+      "POTS",
+      "MCAS",
+      "mastocytosis_with_MCAS"
+    ],
+    "has_eds": true,
+    "has_pots": true,
+    "has_mcas": true,
+    "has_mastocytosis": true
+  }
+]

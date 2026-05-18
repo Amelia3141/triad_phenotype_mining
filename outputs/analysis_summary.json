@@ -1,0 +1,50 @@
+{
+  "analysis_date": "2026-04-16",
+  "corpus": {
+    "total_articles": 560,
+    "case_reports": 274,
+    "human_studies": 489,
+    "year_range": "2004-2026"
+  },
+  "condition_distribution": {
+    "EDS_articles": 346,
+    "POTS_articles": 169,
+    "MCAS_articles": 124,
+    "triad_articles": 47
+  },
+  "demographics_case_reports": {
+    "EDS": {
+      "n": 194,
+      "mean_age": 31.70360824742268,
+      "median_age": 31.0
+    },
+    "POTS": {
+      "n": 76,
+      "mean_age": 29.81578947368421,
+      "median_age": 29.0
+    },
+    "MCAS": {
+      "n": 50,
+      "mean_age": 38.69,
+      "median_age": 33.0
+    },
+    "All": {
+      "n": 257,
+      "mean_age": 33.0,
+      "median_age": 32.0
+    }
+  },
+  "terminology_drift": {
+    "pre_2017_top_eds_term": "EDS type III",
+    "post_2017_top_eds_term": "JHS"
+  },
+  "co_occurrence": {
+    "eds_only": 255,
+    "pots_only": 72,
+    "mcas_only": 59,
+    "eds_pots": 38,
+    "eds_mcas": 6,
+    "pots_mcas": 12,
+    "triad": 47
+  }
+}

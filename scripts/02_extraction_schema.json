@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.0",
+  "schema_date": "2026-04-16",
+  "description": "Structured phenotype extraction schema for EDS/hEDS, POTS, MCAS case reports. Grounded in CaseReportBench (2025) category-specific approach and RAG-HPO validation methodology.",
+  "methodology_notes": "Category-specific prompting per CaseReportBench findings. Fields selected to capture diagnostic drift indicators (criteria cited, terminology used) alongside standard phenotype data.",
+
+  "extraction_categories": {
+    "demographics": {
+      "fields": {
+        "age_at_presentation": {"type": "number", "unit": "years", "nullable": true},
+        "age_at_diagnosis": {"type": "number", "unit": "years", "nullable": true},
+        "sex": {"type": "enum", "values": ["male", "female", "other", "not_reported"]},
+        "ethnicity": {"type": "string", "nullable": true},
+        "country_of_care": {"type": "string", "nullable": true},
+        "family_history_noted": {"type": "boolean", "nullable": true}
+      }
+    },
+    "primary_diagnosis": {
+      "fields": {
+        "condition": {"type": "enum", "values": ["EDS_classical", "EDS_vascular", "hEDS", "HSD", "EDS_other", "EDS_unspecified", "POTS", "MCAS", "mastocytosis", "other"]},
+        "diagnostic_criteria_cited": {"type": "string", "description": "Exact criteria framework cited (e.g., '2017 international classification', 'Villefranche', 'Brighton', 'Consensus 2019')", "nullable": true},
+        "diagnostic_criteria_year": {"type": "number", "nullable": true},
+        "beighton_score": {"type": "number", "nullable": true},
+        "genetic_testing_performed": {"type": "boolean", "nullable": true},
+        "genetic_variant_identified": {"type": "string", "nullable": true},
+        "time_to_diagnosis_years": {"type": "number", "nullable": true, "description": "Delay from symptom onset to diagnosis"}
+      }
+    },
+    "comorbidities": {
+      "fields": {
+        "eds_present": {"type": "boolean", "nullable": true},
+        "pots_present": {"type": "boolean", "nullable": true},
+        "mcas_present": {"type": "boolean", "nullable": true},
+        "other_comorbidities": {"type": "array", "items": "string", "description": "List of all other comorbidities mentioned"},
+        "triad_complete": {"type": "boolean", "description": "Whether all three of EDS/hEDS + POTS + MCAS are present"}
+      }
+    },
+    "symptoms_musculoskeletal": {
+      "fields": {
+        "joint_hypermobility": {"type": "boolean", "nullable": true},
+        "joint_subluxations_dislocations": {"type": "boolean", "nullable": true},
+        "chronic_pain": {"type": "boolean", "nullable": true},
+        "early_onset_osteoarthritis": {"type": "boolean", "nullable": true},
+        "specific_joints_affected": {"type": "array", "items": "string", "nullable": true},
+        "other_msk_symptoms": {"type": "array", "items": "string", "nullable": true}
+      }
+    },
+    "symptoms_cardiovascular": {
+      "fields": {
+        "orthostatic_intolerance": {"type": "boolean", "nullable": true},
+        "tachycardia": {"type": "boolean", "nullable": true},
+        "heart_rate_increase_on_standing": {"type": "number", "unit": "bpm", "nullable": true},
+        "syncope_presyncope": {"type": "boolean", "nullable": true},
+        "palpitations": {"type": "boolean", "nullable": true},
+        "blood_pressure_abnormalities": {"type": "string", "nullable": true},
+        "vascular_fragility": {"type": "boolean", "nullable": true},
+        "mitral_valve_prolapse": {"type": "boolean", "nullable": true},
+        "other_cv_symptoms": {"type": "array", "items": "string", "nullable": true}
+      }
+    },
+    "symptoms_immunological": {
+      "fields": {
+        "flushing": {"type": "boolean", "nullable": true},
+        "urticaria": {"type": "boolean", "nullable": true},
+        "anaphylaxis": {"type": "boolean", "nullable": true},
+        "elevated_tryptase": {"type": "boolean", "nullable": true},
+        "tryptase_level": {"type": "number", "nullable": true},
+        "prostaglandin_markers": {"type": "string", "nullable": true},
+        "medication_sensitivities": {"type": "boolean", "nullable": true},
+        "food_intolerances": {"type": "boolean", "nullable": true},
+        "other_immune_symptoms": {"type": "array", "items": "string", "nullable": true}
+      }
+    },
+    "symptoms_neurological": {
+      "fields": {
+        "headache_migraine": {"type": "boolean", "nullable": true},
+        "neuropathy": {"type": "boolean", "nullable": true},
+        "chiari_malformation": {"type": "boolean", "nullable": true},
+        "craniocervical_instability": {"type": "boolean", "nullable": true},
+        "tethered_cord": {"type": "boolean", "nullable": true},
+        "cognitive_symptoms": {"type": "boolean", "nullable": true, "description": "Brain fog, concentration difficulties"},
+        "other_neuro_symptoms": {"type": "array", "items": "string", "nullable": true}
+      }
+    },
+    "symptoms_gastrointestinal": {
+      "fields": {
+        "gi_dysmotility": {"type": "boolean", "nullable": true},
+        "gastroparesis": {"type": "boolean", "nullable": true},
+        "ibs_symptoms": {"type": "boolean", "nullable": true},
+        "nausea_vomiting": {"type": "boolean", "nullable": true},
+        "abdominal_pain": {"type": "boolean", "nullable": true},
+        "other_gi_symptoms": {"type": "array", "items": "string", "nullable": true}
+      }
+    },
+    "symptoms_dermatological": {
+      "fields": {
+        "skin_hyperextensibility": {"type": "boolean", "nullable": true},
+        "easy_bruising": {"type": "boolean", "nullable": true},
+        "poor_wound_healing": {"type": "boolean", "nullable": true},
+        "atrophic_scarring": {"type": "boolean", "nullable": true},
+        "other_skin_findings": {"type": "array", "items": "string", "nullable": true}
+      }
+    },
+    "symptoms_other": {
+      "fields": {
+        "fatigue": {"type": "boolean", "nullable": true},
+        "sleep_disturbance": {"type": "boolean", "nullable": true},
+        "anxiety_depression": {"type": "boolean", "nullable": true},
+        "urological_symptoms": {"type": "boolean", "nullable": true},
+        "dental_abnormalities": {"type": "boolean", "nullable": true},
+        "ocular_findings": {"type": "boolean", "nullable": true},
+        "additional_symptoms": {"type": "array", "items": "string", "description": "Any symptoms not captured above"}
+      }
+    },
+    "treatment": {
+      "fields": {
+        "medications": {"type": "array", "items": "string", "nullable": true},
+        "surgical_interventions": {"type": "array", "items": "string", "nullable": true},
+        "physical_therapy": {"type": "boolean", "nullable": true},
+        "outcome_reported": {"type": "string", "nullable": true, "description": "Brief description of reported outcome"}
+      }
+    },
+    "publication_metadata": {
+      "fields": {
+        "num_patients_in_report": {"type": "number", "description": "Number of distinct patients described"},
+        "report_type": {"type": "enum", "values": ["single_case", "case_series", "case_with_review"]},
+        "publication_year": {"type": "number"},
+        "terminology_used": {"type": "array", "items": "string", "description": "Exact diagnostic terms used by the authors (e.g., 'EDS type III', 'hEDS', 'JHS', 'POTS', 'dysautonomia', 'MCAD')"}
+      }
+    }
+  }
+}

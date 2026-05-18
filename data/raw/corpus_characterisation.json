@@ -1,0 +1,25 @@
+{
+  "total_unique": 717,
+  "year_range": [
+    2004,
+    2026
+  ],
+  "pre_2017": 106,
+  "post_2017": 611,
+  "top_journals": {
+    "Cureus": 45,
+    "Clin Case Rep": 30,
+    "J Med Case Rep": 16,
+    "JACC Case Rep": 15,
+    "Front Neurol": 14,
+    "Orphanet J Rare Dis": 12,
+    "J Clin Med": 12,
+    "JAAD Case Rep": 11,
+    "J Surg Case Rep": 10,
+    "BMJ Case Rep": 10
+  },
+  "overlap_eds_pots": 12,
+  "overlap_eds_mcas": 1,
+  "overlap_pots_mcas": 5,
+  "overlap_all_three": 1
+}

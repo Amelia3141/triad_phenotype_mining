@@ -1,0 +1,10 @@
+{
+  "retrieval_date": "2026-04-16T20:25:20.447264",
+  "queries": {
+    "EDS_hEDS": 336,
+    "POTS": 144,
+    "MCAS": 240,
+    "TRIAD_cooccurrence": 18
+  },
+  "total_unique_pmcids": 717
+}

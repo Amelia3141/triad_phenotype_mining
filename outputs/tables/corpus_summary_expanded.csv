@@ -1,0 +1,16 @@
+metric,value
+total_articles,1400
+case_reports,688
+clinical_studies,326
+reviews,175
+animal_studies,211
+original_corpus,717
+adjacent_corpus,683
+eds_narrow,404
+pots_narrow,293
+pots_broad_only,610
+mcas_narrow,333
+triad_narrow,60
+triad_broad,69
+pre_2017,193
+post_2017,1157
