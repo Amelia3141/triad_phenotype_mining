@@ -88,6 +88,37 @@ class ConfigRequest(BaseModel):
 class PMCSearchRequest(BaseModel):
     query: str
     max_results: int = 200
+    pub_types: List[str] = []   # UI keys; empty = no publication-type filter
+
+
+# Map UI checkbox keys -> PMC "[Publication Type]" filter values.
+PUB_TYPE_FILTERS = {
+    "case_reports": "case reports",
+    "review": "review",
+    "systematic_review": "systematic review",
+    "clinical_trial": "clinical trial",
+    "meta_analysis": "meta-analysis",
+    "observational": "observational study",
+    "comparative_study": "comparative study",
+}
+
+
+def build_pmc_term(query: str, pub_types: List[str]) -> str:
+    """Combine a free-text query with selected publication-type filters.
+
+    Ticking one or more types restricts results to those types (OR-combined),
+    e.g. ticking only 'Case reports' yields:
+        (query) AND ("case reports"[Publication Type])
+    No ticks leaves the query unfiltered.
+    """
+    term = (query or "").strip()
+    filters = [
+        f'"{PUB_TYPE_FILTERS[t]}"[Publication Type]'
+        for t in (pub_types or []) if t in PUB_TYPE_FILTERS
+    ]
+    if filters:
+        term = f"({term}) AND ({' OR '.join(filters)})"
+    return term
 
 class RunPipelineRequest(BaseModel):
     enable_llm: bool = False
@@ -195,15 +226,19 @@ async def api_search_pmc(req: PMCSearchRequest, background_tasks: BackgroundTask
     _state["progress"] = "Searching PMC..."
     _state["pmc_results"] = []
 
+    term = build_pmc_term(req.query, req.pub_types)
+
     def _run():
         try:
-            _emit(f"Searching PMC: {req.query}")
+            _emit(f"Searching PMC: {term}")
+            if req.pub_types:
+                _emit(f"Publication-type filter: {', '.join(req.pub_types)}")
             _emit(f"Max results: {req.max_results}")
 
             # ESearch
             params = {
                 "db": "pmc",
-                "term": req.query,
+                "term": term,
                 "retmax": req.max_results,
                 "usehistory": "y",
                 "retmode": "json",
@@ -595,6 +630,39 @@ async def download_file(filename: str):
             return FileResponse(fpath, filename=filename)
 
     return JSONResponse({"error": f"File not found: {filename}"}, status_code=404)
+
+
+@app.get("/api/download-all")
+async def download_all_files():
+    """Bundle every output file into a single zip for one-click download."""
+    import io
+    import zipfile
+
+    work_dir = _state.get("output_dir")
+    if not work_dir:
+        return JSONResponse({"error": "No outputs available"}, status_code=404)
+
+    seen = set()
+    buf = io.BytesIO()
+    count = 0
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zf:
+        # outputs/ first so it wins on any name clash with the work-dir root
+        for search_dir in [os.path.join(work_dir, "outputs"), work_dir]:
+            if not os.path.isdir(search_dir):
+                continue
+            for fname in sorted(os.listdir(search_dir)):
+                fpath = os.path.join(search_dir, fname)
+                if os.path.isfile(fpath) and fname not in seen:
+                    seen.add(fname)
+                    zf.write(fpath, arcname=fname)
+                    count += 1
+
+    if count == 0:
+        return JSONResponse({"error": "No output files to download"}, status_code=404)
+
+    buf.seek(0)
+    headers = {"Content-Disposition": 'attachment; filename="phenotyping_outputs.zip"'}
+    return StreamingResponse(buf, media_type="application/zip", headers=headers)
 
 
 @app.get("/api/output-files")
