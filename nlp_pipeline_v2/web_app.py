@@ -91,7 +91,7 @@ class PMCSearchRequest(BaseModel):
     pub_types: List[str] = []   # UI keys; empty = no publication-type filter
 
 
-# Map UI checkbox keys -> PMC "[Publication Type]" filter values.
+# Map UI checkbox keys -> NLM publication-type values.
 PUB_TYPE_FILTERS = {
     "case_reports": "case reports",
     "review": "review",
@@ -103,22 +103,31 @@ PUB_TYPE_FILTERS = {
 }
 
 
-def build_pmc_term(query: str, pub_types: List[str]) -> str:
-    """Combine a free-text query with selected publication-type filters.
+def build_pubmed_term(query: str, pub_types: List[str]) -> str:
+    """Build a PubMed query: topic + optional publication-type filters,
+    restricted to the PMC open-access subset so every hit is downloadable.
 
-    Ticking one or more types restricts results to those types (OR-combined),
-    e.g. ticking only 'Case reports' yields:
-        (query) AND ("case reports"[Publication Type])
-    No ticks leaves the query unfiltered.
+    We search PubMed (not PMC) because publication-type / MeSH indexing is
+    only reliably populated on MEDLINE/PubMed records; the same filters are
+    loose in PMC. Ticking types restricts to those (OR-combined), e.g. ticking
+    'Case reports' yields:
+        (query) AND ("case reports"[pt]) AND "pubmed pmc open access"[filter]
+    No ticks leaves all paper types, still restricted to PMC open access.
     """
     term = (query or "").strip()
-    filters = [
-        f'"{PUB_TYPE_FILTERS[t]}"[Publication Type]'
+    pts = [
+        f'"{PUB_TYPE_FILTERS[t]}"[pt]'
         for t in (pub_types or []) if t in PUB_TYPE_FILTERS
     ]
-    if filters:
-        term = f"({term}) AND ({' OR '.join(filters)})"
+    if pts:
+        term = f"({term}) AND ({' OR '.join(pts)})"
+    # PMC open-access subset: guarantees a downloadable full-text XML exists.
+    term = f'({term}) AND "pubmed pmc open access"[filter]'
     return term
+
+
+# Backwards-compatible alias (older callers/tests).
+build_pmc_term = build_pubmed_term
 
 class RunPipelineRequest(BaseModel):
     enable_llm: bool = False
@@ -164,7 +173,9 @@ async def api_generate_config(req: ConfigRequest, background_tasks: BackgroundTa
     """Generate extraction config from disease names."""
     _state["status"] = "running"
     _state["progress"] = "Generating config..."
-    _state["extractions"] = []
+    # NB: do NOT clear extractions here; generating a new config should not
+    # wipe the previous run's reviewable results. They are cleared when a new
+    # extraction actually starts.
 
     def _run():
         try:
@@ -226,52 +237,73 @@ async def api_search_pmc(req: PMCSearchRequest, background_tasks: BackgroundTask
     _state["progress"] = "Searching PMC..."
     _state["pmc_results"] = []
 
-    term = build_pmc_term(req.query, req.pub_types)
+    term = build_pubmed_term(req.query, req.pub_types)
+    ua = {"User-Agent": "phenotype-pipeline/1.0"}
 
     def _run():
         try:
-            _emit(f"Searching PMC: {term}")
+            _emit(f"Searching PubMed: {term}")
             if req.pub_types:
                 _emit(f"Publication-type filter: {', '.join(req.pub_types)}")
+            else:
+                _emit("Publication-type filter: all types")
             _emit(f"Max results: {req.max_results}")
 
-            # ESearch
+            # 1) ESearch PubMed (publication-type / MeSH indexing lives here)
             params = {
-                "db": "pmc",
+                "db": "pubmed",
                 "term": term,
                 "retmax": req.max_results,
-                "usehistory": "y",
                 "retmode": "json",
             }
             url = NCBI_BASE + "esearch.fcgi?" + urllib.parse.urlencode(params)
-            req_obj = urllib.request.Request(url, headers={"User-Agent": "phenotype-pipeline/1.0"})
-            with urllib.request.urlopen(req_obj, timeout=30) as resp:
-                data = json.loads(resp.read())
+            with urllib.request.urlopen(urllib.request.Request(url, headers=ua), timeout=30) as resp:
+                data = json.loads(resp.read().decode("utf-8", "ignore"), strict=False)
 
             result = data.get("esearchresult", {})
             count = int(result.get("count", 0))
-            id_list = result.get("idlist", [])
-            webenv = result.get("webenv", "")
-            query_key = result.get("querykey", "")
+            pmids = result.get("idlist", [])
+            _emit(f"PubMed: {count} matching records, retrieved {len(pmids)} PMIDs")
 
-            _emit(f"Found {count} total results, retrieved {len(id_list)} PMCIDs")
+            # 2) Map PMIDs -> PMCIDs via the PMC ID Converter API (batched, max
+            #    200/req). More reliable than elink for large batches. The PMC
+            #    open-access filter guarantees each PMID has a PMC full text.
+            idconv = "https://www.ncbi.nlm.nih.gov/pmc/utils/idconv/v1.0/"
+            pmcid_nums = []
+            for i in range(0, len(pmids), 200):
+                batch = pmids[i:i + 200]
+                time.sleep(NCBI_RATE_LIMIT)
+                cu = idconv + "?" + urllib.parse.urlencode({
+                    "tool": "phenotype-pipeline",
+                    "email": "phenotype-pipeline@example.org",
+                    "ids": ",".join(batch), "format": "json",
+                })
+                with urllib.request.urlopen(urllib.request.Request(cu, headers=ua), timeout=30) as cr:
+                    conv = json.loads(cr.read().decode("utf-8", "ignore"), strict=False)
+                for rec in conv.get("records", []):
+                    pmcid = rec.get("pmcid")
+                    if pmcid:
+                        pmcid_nums.append(pmcid[3:] if pmcid.upper().startswith("PMC") else pmcid)
 
-            # Get summaries for display
+            # Dedup, preserve order
+            seen = set()
+            pmcid_nums = [x for x in pmcid_nums if not (x in seen or seen.add(x))]
+            _emit(f"Mapped to {len(pmcid_nums)} open-access PMC articles")
+
+            # 3) Summaries for the preview list
             pmc_results = []
-            if id_list:
+            if pmcid_nums:
                 time.sleep(NCBI_RATE_LIMIT)
                 summary_params = {
                     "db": "pmc",
-                    "id": ",".join(id_list[:50]),  # first 50 for preview
+                    "id": ",".join(pmcid_nums[:50]),
                     "retmode": "json",
                 }
                 summary_url = NCBI_BASE + "esummary.fcgi?" + urllib.parse.urlencode(summary_params)
-                req2 = urllib.request.Request(summary_url, headers={"User-Agent": "phenotype-pipeline/1.0"})
-                with urllib.request.urlopen(req2, timeout=30) as resp2:
-                    summary_data = json.loads(resp2.read())
-
+                with urllib.request.urlopen(urllib.request.Request(summary_url, headers=ua), timeout=30) as resp2:
+                    summary_data = json.loads(resp2.read().decode("utf-8", "ignore"), strict=False)
                 sresult = summary_data.get("result", {})
-                for pmcid_num in id_list[:50]:
+                for pmcid_num in pmcid_nums[:50]:
                     info = sresult.get(pmcid_num, {})
                     if isinstance(info, dict):
                         pmc_results.append({
@@ -282,16 +314,18 @@ async def api_search_pmc(req: PMCSearchRequest, background_tasks: BackgroundTask
                         })
 
             _state["pmc_results"] = pmc_results
-            _state["_pmc_ids"] = [f"PMC{x}" for x in id_list]
-            _state["_pmc_webenv"] = webenv
-            _state["_pmc_query_key"] = query_key
+            _state["_pmc_ids"] = [f"PMC{x}" for x in pmcid_nums]
+            _state["_pmc_webenv"] = ""
+            _state["_pmc_query_key"] = ""
+            # "found" = total PubMed matches; "retrievable" = those we pulled.
             _state["_pmc_total"] = count
 
-            _emit(f"Search complete. {len(pmc_results)} articles previewed, {len(id_list)} ready for download.", "success")
+            _emit(f"Search complete. {len(pmc_results)} previewed, "
+                  f"{len(pmcid_nums)} ready for download.", "success")
             _state["status"] = "idle"
-            _state["progress"] = f"Found {count} articles"
+            _state["progress"] = f"Found {count} articles ({len(pmcid_nums)} retrievable)"
         except Exception as e:
-            _emit(f"PMC search error: {e}", "error")
+            _emit(f"Search error: {e}", "error")
             _state["status"] = "error"
             _state["progress"] = f"Search failed: {e}"
 
@@ -690,10 +724,29 @@ async def list_output_files():
 
 # ── Review & corrections ──
 
+def _load_extractions():
+    """Return the current run's extractions, falling back to the last run's
+    extractions.json on disk if in-memory state was cleared (e.g. after a new
+    config was generated, or the server restarted)."""
+    extractions = _state.get("extractions", [])
+    if extractions:
+        return extractions
+    work_dir = _state.get("output_dir")
+    if work_dir:
+        path = os.path.join(work_dir, "outputs", "extractions.json")
+        if os.path.exists(path):
+            try:
+                with open(path, encoding="utf-8") as f:
+                    return json.load(f)
+            except Exception:
+                pass
+    return []
+
+
 @app.get("/api/review")
 async def list_reviewable_articles():
     """List extracted articles available for review."""
-    extractions = _state.get("extractions", [])
+    extractions = _load_extractions()
     articles = []
     for e in extractions:
         if e.get("error"):

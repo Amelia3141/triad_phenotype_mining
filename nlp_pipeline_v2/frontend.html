@@ -598,7 +598,7 @@ function App() {
     // MONDO synonyms once the config finishes generating
     if (!pmcQuery) {
       const q = diseaseList.map(d => `"${d}"`).join(' OR ');
-      setPmcQuery(`(${q}) AND "case report"[pt] AND open access[filter]`);
+      setPmcQuery(`(${q})`);
     }
     // Poll for config readiness and update query with synonyms
     const pollForSynonyms = setInterval(async () => {
@@ -608,7 +608,7 @@ function App() {
         if (s.config_ready && s.search_terms && s.search_terms.length > 0) {
           clearInterval(pollForSynonyms);
           const q = s.search_terms.map(t => `"${t}"`).join(' OR ');
-          setPmcQuery(`(${q}) AND "case report"[pt] AND open access[filter]`);
+          setPmcQuery(`(${q})`);
         }
         if (s.status === 'error') clearInterval(pollForSynonyms);
       } catch(e) { clearInterval(pollForSynonyms); }
@@ -739,15 +739,18 @@ function App() {
             PMC Article Search
           </h3>
           <div className="input-group">
-            <label>PubMed Central query</label>
+            <label>Search query (topic)</label>
             <textarea
               value={pmcQuery}
               onChange={e => setPmcQuery(e.target.value)}
-              placeholder='("Ehlers-Danlos" OR "POTS") AND "case report"[pt]'
+              placeholder='"Ehlers-Danlos syndrome" OR "POTS"'
               rows={3}
               disabled={isRunning}
             />
-            <div className="hint">Auto-generated from diseases, or write your own</div>
+            <div className="hint">
+              Topic terms only. Searched in PubMed and restricted to PMC
+              open-access full text; paper-type filtering is applied below.
+            </div>
           </div>
           <div className="input-group">
             <label>Filter by paper type</label>
