@@ -609,27 +609,19 @@ def _resolve_diseases_to_patterns(
             continue
 
         candidates = matches[:max_candidates]
-        # Fetch xrefs for each candidate so HPO resolvability can inform ranking.
-        for c in candidates:
-            if "xrefs" not in c:
-                c["xrefs"] = get_disease_xrefs(c["mondo_id"], log=log)
-
-        _hpo_memo = {}
-
-        def _has_hpo(c):
-            xr = c.get("xrefs", {})
-            for xid in xr.get("omim", []) + xr.get("orpha", []):
-                if xid not in _hpo_memo:
-                    _hpo_memo[xid] = get_hpo_phenotypes(xid, log=log)
-                if (_hpo_memo[xid] or {}).get("categories"):
-                    return True
-            return False
-
-        ranked = rank_candidates(name, candidates, has_hpo_fn=_has_hpo)
+        # Rank by LABEL quality only. This alone resolves the common failure
+        # cases (susceptibility loci, wrong subtypes, animal forms) via exact-
+        # match bonus + qualifier penalties, and needs NO per-candidate network
+        # calls, so config generation stays fast. HPO resolvability is handled
+        # lazily as a fallback in generate_config (only if the best term has no
+        # HPO annotations), rather than probing every candidate up front.
+        ranked = rank_candidates(name, candidates)
         best = ranked[0]
-        # Carry the memoised HPO so generate_config need not refetch.
-        best["_hpo_memo"] = _hpo_memo
+        if "xrefs" not in best:
+            best["xrefs"] = get_disease_xrefs(best["mondo_id"], log=log)
+        # Alternates keep their lazily-fetched xrefs (fetched only if needed).
         best["_alternates"] = ranked[1:]
+        best["_hpo_memo"] = {}
         if log:
             log.decision(
                 f"Selected: {best['label']} ({best['mondo_id']})",
@@ -695,6 +687,9 @@ def generate_config(
     fetched_ids = set()
 
     def _collect_hpo(disease) -> bool:
+        # Alternates have xrefs fetched lazily (only when we actually fall back).
+        if "xrefs" not in disease:
+            disease["xrefs"] = get_disease_xrefs(disease["mondo_id"], log=log)
         memo = disease.get("_hpo_memo", {})
         xrefs = disease.get("xrefs", {})
         found = False
