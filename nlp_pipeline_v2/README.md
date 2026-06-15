@@ -1,0 +1,241 @@
+# Case Report Phenotyping Pipeline (`nlp_pipeline_v2`)
+
+A disease-agnostic pipeline that turns a disease name into a structured,
+patient-level dataset mined from published case reports. You give it one or
+more disease names; it builds an extraction configuration from biomedical
+ontologies, retrieves and downloads open-access case reports from
+PubMed/PMC, extracts per-patient phenotype data with negation- and
+section-aware NLP, and writes analysis-ready tables. A web UI exposes the whole
+flow, and a built-in evaluation harness measures quality.
+
+It is built for systematic-review-style phenotyping of rare and multisystem
+conditions, where the evidence base is dominated by individual case reports
+rather than trials.
+
+---
+
+## Pipeline, start to finish
+
+The flow has six stages. Each writes a provenance log entry so a run is
+reproducible.
+
+### 1. Configuration from ontologies (`disease_config_generator.py`)
+
+You provide disease name(s). The generator resolves each name to a MONDO term
+via the EBI Ontology Lookup Service, ranks the candidate terms by label quality
+and phenotype-data availability (so "systemic lupus erythematosus" resolves to
+the disease, not a susceptibility locus), and pulls the disease's HPO (Human
+Phenotype Ontology) annotations via the JAX API. Each HPO phenotype name is
+converted into a regular expression, and MONDO synonyms become the condition
+detectors and the search terms. The output is a complete `config.json`:
+condition patterns, symptom patterns, a universal drug list, measurement
+patterns, and negation triggers. No manual dictionary building is required, and
+the same machinery works for any disease with HPO coverage.
+
+### 2. Retrieval (`web_app.py` search route)
+
+The topic query (auto-built from the resolved synonyms, or written by hand) is
+searched in **PubMed**, restricted to the PMC open-access subset so every hit
+has downloadable full text. Publication-type checkboxes (case reports, reviews,
+systematic reviews, trials, etc.) map to NLM `[pt]` filters. PubMed is used
+rather than PMC because publication-type and MeSH indexing are reliably
+populated only on MEDLINE/PubMed records; the matching PMIDs are then mapped to
+PMCIDs with the PMC ID Converter API.
+
+### 3. Download (`scripts`/web route)
+
+Full-text JATS XML for the selected PMCIDs is fetched from PMC and cached
+locally. Retrieval queries and access are logged.
+
+### 4. Extraction (`pipeline.py`, `extractors.py`, `text_processing.py`, `negation.py`)
+
+Each article is parsed into sections. Articles whose type is not an
+individual-patient case report are skipped. For the rest, the pipeline extracts:
+demographics (age, sex), temporal structure (age at onset, symptom duration,
+diagnostic delay, misdiagnoses, referral pathway), drugs with dosage/route/
+frequency, clinical measurements, symptoms/phenotypes, comorbidities, family
+history, outcomes, and drug-to-response links. Two design choices drive
+quality:
+
+- **Section-aware attribution.** Per-patient fields are extracted only from the
+  abstract and case sections, never the discussion or introduction, so general
+  statements and literature claims are not misattributed to the index patient.
+  A patient-action rescue re-admits discussion sentences that explicitly
+  describe the patient.
+- **Negation awareness.** A pure-Python implementation of the ConText algorithm
+  classifies each finding as affirmed, negated, or not mentioned, so the dataset
+  records what was tested and ruled out, not only positives.
+
+### 5. Dataset build (`dataset_builder.py`)
+
+Raw extractions are assembled into analysis-ready outputs: a patient-level
+table, a corpus-metadata table, a comorbidity matrix, a treatment-response
+summary, an extraction-quality report, a machine-readable data dictionary, and
+the raw `extractions.json`. A one-click "Download all" bundles them as a zip.
+
+### 6. Review and correction (`web_app.py`, `correction_memory.py`)
+
+Extractions are browsable per article in the UI, with evidence sentences, so a
+human can spot errors and submit structured corrections that persist to disk.
+
+### Optional: LLM enhancement (`llm_enhancer.py`)
+
+A SPELL-style hybrid step can call an LLM to fill gaps the rules miss
+(off by default). The rule-based core runs with no API keys, no cost, and
+deterministic output; the LLM is additive, not load-bearing.
+
+---
+
+## Current performance
+
+These figures come from the repository's own evaluation code; reproduce them
+with the commands in Quickstart.
+
+**Configuration generator, across 50 diverse diseases** (genetic, metabolic,
+haematological, rheumatological, neurological, cardiac, renal, endocrine,
+dermatological). Accuracy here is an automated, disease-agnostic metric:
+self-match recall (each phenotype's regex matches its own ontology name) plus
+intra-config specificity (it does not match other phenotypes' names) plus
+control specificity (it does not match generic, phenotype-free clinical text).
+
+| Metric | Value |
+|--------|-------|
+| Mean accuracy (all 50) | **97.8%** |
+| Mean accuracy (diseases with phenotype data) | **99.8%** |
+| Mean self-match recall | **0.996** |
+| Cross-phenotype contamination | **~0%** |
+| Diseases with zero phenotypes (upstream HPO gap) | 1 / 50 |
+
+The generator started at 75.4% mean accuracy; generalisable fixes (robust
+candidate selection, stem matching that handles hyphens, slashes and
+possessives, null-safe parsing) lifted it to 97.8%. Held-out check on a disease
+outside the 50 (Gitelman syndrome, live APIs): 77 phenotypes, 99.98%.
+
+**Extraction precision (section-awareness)**, measured on 657 case reports in
+the working corpus, as the share of extracted items that came from
+literature/discussion sentences rather than the patient:
+
+| Field | Before | After |
+|-------|--------|-------|
+| Drugs (affirmed) | 5.0% literature-derived | **0.9%** |
+| Comorbidities | 4.7% | **1.4%** |
+
+**Retrieval precision.** On a polycystic-ovary-syndrome sample, routing the
+search through PubMed's MeSH publication-type filter raised the share of
+downloaded articles the pipeline accepts as genuine case reports from ~36%
+(loose PMC full-text search) to ~92% (small sample, n=12), and removed
+off-topic articles that merely mentioned the disease in passing.
+
+**Functional tests.** A dependency-free gold-vignette suite covering negation,
+drug recognition, temporal inference, symptom detection, the literature filter
+and section precision passes 36/36.
+
+**Throughput.** Rule-based extraction runs at roughly 35-40 articles/second on
+a laptop; configuration generation takes about 2-7 seconds per disease
+(network-bound on the ontology APIs).
+
+---
+
+## How this differs from existing tools
+
+Systematic-review and clinical-NLP tooling tends to fall into a few buckets,
+and this pipeline sits deliberately across the gaps between them.
+
+**Screening tools (Rayyan, Covidence, Abstrackr, ASReview).** These accelerate
+title/abstract inclusion-and-exclusion decisions, often with active learning.
+They decide which papers enter a review; they do not extract structured data
+from the papers. This pipeline starts where they stop, producing per-patient
+variables.
+
+**Trial-extraction tools (RobotReviewer, Trialstreamer, ExaCT).** These target
+randomised controlled trials, extracting PICO elements and risk-of-bias. The
+case-report literature, which dominates rare and multisystem disease evidence,
+is a different genre with different structure (one patient, narrative course,
+no arms), and is largely unaddressed by trial-oriented tools.
+
+**General clinical NLP (MetaMap, cTAKES, scispaCy, MedCAT, CLAMP).** These
+recognise and normalise concepts in clinical text against UMLS/SNOMED, and are
+powerful but general-purpose. They are not configured per disease for a review
+corpus, do not retrieve the corpus, and crucially do not separate findings
+about the index patient from background literature inside a published case
+report, which is the dominant precision problem here.
+
+**HPO-extraction tools (Doc2HPO, ClinPhen, Monarch tooling).** Closest in
+spirit: they map clinical text to HPO terms. This pipeline differs by being
+auto-configured per disease from MONDO + HPO, by coupling extraction to
+retrieval and to a full per-patient schema (drugs, temporal course,
+comorbidities, outcomes, family history), and by its section-aware patient
+attribution.
+
+**LLM-based extraction.** Large language models can extract from papers
+zero-shot, but at the cost of per-document API spend, non-determinism,
+opacity, and hallucination risk, all of which are awkward for a systematic
+review that must be reproducible and auditable (PROSPERO registration, PRISMA
+reporting). This pipeline's core is deterministic and fully inspectable: every
+match traces to a named regex and an evidence sentence, and every run emits a
+provenance log. The LLM is offered only as an optional, clearly-tagged
+enhancement layer over a transparent base.
+
+**The combination is the contribution.** Individually, ontology lookup, regex
+extraction, ConText negation and LLM assists are all established. What is
+distinctive here is putting them together into a single, reproducible,
+disease-agnostic route from a disease name to a patient-level case-report
+dataset, with section-aware attribution to keep published-literature noise out
+of per-patient fields, and a built-in metric so quality is measured rather than
+asserted.
+
+---
+
+## Limitations (read before relying on it)
+
+- **Heuristic, not true NER.** Extraction is dictionary- and regex-based with
+  morphological stemming. It is transparent and fast but has a recall ceiling
+  and cannot disambiguate by deep context the way a trained model can.
+- **No human-gold extraction benchmark yet.** The metrics above measure config
+  pattern quality, section precision, and vignette correctness. Precision and
+  recall against a human-annotated extraction gold standard are not yet
+  established; the review UI exists to build that set.
+- **Case reports only.** Other article types are intentionally skipped at
+  extraction.
+- **Ontology coverage varies.** A disease with sparse or mis-linked HPO
+  annotations (e.g. ankylosing spondylitis, whose MONDO term lacks a resolvable
+  HPO cross-reference) yields few or no symptom patterns. This is an upstream
+  data gap, handled gracefully rather than hidden.
+
+---
+
+## Quickstart
+
+```bash
+pip install -r nlp_pipeline_v2/requirements.txt
+
+# Web UI (config -> search -> download -> extract -> review), http://localhost:8000
+uvicorn nlp_pipeline_v2.web_app:app --reload --port 8000
+
+# Or from the command line:
+python -m nlp_pipeline_v2.disease_config_generator "Marfan syndrome" -o config.json
+python -m nlp_pipeline_v2.pipeline --input data/raw/fulltext --output extractions.json --config config.json
+
+# Tests and evaluation
+python -m nlp_pipeline_v2.tests.run_eval                  # 36/36 vignette suite
+python -m nlp_pipeline_v2.experiments.run_experiment      # 50-disease config accuracy
+```
+
+## Layout
+
+```
+nlp_pipeline_v2/
+  disease_config_generator.py   # disease name -> config (MONDO + HPO)
+  pipeline.py                   # orchestration, per-article extraction
+  extractors.py                 # drugs, temporal, measurements, comorbidities, ...
+  text_processing.py            # JATS parsing, sectioning, patient-sentence selection
+  negation.py                   # ConText negation
+  dataset_builder.py            # analysis-ready output tables
+  llm_enhancer.py               # optional LLM gap-filling
+  web_app.py / frontend.html    # UI and API
+  tests/run_eval.py             # gold-vignette accuracy suite
+  experiments/                  # 50-disease generalisation study (log + plot)
+```
+
+See `IMPROVEMENTS.md` for the change history and `experiments/EXPERIMENT_LOG.md`
+for the generalisation study and accuracy-over-time plot.
