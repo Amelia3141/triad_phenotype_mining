@@ -1,0 +1,80 @@
+{
+  "schema_version": "2.0",
+  "description": "Disease-agnostic extraction configuration. Replace condition_terms and symptom_terms to adapt to another disease domain.",
+
+  "condition_terms": {
+    "EDS": {
+      "canonical": "Ehlers-Danlos syndrome",
+      "patterns": ["ehlers[\\s-]*danlos", "\\beds\\b(?!.*\\bedss\\b)", "connective tissue disorder"],
+      "subtypes": {
+        "hEDS": ["hypermobile.*ehlers", "\\bheds\\b", "hypermobility.*type", "eds.*type\\s*iii"],
+        "vEDS": ["vascular.*ehlers", "\\bveds\\b", "eds.*type\\s*iv", "col3a1"],
+        "cEDS": ["classical.*ehlers", "\\bceds\\b", "eds.*type\\s*i"],
+        "HSD": ["hypermobility.*spectrum", "\\bhsd\\b"],
+        "JHS": ["joint.*hypermobility.*syndrome", "\\bjhs\\b"]
+      }
+    },
+    "POTS": {
+      "canonical": "Postural orthostatic tachycardia syndrome",
+      "patterns": ["postural.*(?:orthostatic\\s+)?tachycardia", "\\bpots\\b"]
+    },
+    "MCAS": {
+      "canonical": "Mast cell activation syndrome",
+      "patterns": ["mast\\s+cell\\s+activation", "\\bmcas\\b", "\\bmcad\\b"]
+    }
+  },
+
+  "drug_classes": {
+    "beta_blockers": ["propranolol", "metoprolol", "atenolol", "bisoprolol", "nadolol", "carvedilol", "nebivolol", "labetalol", "ivabradine"],
+    "vasoconstrictors": ["midodrine", "droxidopa", "fludrocortisone", "desmopressin", "octreotide"],
+    "mast_cell_stabilisers": ["cromolyn", "cromoglicate", "ketotifen", "sodium cromoglycate"],
+    "antihistamines": ["cetirizine", "loratadine", "fexofenadine", "diphenhydramine", "hydroxyzine", "ranitidine", "famotidine", "montelukast"],
+    "analgesics": ["paracetamol", "acetaminophen", "ibuprofen", "naproxen", "celecoxib", "pregabalin", "gabapentin", "duloxetine", "amitriptyline", "nortriptyline"],
+    "gi_drugs": ["omeprazole", "lansoprazole", "pantoprazole", "ondansetron", "domperidone", "metoclopramide", "loperamide"],
+    "autonomic": ["pyridostigmine", "clonidine", "methyldopa", "ephedrine"],
+    "emergency": ["epinephrine", "adrenaline", "hydrocortisone", "methylprednisolone", "prednisone", "prednisolone"],
+    "supplements": ["salt tablets", "sodium chloride", "vitamin c", "vitamin d", "magnesium", "iron", "coenzyme q10"],
+    "anaesthetics": ["lidocaine", "bupivacaine", "ropivacaine", "propofol", "ketamine", "sevoflurane", "desflurane"],
+    "eds_specific": ["celiprolol", "doxycycline", "losartan", "ascorbic acid"]
+  },
+
+  "measurement_patterns": {
+    "heart_rate": {
+      "patterns": ["(?:heart\\s+rate|hr|pulse)\\s*(?:of\\s*|was\\s*|:|=)?\\s*(\\d{2,3})\\s*(?:bpm|beats|/min)"],
+      "unit": "bpm"
+    },
+    "blood_pressure": {
+      "patterns": ["(?:blood\\s+pressure|bp)\\s*(?:of\\s*|was\\s*|:|=)?\\s*(\\d{2,3})\\s*/\\s*(\\d{2,3})\\s*(?:mmhg)?",
+                    "(\\d{2,3})\\s*/\\s*(\\d{2,3})\\s*mmhg"],
+      "unit": "mmHg"
+    },
+    "tryptase": {
+      "patterns": ["tryptase\\s*(?:level)?\\s*(?:of\\s*|was\\s*|:|=)?\\s*([\\d.]+)\\s*(?:ng/ml|ug/l|mcg/l)?",
+                    "serum\\s+tryptase\\s*(?:of\\s*|was\\s*|:|=)?\\s*([\\d.]+)"],
+      "unit": "ng/mL"
+    },
+    "beighton_score": {
+      "patterns": ["beighton\\s*(?:score)?\\s*(?:of\\s*|was\\s*|:|=)?\\s*(\\d)\\s*(?:/\\s*9|out\\s*of\\s*9)?"],
+      "unit": "/9"
+    },
+    "tilt_table_hr_increase": {
+      "patterns": ["(?:heart\\s+rate|hr)\\s*(?:increased?|rose|went up)\\s*(?:by\\s*|from\\s*\\d+\\s*to\\s*)?(\\d{2,3})\\s*(?:bpm|beats)"],
+      "unit": "bpm"
+    }
+  },
+
+  "negation_triggers": {
+    "pre": ["no", "no evidence of", "denies", "denied", "negative for", "without", "absence of",
+            "ruled out", "no signs of", "no history of", "not consistent with", "unlikely",
+            "did not have", "does not have", "was not", "were not", "no significant",
+            "unremarkable", "normal", "within normal limits", "failed to demonstrate",
+            "no indication of", "not suggestive of"],
+    "post": ["was ruled out", "was negative", "was absent", "was not found", "was not detected",
+             "was not identified", "was excluded", "were absent", "were negative"]
+  },
+
+  "section_blacklist": ["references", "bibliography", "acknowledgements", "acknowledgments",
+                        "conflict of interest", "conflicts of interest", "funding",
+                        "author contributions", "supplementary", "ethics statement",
+                        "data availability", "competing interests"]
+}

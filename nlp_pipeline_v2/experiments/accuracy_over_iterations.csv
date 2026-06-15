@@ -1,0 +1,51 @@
+iteration,disease,baseline_V0,as_fixed_trajectory,final_V2,running_mean_trajectory,active_version
+1,Marfan syndrome,96.35,96.35,99.67,96.35,V0
+2,Loeys-Dietz syndrome,97.98,97.98,100.00,97.16,V0
+3,Osteogenesis imperfecta,94.33,94.33,100.00,96.22,V0
+4,Noonan syndrome,96.95,96.95,100.00,96.40,V0
+5,Neurofibromatosis type 1,96.77,96.77,99.99,96.48,V0
+6,Tuberous sclerosis,98.80,98.80,100.00,96.86,V0
+7,Stickler syndrome,97.22,97.22,99.99,96.91,V0
+8,Achondroplasia,97.86,97.86,99.47,97.03,V0
+9,Fabry disease,97.44,97.44,99.98,97.08,V0
+10,Gaucher disease,96.66,96.66,99.99,97.04,V0
+11,Pompe disease,97.29,97.29,99.52,97.06,V0
+12,Phenylketonuria,98.63,98.63,99.93,97.19,V0
+13,Wilson disease,97.61,97.61,99.99,97.22,V0
+14,Homocystinuria,96.13,96.13,99.96,97.14,V0
+15,Alkaptonuria,97.57,97.57,99.98,97.17,V0
+16,Niemann-Pick disease,0.00,98.64,100.00,97.26,V1
+17,Mucopolysaccharidosis type I,0.00,97.47,100.00,97.28,V1
+18,Sickle cell disease,97.64,97.64,99.98,97.30,V1
+19,Beta-thalassemia,0.00,97.93,99.89,97.33,V1
+20,Hereditary hemochromatosis,0.00,98.17,100.00,97.37,V1
+21,Von Willebrand disease,96.58,96.58,99.65,97.33,V1
+22,Hemophilia A,95.65,95.65,99.67,97.26,V1
+23,Systemic lupus erythematosus,0.00,96.59,99.18,97.23,V1
+24,Rheumatoid arthritis,0.00,96.51,100.00,97.20,V1
+25,Sjogren syndrome,98.27,98.27,98.79,97.24,V1
+26,Systemic sclerosis,0.00,99.16,99.16,97.32,V2
+27,Behcet disease,99.10,99.97,99.97,97.41,V2
+28,Ankylosing spondylitis,0.00,0.00,0.00,93.93,V2
+29,Granulomatosis with polyangiitis,98.01,99.60,99.60,94.13,V2
+30,Huntington disease,97.14,100.00,100.00,94.33,V2
+31,Amyotrophic lateral sclerosis,97.01,100.00,100.00,94.51,V2
+32,Charcot-Marie-Tooth disease,0.00,100.00,100.00,94.68,V2
+33,Friedreich ataxia,96.41,100.00,100.00,94.84,V2
+34,Rett syndrome,95.70,100.00,100.00,94.99,V2
+35,Spinal muscular atrophy,95.91,98.25,98.25,95.09,V2
+36,Myasthenia gravis,0.00,99.32,99.32,95.20,V2
+37,Narcolepsy,98.75,99.82,99.82,95.33,V2
+38,Hypertrophic cardiomyopathy,93.33,100.00,100.00,95.45,V2
+39,Brugada syndrome,93.84,99.48,99.48,95.55,V2
+40,Long QT syndrome,93.94,100.00,100.00,95.67,V2
+41,Polycystic kidney disease,93.33,100.00,100.00,95.77,V2
+42,Alport syndrome,95.33,100.00,100.00,95.87,V2
+43,Cystic fibrosis,96.30,99.99,99.99,95.97,V2
+44,Primary ciliary dyskinesia,91.07,100.00,100.00,96.06,V2
+45,Congenital adrenal hyperplasia,0.00,99.44,99.44,96.13,V2
+46,Acromegaly,99.39,99.98,99.98,96.22,V2
+47,Epidermolysis bullosa,97.99,99.96,99.96,96.30,V2
+48,Tetralogy of Fallot,100.00,100.00,100.00,96.38,V2
+49,Kawasaki disease,97.55,99.96,99.96,96.45,V2
+50,Wolff-Parkinson-White syndrome,93.33,100.00,100.00,96.52,V2

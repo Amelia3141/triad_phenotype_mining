@@ -1,0 +1,826 @@
+[
+  {
+    "n_phenotypes": 103,
+    "accuracy": 99.67,
+    "recall": 0.9903,
+    "spec_cross": 0.99981,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [
+      "high_narrow_palate"
+    ],
+    "contaminating_examples": [
+      "kyphoscoliosis",
+      "scoliosis"
+    ],
+    "generic_examples": [],
+    "name": "Marfan syndrome",
+    "chosen_label": "Marfan syndrome",
+    "index": 0
+  },
+  {
+    "n_phenotypes": 35,
+    "accuracy": 100.0,
+    "recall": 1.0,
+    "spec_cross": 1.0,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Loeys-Dietz syndrome",
+    "chosen_label": "Loeys-Dietz syndrome",
+    "index": 1
+  },
+  {
+    "n_phenotypes": 25,
+    "accuracy": 100.0,
+    "recall": 1.0,
+    "spec_cross": 1.0,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Osteogenesis imperfecta",
+    "chosen_label": "osteogenesis imperfecta type 2",
+    "index": 2
+  },
+  {
+    "n_phenotypes": 67,
+    "accuracy": 100.0,
+    "recall": 1.0,
+    "spec_cross": 1.0,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Noonan syndrome",
+    "chosen_label": "Noonan syndrome",
+    "index": 3
+  },
+  {
+    "n_phenotypes": 100,
+    "accuracy": 99.99,
+    "recall": 1.0,
+    "spec_cross": 0.9998,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [
+      "hypertelorism",
+      "hypertension"
+    ],
+    "generic_examples": [],
+    "name": "Neurofibromatosis type 1",
+    "chosen_label": "neurofibromatosis type 1",
+    "index": 4
+  },
+  {
+    "n_phenotypes": 58,
+    "accuracy": 100.0,
+    "recall": 1.0,
+    "spec_cross": 1.0,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Tuberous sclerosis",
+    "chosen_label": "tuberous sclerosis",
+    "index": 5
+  },
+  {
+    "n_phenotypes": 75,
+    "accuracy": 99.99,
+    "recall": 1.0,
+    "spec_cross": 0.99964,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [
+      "abnormal_epiphysis_morphology",
+      "spondylolisthesis"
+    ],
+    "generic_examples": [],
+    "name": "Stickler syndrome",
+    "chosen_label": "Stickler syndrome",
+    "index": 6
+  },
+  {
+    "n_phenotypes": 68,
+    "accuracy": 99.47,
+    "recall": 0.9853,
+    "spec_cross": 0.99868,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [
+      "functional_abnormality_of_the_middle_ear"
+    ],
+    "contaminating_examples": [
+      "generalized_joint_hypermobility",
+      "hip_joint_hypermobility",
+      "knee_joint_hypermobility"
+    ],
+    "generic_examples": [],
+    "name": "Achondroplasia",
+    "chosen_label": "achondroplasia",
+    "index": 7
+  },
+  {
+    "n_phenotypes": 83,
+    "accuracy": 99.98,
+    "recall": 1.0,
+    "spec_cross": 0.99941,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [
+      "abnormal_myocardium_morphology",
+      "acroparesthesia",
+      "nausea",
+      "paresthesia"
+    ],
+    "generic_examples": [],
+    "name": "Fabry disease",
+    "chosen_label": "Fabry disease",
+    "index": 8
+  },
+  {
+    "n_phenotypes": 87,
+    "accuracy": 99.99,
+    "recall": 1.0,
+    "spec_cross": 0.9996,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [
+      "abnormal_bleeding",
+      "proteinuria"
+    ],
+    "generic_examples": [],
+    "name": "Gaucher disease",
+    "chosen_label": "Gaucher disease",
+    "index": 9
+  },
+  {
+    "n_phenotypes": 71,
+    "accuracy": 99.52,
+    "recall": 0.9859,
+    "spec_cross": 0.9998,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [
+      "emg_myopathic_abnormalities"
+    ],
+    "contaminating_examples": [
+      "cardiomegaly"
+    ],
+    "generic_examples": [],
+    "name": "Pompe disease",
+    "chosen_label": "glycogen storage disease II",
+    "index": 10
+  },
+  {
+    "n_phenotypes": 43,
+    "accuracy": 99.93,
+    "recall": 1.0,
+    "spec_cross": 0.99778,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [
+      "phenylalaninuria"
+    ],
+    "generic_examples": [],
+    "name": "Phenylketonuria",
+    "chosen_label": "phenylketonuria",
+    "index": 11
+  },
+  {
+    "n_phenotypes": 90,
+    "accuracy": 99.99,
+    "recall": 1.0,
+    "spec_cross": 0.99975,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [
+      "acute_hepatitis",
+      "arthritis"
+    ],
+    "generic_examples": [],
+    "name": "Wilson disease",
+    "chosen_label": "Wilson disease",
+    "index": 12
+  },
+  {
+    "n_phenotypes": 82,
+    "accuracy": 99.96,
+    "recall": 1.0,
+    "spec_cross": 0.99895,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [
+      "homocystinuria",
+      "kyphoscoliosis",
+      "methioninuria",
+      "scoliosis",
+      "thromboembolism"
+    ],
+    "generic_examples": [],
+    "name": "Homocystinuria",
+    "chosen_label": "classic homocystinuria",
+    "index": 13
+  },
+  {
+    "n_phenotypes": 57,
+    "accuracy": 99.98,
+    "recall": 1.0,
+    "spec_cross": 0.99937,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [
+      "arthritis",
+      "prostatitis"
+    ],
+    "generic_examples": [],
+    "name": "Alkaptonuria",
+    "chosen_label": "alkaptonuria",
+    "index": 14
+  },
+  {
+    "n_phenotypes": 31,
+    "accuracy": 100.0,
+    "recall": 1.0,
+    "spec_cross": 1.0,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Niemann-Pick disease",
+    "chosen_label": "Niemann-Pick disease, type C2",
+    "index": 15
+  },
+  {
+    "n_phenotypes": 99,
+    "accuracy": 100.0,
+    "recall": 1.0,
+    "spec_cross": 0.9999,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [
+      "splenomegaly"
+    ],
+    "generic_examples": [],
+    "name": "Mucopolysaccharidosis type I",
+    "chosen_label": "mucopolysaccharidosis type 2",
+    "index": 16
+  },
+  {
+    "n_phenotypes": 44,
+    "accuracy": 99.98,
+    "recall": 1.0,
+    "spec_cross": 0.99947,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [
+      "abnormality_of_the_vasculature"
+    ],
+    "generic_examples": [],
+    "name": "Sickle cell disease",
+    "chosen_label": "sickle cell disease",
+    "index": 17
+  },
+  {
+    "n_phenotypes": 18,
+    "accuracy": 99.89,
+    "recall": 1.0,
+    "spec_cross": 0.99673,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [
+      "thrombocytopenia"
+    ],
+    "generic_examples": [],
+    "name": "Beta-thalassemia",
+    "chosen_label": "beta thalassemia",
+    "index": 18
+  },
+  {
+    "n_phenotypes": 14,
+    "accuracy": 100.0,
+    "recall": 1.0,
+    "spec_cross": 1.0,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Hereditary hemochromatosis",
+    "chosen_label": "hemochromatosis type 3",
+    "index": 19
+  },
+  {
+    "n_phenotypes": 20,
+    "accuracy": 99.65,
+    "recall": 1.0,
+    "spec_cross": 0.98947,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [
+      "abnormality_of_thrombocytes",
+      "thrombocytopenia"
+    ],
+    "generic_examples": [],
+    "name": "Von Willebrand disease",
+    "chosen_label": "hereditary von Willebrand disease",
+    "index": 20
+  },
+  {
+    "n_phenotypes": 23,
+    "accuracy": 99.67,
+    "recall": 1.0,
+    "spec_cross": 0.99012,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [
+      "abnormal_bleeding",
+      "thromboembolism"
+    ],
+    "generic_examples": [],
+    "name": "Hemophilia A",
+    "chosen_label": "hemophilia A",
+    "index": 21
+  },
+  {
+    "n_phenotypes": 47,
+    "accuracy": 99.18,
+    "recall": 0.9787,
+    "spec_cross": 0.9967,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [
+      "antilassb_antibody_positivity"
+    ],
+    "contaminating_examples": [
+      "antilassb_antibody_positivity",
+      "antism_antibody_positivity",
+      "proteinuria"
+    ],
+    "generic_examples": [],
+    "name": "Systemic lupus erythematosus",
+    "chosen_label": "systemic lupus erythematosus",
+    "index": 22
+  },
+  {
+    "n_phenotypes": 15,
+    "accuracy": 100.0,
+    "recall": 1.0,
+    "spec_cross": 1.0,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Rheumatoid arthritis",
+    "chosen_label": "rheumatoid arthritis",
+    "index": 23
+  },
+  {
+    "n_phenotypes": 85,
+    "accuracy": 98.79,
+    "recall": 0.9647,
+    "spec_cross": 0.99901,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [
+      "decreased_cd4_t_cell_proportion",
+      "antilassb_antibody_positivity",
+      "antirossa_antibody_positivity"
+    ],
+    "contaminating_examples": [
+      "abnormality_of_the_nervous_system",
+      "decreased_circulating_complement_c3_concentration",
+      "decreased_circulating_complement_c4_concentration",
+      "decreased_circulating_immunoglobulin_concentration",
+      "increased_circulating_immunoglobulin_concentration",
+      "normochromic_anemia",
+      "normocytic_anemia"
+    ],
+    "generic_examples": [],
+    "name": "Sjogren syndrome",
+    "chosen_label": "Sjogren syndrome",
+    "index": 24
+  },
+  {
+    "n_phenotypes": 83,
+    "accuracy": 99.16,
+    "recall": 0.9759,
+    "spec_cross": 0.99881,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [
+      "antiendothelin1_type_a_receptor_antibody_positivit",
+      "abnormal_phalangeal_joint_morphology_of_the_hand"
+    ],
+    "contaminating_examples": [
+      "abnormal_esophagus_morphology",
+      "antiku_antibody_positivity",
+      "antipmscl_antibody_positivity",
+      "antithto_antibody_positivity",
+      "proteinuria"
+    ],
+    "generic_examples": [],
+    "name": "Systemic sclerosis",
+    "chosen_label": "systemic sclerosis",
+    "index": 25
+  },
+  {
+    "n_phenotypes": 85,
+    "accuracy": 99.97,
+    "recall": 1.0,
+    "spec_cross": 0.99902,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [
+      "abnormal_myocardium_morphology",
+      "glomerulonephritis",
+      "glomerulopathy",
+      "headache",
+      "myocarditis"
+    ],
+    "generic_examples": [],
+    "name": "Behcet disease",
+    "chosen_label": "Behcet disease",
+    "index": 26
+  },
+  {
+    "n_phenotypes": 0,
+    "accuracy": 0.0,
+    "recall": 0.0,
+    "spec_cross": 0.0,
+    "spec_control": 0.0,
+    "issues": [
+      "no_phenotypes"
+    ],
+    "low_recall_examples": [],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Ankylosing spondylitis",
+    "chosen_label": "ankylosing spondylitis",
+    "index": 27
+  },
+  {
+    "n_phenotypes": 88,
+    "accuracy": 99.6,
+    "recall": 0.9886,
+    "spec_cross": 0.99935,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [
+      "inflammatory_abnormality_of_the_eye"
+    ],
+    "contaminating_examples": [
+      "glomerulonephritis",
+      "glomerulopathy",
+      "proteinuria",
+      "scleritis"
+    ],
+    "generic_examples": [],
+    "name": "Granulomatosis with polyangiitis",
+    "chosen_label": "granulomatosis with polyangiitis",
+    "index": 28
+  },
+  {
+    "n_phenotypes": 49,
+    "accuracy": 100.0,
+    "recall": 1.0,
+    "spec_cross": 1.0,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Huntington disease",
+    "chosen_label": "Huntington disease",
+    "index": 29
+  },
+  {
+    "n_phenotypes": 13,
+    "accuracy": 100.0,
+    "recall": 1.0,
+    "spec_cross": 1.0,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Amyotrophic lateral sclerosis",
+    "chosen_label": "amyotrophic lateral sclerosis type 1",
+    "index": 30
+  },
+  {
+    "n_phenotypes": 18,
+    "accuracy": 100.0,
+    "recall": 1.0,
+    "spec_cross": 1.0,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Charcot-Marie-Tooth disease",
+    "chosen_label": "Charcot-Marie-Tooth disease type 2A1",
+    "index": 31
+  },
+  {
+    "n_phenotypes": 48,
+    "accuracy": 100.0,
+    "recall": 1.0,
+    "spec_cross": 1.0,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Friedreich ataxia",
+    "chosen_label": "Friedreich ataxia",
+    "index": 32
+  },
+  {
+    "n_phenotypes": 50,
+    "accuracy": 100.0,
+    "recall": 1.0,
+    "spec_cross": 1.0,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Rett syndrome",
+    "chosen_label": "Rett syndrome",
+    "index": 33
+  },
+  {
+    "n_phenotypes": 19,
+    "accuracy": 98.25,
+    "recall": 0.9474,
+    "spec_cross": 1.0,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [
+      "emg_chronic_denervation_signs"
+    ],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Spinal muscular atrophy",
+    "chosen_label": "spinal muscular atrophy, type III",
+    "index": 34
+  },
+  {
+    "n_phenotypes": 49,
+    "accuracy": 99.32,
+    "recall": 0.9796,
+    "spec_cross": 1.0,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [
+      "antikv14_antibody"
+    ],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Myasthenia gravis",
+    "chosen_label": "myasthenia gravis",
+    "index": 35
+  },
+  {
+    "n_phenotypes": 28,
+    "accuracy": 99.82,
+    "recall": 1.0,
+    "spec_cross": 0.99471,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [
+      "hallucinations",
+      "male_sexual_dysfunction",
+      "restlessness"
+    ],
+    "generic_examples": [],
+    "name": "Narcolepsy",
+    "chosen_label": "narcolepsy-cataplexy syndrome",
+    "index": 36
+  },
+  {
+    "n_phenotypes": 5,
+    "accuracy": 100.0,
+    "recall": 1.0,
+    "spec_cross": 1.0,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Hypertrophic cardiomyopathy",
+    "chosen_label": "hypertrophic cardiomyopathy 1",
+    "index": 37
+  },
+  {
+    "n_phenotypes": 12,
+    "accuracy": 99.48,
+    "recall": 1.0,
+    "spec_cross": 0.98438,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [
+      "paroxysmal_ventricular_tachycardia",
+      "supraventricular_tachycardia"
+    ],
+    "generic_examples": [],
+    "name": "Brugada syndrome",
+    "chosen_label": "Brugada syndrome",
+    "index": 38
+  },
+  {
+    "n_phenotypes": 5,
+    "accuracy": 100.0,
+    "recall": 1.0,
+    "spec_cross": 1.0,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Long QT syndrome",
+    "chosen_label": "long QT syndrome 10",
+    "index": 39
+  },
+  {
+    "n_phenotypes": 8,
+    "accuracy": 100.0,
+    "recall": 1.0,
+    "spec_cross": 1.0,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Polycystic kidney disease",
+    "chosen_label": "polycystic kidney disease 1",
+    "index": 40
+  },
+  {
+    "n_phenotypes": 34,
+    "accuracy": 100.0,
+    "recall": 1.0,
+    "spec_cross": 1.0,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Alport syndrome",
+    "chosen_label": "Alport syndrome",
+    "index": 41
+  },
+  {
+    "n_phenotypes": 49,
+    "accuracy": 99.99,
+    "recall": 1.0,
+    "spec_cross": 0.99957,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [
+      "pancreatitis"
+    ],
+    "generic_examples": [],
+    "name": "Cystic fibrosis",
+    "chosen_label": "cystic fibrosis",
+    "index": 42
+  },
+  {
+    "n_phenotypes": 8,
+    "accuracy": 100.0,
+    "recall": 1.0,
+    "spec_cross": 1.0,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Primary ciliary dyskinesia",
+    "chosen_label": "primary ciliary dyskinesia 3",
+    "index": 43
+  },
+  {
+    "n_phenotypes": 60,
+    "accuracy": 99.44,
+    "recall": 0.9833,
+    "spec_cross": 0.99972,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [
+      "ambiguous_genitalia_female"
+    ],
+    "contaminating_examples": [
+      "hyperkalemia"
+    ],
+    "generic_examples": [],
+    "name": "Congenital adrenal hyperplasia",
+    "chosen_label": "classic congenital adrenal hyperplasia due to 21-hydroxylase deficiency",
+    "index": 44
+  },
+  {
+    "n_phenotypes": 88,
+    "accuracy": 99.98,
+    "recall": 1.0,
+    "spec_cross": 0.99935,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [
+      "headache",
+      "hypertrichosis",
+      "hypertriglyceridemia"
+    ],
+    "generic_examples": [],
+    "name": "Acromegaly",
+    "chosen_label": "acromegaly",
+    "index": 45
+  },
+  {
+    "n_phenotypes": 63,
+    "accuracy": 99.96,
+    "recall": 1.0,
+    "spec_cross": 0.99872,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [
+      "abnormal_esophagus_morphology",
+      "glomerulonephritis"
+    ],
+    "generic_examples": [],
+    "name": "Epidermolysis bullosa",
+    "chosen_label": "recessive dystrophic epidermolysis bullosa",
+    "index": 46
+  },
+  {
+    "n_phenotypes": 11,
+    "accuracy": 100.0,
+    "recall": 1.0,
+    "spec_cross": 1.0,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Tetralogy of Fallot",
+    "chosen_label": "tetralogy of fallot",
+    "index": 47
+  },
+  {
+    "n_phenotypes": 43,
+    "accuracy": 99.96,
+    "recall": 1.0,
+    "spec_cross": 0.99889,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [
+      "conjunctivitis",
+      "proteinuria"
+    ],
+    "generic_examples": [],
+    "name": "Kawasaki disease",
+    "chosen_label": "Kawasaki disease",
+    "index": 48
+  },
+  {
+    "n_phenotypes": 10,
+    "accuracy": 100.0,
+    "recall": 1.0,
+    "spec_cross": 1.0,
+    "spec_control": 1.0,
+    "issues": [],
+    "low_recall_examples": [],
+    "contaminating_examples": [],
+    "generic_examples": [],
+    "name": "Wolff-Parkinson-White syndrome",
+    "chosen_label": "Wolff-Parkinson-White syndrome",
+    "index": 49
+  }
+]

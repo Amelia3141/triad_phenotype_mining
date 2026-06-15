@@ -1,0 +1,54 @@
+# 50 diverse real diseases used as eval input for the config-generator
+# generalisation experiment. These are TEST INPUTS, not code logic.
+# Chosen to span specialties and naming edge-cases (accents, numerals,
+# eponyms, very long names, single-word phenotype-heavy diseases).
+Marfan syndrome
+Loeys-Dietz syndrome
+Osteogenesis imperfecta
+Noonan syndrome
+Neurofibromatosis type 1
+Tuberous sclerosis
+Stickler syndrome
+Achondroplasia
+Fabry disease
+Gaucher disease
+Pompe disease
+Phenylketonuria
+Wilson disease
+Homocystinuria
+Alkaptonuria
+Niemann-Pick disease
+Mucopolysaccharidosis type I
+Sickle cell disease
+Beta-thalassemia
+Hereditary hemochromatosis
+Von Willebrand disease
+Hemophilia A
+Systemic lupus erythematosus
+Rheumatoid arthritis
+Sjogren syndrome
+Systemic sclerosis
+Behcet disease
+Ankylosing spondylitis
+Granulomatosis with polyangiitis
+Huntington disease
+Amyotrophic lateral sclerosis
+Charcot-Marie-Tooth disease
+Friedreich ataxia
+Rett syndrome
+Spinal muscular atrophy
+Myasthenia gravis
+Narcolepsy
+Hypertrophic cardiomyopathy
+Brugada syndrome
+Long QT syndrome
+Polycystic kidney disease
+Alport syndrome
+Cystic fibrosis
+Primary ciliary dyskinesia
+Congenital adrenal hyperplasia
+Acromegaly
+Epidermolysis bullosa
+Tetralogy of Fallot
+Kawasaki disease
+Wolff-Parkinson-White syndrome

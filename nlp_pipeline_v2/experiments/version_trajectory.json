@@ -1,0 +1,502 @@
+[
+  {
+    "index": 0,
+    "name": "Marfan syndrome",
+    "V0": 96.35,
+    "V0_n": 103,
+    "V1": 96.35,
+    "V1_n": 103,
+    "V2": 99.67,
+    "V2_n": 103
+  },
+  {
+    "index": 1,
+    "name": "Loeys-Dietz syndrome",
+    "V0": 97.98,
+    "V0_n": 35,
+    "V1": 97.98,
+    "V1_n": 35,
+    "V2": 100.0,
+    "V2_n": 35
+  },
+  {
+    "index": 2,
+    "name": "Osteogenesis imperfecta",
+    "V0": 94.33,
+    "V0_n": 25,
+    "V1": 94.33,
+    "V1_n": 25,
+    "V2": 100.0,
+    "V2_n": 25
+  },
+  {
+    "index": 3,
+    "name": "Noonan syndrome",
+    "V0": 96.95,
+    "V0_n": 67,
+    "V1": 96.95,
+    "V1_n": 67,
+    "V2": 100.0,
+    "V2_n": 67
+  },
+  {
+    "index": 4,
+    "name": "Neurofibromatosis type 1",
+    "V0": 96.77,
+    "V0_n": 100,
+    "V1": 96.77,
+    "V1_n": 100,
+    "V2": 99.99,
+    "V2_n": 100
+  },
+  {
+    "index": 5,
+    "name": "Tuberous sclerosis",
+    "V0": 98.8,
+    "V0_n": 35,
+    "V1": 97.15,
+    "V1_n": 58,
+    "V2": 100.0,
+    "V2_n": 58
+  },
+  {
+    "index": 6,
+    "name": "Stickler syndrome",
+    "V0": 97.22,
+    "V0_n": 75,
+    "V1": 97.22,
+    "V1_n": 75,
+    "V2": 99.99,
+    "V2_n": 75
+  },
+  {
+    "index": 7,
+    "name": "Achondroplasia",
+    "V0": 97.86,
+    "V0_n": 19,
+    "V1": 94.41,
+    "V1_n": 68,
+    "V2": 99.47,
+    "V2_n": 68
+  },
+  {
+    "index": 8,
+    "name": "Fabry disease",
+    "V0": 97.44,
+    "V0_n": 83,
+    "V1": 97.44,
+    "V1_n": 83,
+    "V2": 99.98,
+    "V2_n": 83
+  },
+  {
+    "index": 9,
+    "name": "Gaucher disease",
+    "V0": 96.66,
+    "V0_n": 87,
+    "V1": 96.66,
+    "V1_n": 87,
+    "V2": 99.99,
+    "V2_n": 87
+  },
+  {
+    "index": 10,
+    "name": "Pompe disease",
+    "V0": 97.29,
+    "V0_n": 71,
+    "V1": 97.29,
+    "V1_n": 71,
+    "V2": 99.52,
+    "V2_n": 71
+  },
+  {
+    "index": 11,
+    "name": "Phenylketonuria",
+    "V0": 98.63,
+    "V0_n": 43,
+    "V1": 98.63,
+    "V1_n": 43,
+    "V2": 99.93,
+    "V2_n": 43
+  },
+  {
+    "index": 12,
+    "name": "Wilson disease",
+    "V0": 97.61,
+    "V0_n": 90,
+    "V1": 97.61,
+    "V1_n": 90,
+    "V2": 99.99,
+    "V2_n": 90
+  },
+  {
+    "index": 13,
+    "name": "Homocystinuria",
+    "V0": 96.13,
+    "V0_n": 99,
+    "V1": 98.21,
+    "V1_n": 82,
+    "V2": 99.96,
+    "V2_n": 82
+  },
+  {
+    "index": 14,
+    "name": "Alkaptonuria",
+    "V0": 97.57,
+    "V0_n": 57,
+    "V1": 97.57,
+    "V1_n": 57,
+    "V2": 99.98,
+    "V2_n": 57
+  },
+  {
+    "index": 15,
+    "name": "Niemann-Pick disease",
+    "V0": 0.0,
+    "V0_n": 0,
+    "V1": 98.64,
+    "V1_n": 31,
+    "V2": 100.0,
+    "V2_n": 31
+  },
+  {
+    "index": 16,
+    "name": "Mucopolysaccharidosis type I",
+    "V0": 0.0,
+    "V0_n": 0,
+    "V1": 97.47,
+    "V1_n": 99,
+    "V2": 100.0,
+    "V2_n": 99
+  },
+  {
+    "index": 17,
+    "name": "Sickle cell disease",
+    "V0": 97.64,
+    "V0_n": 44,
+    "V1": 97.64,
+    "V1_n": 44,
+    "V2": 99.98,
+    "V2_n": 44
+  },
+  {
+    "index": 18,
+    "name": "Beta-thalassemia",
+    "V0": 0.0,
+    "V0_n": 0,
+    "V1": 97.93,
+    "V1_n": 18,
+    "V2": 99.89,
+    "V2_n": 18
+  },
+  {
+    "index": 19,
+    "name": "Hereditary hemochromatosis",
+    "V0": 0.0,
+    "V0_n": 0,
+    "V1": 98.17,
+    "V1_n": 14,
+    "V2": 100.0,
+    "V2_n": 14
+  },
+  {
+    "index": 20,
+    "name": "Von Willebrand disease",
+    "V0": 96.58,
+    "V0_n": 20,
+    "V1": 96.58,
+    "V1_n": 20,
+    "V2": 99.65,
+    "V2_n": 20
+  },
+  {
+    "index": 21,
+    "name": "Hemophilia A",
+    "V0": 95.65,
+    "V0_n": 23,
+    "V1": 95.65,
+    "V1_n": 23,
+    "V2": 99.67,
+    "V2_n": 23
+  },
+  {
+    "index": 22,
+    "name": "Systemic lupus erythematosus",
+    "V0": 0.0,
+    "V0_n": 0,
+    "V1": 96.59,
+    "V1_n": 47,
+    "V2": 99.18,
+    "V2_n": 47
+  },
+  {
+    "index": 23,
+    "name": "Rheumatoid arthritis",
+    "V0": 0.0,
+    "V0_n": 0,
+    "V1": 96.51,
+    "V1_n": 15,
+    "V2": 100.0,
+    "V2_n": 15
+  },
+  {
+    "index": 24,
+    "name": "Sjogren syndrome",
+    "V0": 98.27,
+    "V0_n": 85,
+    "V1": 98.27,
+    "V1_n": 85,
+    "V2": 98.79,
+    "V2_n": 85
+  },
+  {
+    "index": 25,
+    "name": "Systemic sclerosis",
+    "V0": 0.0,
+    "V0_n": 0,
+    "V1": 95.09,
+    "V1_n": 83,
+    "V2": 99.16,
+    "V2_n": 83
+  },
+  {
+    "index": 26,
+    "name": "Behcet disease",
+    "V0": 99.1,
+    "V0_n": 85,
+    "V1": 99.1,
+    "V1_n": 85,
+    "V2": 99.97,
+    "V2_n": 85
+  },
+  {
+    "index": 27,
+    "name": "Ankylosing spondylitis",
+    "V0": 0.0,
+    "V0_n": 0,
+    "V1": 0.0,
+    "V1_n": 0,
+    "V2": 0.0,
+    "V2_n": 0
+  },
+  {
+    "index": 28,
+    "name": "Granulomatosis with polyangiitis",
+    "V0": 98.01,
+    "V0_n": 88,
+    "V1": 98.01,
+    "V1_n": 88,
+    "V2": 99.6,
+    "V2_n": 88
+  },
+  {
+    "index": 29,
+    "name": "Huntington disease",
+    "V0": 97.14,
+    "V0_n": 49,
+    "V1": 97.14,
+    "V1_n": 49,
+    "V2": 100.0,
+    "V2_n": 49
+  },
+  {
+    "index": 30,
+    "name": "Amyotrophic lateral sclerosis",
+    "V0": 97.01,
+    "V0_n": 13,
+    "V1": 97.01,
+    "V1_n": 13,
+    "V2": 100.0,
+    "V2_n": 13
+  },
+  {
+    "index": 31,
+    "name": "Charcot-Marie-Tooth disease",
+    "V0": 0.0,
+    "V0_n": 0,
+    "V1": 96.39,
+    "V1_n": 18,
+    "V2": 100.0,
+    "V2_n": 18
+  },
+  {
+    "index": 32,
+    "name": "Friedreich ataxia",
+    "V0": 96.41,
+    "V0_n": 48,
+    "V1": 96.41,
+    "V1_n": 48,
+    "V2": 100.0,
+    "V2_n": 48
+  },
+  {
+    "index": 33,
+    "name": "Rett syndrome",
+    "V0": 95.7,
+    "V0_n": 50,
+    "V1": 95.7,
+    "V1_n": 50,
+    "V2": 100.0,
+    "V2_n": 50
+  },
+  {
+    "index": 34,
+    "name": "Spinal muscular atrophy",
+    "V0": 95.91,
+    "V0_n": 19,
+    "V1": 95.91,
+    "V1_n": 19,
+    "V2": 98.25,
+    "V2_n": 19
+  },
+  {
+    "index": 35,
+    "name": "Myasthenia gravis",
+    "V0": 0.0,
+    "V0_n": 0,
+    "V1": 95.6,
+    "V1_n": 49,
+    "V2": 99.32,
+    "V2_n": 49
+  },
+  {
+    "index": 36,
+    "name": "Narcolepsy",
+    "V0": 98.75,
+    "V0_n": 34,
+    "V1": 98.28,
+    "V1_n": 28,
+    "V2": 99.82,
+    "V2_n": 28
+  },
+  {
+    "index": 37,
+    "name": "Hypertrophic cardiomyopathy",
+    "V0": 93.33,
+    "V0_n": 5,
+    "V1": 93.33,
+    "V1_n": 5,
+    "V2": 100.0,
+    "V2_n": 5
+  },
+  {
+    "index": 38,
+    "name": "Brugada syndrome",
+    "V0": 93.84,
+    "V0_n": 12,
+    "V1": 93.84,
+    "V1_n": 12,
+    "V2": 99.48,
+    "V2_n": 12
+  },
+  {
+    "index": 39,
+    "name": "Long QT syndrome",
+    "V0": 93.94,
+    "V0_n": 11,
+    "V1": 93.33,
+    "V1_n": 5,
+    "V2": 100.0,
+    "V2_n": 5
+  },
+  {
+    "index": 40,
+    "name": "Polycystic kidney disease",
+    "V0": 93.33,
+    "V0_n": 5,
+    "V1": 95.83,
+    "V1_n": 8,
+    "V2": 100.0,
+    "V2_n": 8
+  },
+  {
+    "index": 41,
+    "name": "Alport syndrome",
+    "V0": 95.33,
+    "V0_n": 34,
+    "V1": 95.33,
+    "V1_n": 34,
+    "V2": 100.0,
+    "V2_n": 34
+  },
+  {
+    "index": 42,
+    "name": "Cystic fibrosis",
+    "V0": 96.3,
+    "V0_n": 18,
+    "V1": 96.18,
+    "V1_n": 49,
+    "V2": 99.99,
+    "V2_n": 49
+  },
+  {
+    "index": 43,
+    "name": "Primary ciliary dyskinesia",
+    "V0": 91.07,
+    "V0_n": 8,
+    "V1": 91.07,
+    "V1_n": 8,
+    "V2": 100.0,
+    "V2_n": 8
+  },
+  {
+    "index": 44,
+    "name": "Congenital adrenal hyperplasia",
+    "V0": 0.0,
+    "V0_n": 0,
+    "V1": 96.87,
+    "V1_n": 60,
+    "V2": 99.44,
+    "V2_n": 60
+  },
+  {
+    "index": 45,
+    "name": "Acromegaly",
+    "V0": 99.39,
+    "V0_n": 11,
+    "V1": 96.79,
+    "V1_n": 88,
+    "V2": 99.98,
+    "V2_n": 88
+  },
+  {
+    "index": 46,
+    "name": "Epidermolysis bullosa",
+    "V0": 97.99,
+    "V0_n": 17,
+    "V1": 94.42,
+    "V1_n": 63,
+    "V2": 99.96,
+    "V2_n": 63
+  },
+  {
+    "index": 47,
+    "name": "Tetralogy of Fallot",
+    "V0": 100.0,
+    "V0_n": 11,
+    "V1": 100.0,
+    "V1_n": 11,
+    "V2": 100.0,
+    "V2_n": 11
+  },
+  {
+    "index": 48,
+    "name": "Kawasaki disease",
+    "V0": 97.55,
+    "V0_n": 43,
+    "V1": 97.55,
+    "V1_n": 43,
+    "V2": 99.96,
+    "V2_n": 43
+  },
+  {
+    "index": 49,
+    "name": "Wolff-Parkinson-White syndrome",
+    "V0": 93.33,
+    "V0_n": 10,
+    "V1": 93.33,
+    "V1_n": 10,
+    "V2": 100.0,
+    "V2_n": 10
+  }
+]
