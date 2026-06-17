@@ -39,7 +39,8 @@ class NLPExtractionPipeline:
         log: Optional[PipelineLog] = None,
         llm_enhancer: Optional[LLMEnhancer] = None,
     ):
-        self.config = config or load_config()
+        self._using_default_config = config is None
+        self.config = config if config is not None else load_config()
         self.log = log
         self.llm_enhancer = llm_enhancer
         self.drug_extractor = DrugExtractor(self.config)
@@ -592,7 +593,7 @@ class NLPExtractionPipeline:
                     symptom_patterns[slug] = spec["patterns"]
                 elif isinstance(spec, list):
                     symptom_patterns[slug] = spec
-        else:
+        elif self._using_default_config:
             # Legacy fallback: hardcoded v2 patterns for backward compat
             symptom_patterns = {
                 "joint_hypermobility": [r"joint\s+hypermobil", r"hypermobil(?:e|ity)", r"beighton\s+score",
@@ -622,6 +623,13 @@ class NLPExtractionPipeline:
                                            r"adverse\s+(?:drug|medication)\s+react"],
                 "chiari": [r"chiari", r"arnold-chiari"],
             }
+        else:
+            # An explicit user-generated config can legitimately have no HPO
+            # phenotypes (e.g. rare diseases without OMIM/ORPHA annotations, or
+            # free-text diseases not present in MONDO). Do not silently fall
+            # back to the repository's EDS/POTS/MCAS defaults, because that
+            # produces inaccurate symptoms for unrelated disease inputs.
+            symptom_patterns = {}
 
         neg = self.negation_detector
         results = []
