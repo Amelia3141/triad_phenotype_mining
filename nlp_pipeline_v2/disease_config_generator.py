@@ -600,12 +600,28 @@ def _resolve_diseases_to_patterns(
     """
     results = []
     for name in disease_names:
+        name = (name or "").strip()
+        if not name:
+            continue
         if log:
             log.step(f"Resolving {label}: {name}")
         matches = search_disease(name, log=log)
         if not matches:
             if log:
-                log.warning(f"No MONDO match for '{name}'")
+                log.warning(
+                    f"No MONDO match for '{name}'; using a literal condition "
+                    "term so the pipeline can still run for this input."
+                )
+            results.append({
+                "mondo_id": "",
+                "label": name,
+                "description": "",
+                "synonyms": [],
+                "xrefs": {"omim": [], "orpha": [], "synonyms": []},
+                "_alternates": [],
+                "_hpo_memo": {},
+                "_manual": True,
+            })
             continue
 
         candidates = matches[:max_candidates]
@@ -658,6 +674,13 @@ def generate_config(
     Returns:
         Complete config dict ready for the NLP pipeline.
     """
+    disease_names = [d.strip() for d in (disease_names or []) if (d or "").strip()]
+    comorbidity_names = [
+        c.strip() for c in (comorbidity_names or []) if (c or "").strip()
+    ]
+    if not disease_names:
+        raise ValueError("At least one non-empty disease name is required")
+
     # Set up logging
     log = None
     if log_path:
