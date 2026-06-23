@@ -5,12 +5,53 @@ patient-level dataset mined from published case reports. You give it one or
 more disease names; it builds an extraction configuration from biomedical
 ontologies, retrieves and downloads open-access case reports from
 PubMed/PMC, extracts per-patient phenotype data with negation- and
-section-aware NLP, and writes analysis-ready tables. A web UI exposes the whole
-flow, and a built-in evaluation harness measures quality.
+section-aware rule-based extraction, and writes analysis-ready tables. A web UI
+exposes the whole flow, and a built-in evaluation harness measures quality.
 
 It is built for systematic-review-style phenotyping of rare and multisystem
 conditions, where the evidence base is dominated by individual case reports
 rather than trials.
+
+---
+
+## What "NLP" means here (scope and claims)
+
+Stated up front, because the terminology is easy to overclaim in front of an
+ML audience.
+
+- **Extraction is rule-based, not a learned model.** There is no trained model
+  anywhere in the pipeline: no transformer, BERT, NER model or classifier
+  (verify with `grep -rE "torch|transformers|spacy|scispacy|sklearn"
+  nlp_pipeline_v2/*.py`, which returns nothing). Findings are matched with
+  dictionaries and regular expressions derived from ontology terms. "NLP" here
+  denotes the linguistically-informed *techniques* layered on top of that
+  matching, namely abbreviation-aware sentence segmentation, ConText negation
+  detection (Harkema et al. 2009), and section/zone classification, not
+  statistical or neural NLP. Describe it as a hybrid rule-based system.
+
+- **The automated, novel contribution is the ontology-driven configuration**,
+  not the extraction backend. Resolving a disease name to the correct MONDO
+  term, pulling its HPO phenotype annotations, and generating the extraction
+  schema automatically is the genuinely automated part. The extraction itself
+  is enhanced, schema-driven regex with negation and section awareness. A title
+  or abstract should foreground the ontology-driven pipeline; calling the
+  extraction "NLP" without the rule-based qualifier reads as overclaiming.
+
+- **Optional LLM enhancement is off by default and unvalidated.** A SPELL-style
+  LLM gap-filling step exists (`llm_enhancer.py`) but is disabled unless an API
+  key is supplied, and no LLM-based extraction has been validated here.
+
+- **What is validated, and what is not.** The rule-based extraction has only
+  preliminary, small-sample human validation (symptom F1 approximately 0.85,
+  age accuracy approximately 0.80, on 10 stratified articles; see
+  `logs/provenance_log.md`). The headline 97.8% figure below is *configuration
+  pattern quality* (does each generated regex match its own ontology term and
+  avoid others), not extraction accuracy against human labels. The section-aware
+  v2 pipeline does not yet have an independent human-annotated gold standard;
+  the bundled gold-standard file holds machine pre-annotations only. Claims
+  should therefore separate three things: the auto-config is measured at the
+  pattern level (strong), the rule-based extraction has small-sample human
+  validation (preliminary), and the LLM mode is unvalidated.
 
 ---
 
