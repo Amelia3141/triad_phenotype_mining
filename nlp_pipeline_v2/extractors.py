@@ -26,11 +26,51 @@ def load_config() -> dict:
 
 # ── Drug extraction ────────────────────────────────────────────────────
 
-class DrugExtractor:
-    """Dictionary-based drug NER with dosage extraction.
+# ── Corpus-driven drug discovery ──
+# Augments the dictionary lookup so disease-specific drugs that aren't in the
+# config list (e.g. modafinil / methylphenidate / sodium oxybate for narcolepsy)
+# are still detected from the papers, via generic drug-name morphology and
+# treatment cues — not a hardcoded per-disease list.
+_DRUG_STEM = (
+    r"(?:mab|nib|sartan|pril|statin|azepam|zolam|prazole|tidine|caine|olol|"
+    r"dipine|parin|gliptin|glitazone|floxacin|cycline|mycin|micin|cillin|navir|"
+    r"ovir|setron|triptan|triptyline|oxetine|afil|dronate|tropium|terol|sone|"
+    r"solone|onide|phylline|codone|morphone|done|azine|pramine|lukast|platin|"
+    r"taxel|tecan|pitant|fenadine|tadine|phenidate|amphetamine|oxybate)"
+)
+_DRUG_STEM_RE = re.compile(r"\b([a-z][a-z]{3,}" + _DRUG_STEM + r")\b", re.I)
+_DRUG_CUE_RE = re.compile(
+    r"(?:treated with|treatment with|started on|commenced on|initiated on|"
+    r"initiated|received|administered|prescribed|managed with|therapy with|"
+    r"switched to|dose of|doses of)\s+"
+    r"([a-z][a-z\-]{3,}(?:\s+[a-z][a-z\-]{3,}){0,2})", re.I)
+# Words that look drug-like (or follow a treatment cue) but are not drugs.
+_DRUG_NONDRUG = {
+    "surgery", "surgical", "resection", "excision", "radiation", "radiotherapy",
+    "chemotherapy", "physiotherapy", "therapy", "rehabilitation", "rest", "fluids",
+    "fluid", "oxygen", "transfusion", "dialysis", "ventilation", "observation",
+    "supportive", "care", "lifestyle", "diet", "exercise", "splinting", "bracing",
+    "immobilization", "counseling", "counselling", "psychotherapy", "intervention",
+    "management", "treatment", "medication", "medications", "drugs", "drug",
+    "antibiotics", "steroids", "analgesia", "anticoagulation", "admission", "review",
+    "monitoring", "support", "nutrition", "saline", "intravenous", "oral", "topical",
+    "regular", "standard", "various", "multiple", "several", "noninvasive", "positive",
+    "continuous", "mechanical", "conservative", "medical", "further", "combination",
+    "good", "poor", "appropriate", "once", "twice", "daily", "with", "without",
+    "airway", "airways", "cholesterol", "immediate-release", "extended-release",
+    "sustained-release", "modified-release", "slow-release", "low-dose", "high-dose",
+    "intranasal", "inhaled", "nasal", "this", "that", "both", "high", "low", "her",
+    "his", "their", "the", "new",
+}
 
-    Uses the drug_classes from config.json. Matches drug names in
-    clinical sentences, extracts associated dosage, and handles negation.
+
+class DrugExtractor:
+    """Drug NER: a config dictionary lookup PLUS corpus-driven discovery.
+
+    The dictionary (drug_classes from config) gives reliable recall and dosage
+    extraction for listed drugs; discovery adds any other medications the papers
+    actually mention so disease-specific drugs aren't missed. Discovery can be
+    turned off with ``disable_drug_discovery`` in the config.
     """
 
     # Dosage pattern: captures number + unit (e.g., "100 mg", "0.1 mg/kg")
@@ -72,6 +112,34 @@ class DrugExtractor:
             # Escape and compile, word boundary
             pat = re.compile(r"\b" + re.escape(drug_name) + r"\b", re.IGNORECASE)
             self.drug_patterns.append((pat, drug_name))
+
+        self._discovery = not config.get("disable_drug_discovery", False)
+
+    def _discover_candidates(self, sent_lower: str):
+        """Yield (drug_name, start, end) for drug mentions found via morphology
+        and treatment cues that are NOT already in the config dictionary."""
+        spans = []
+        for m in _DRUG_STEM_RE.finditer(sent_lower):
+            name = m.group(1)
+            if name in _DRUG_NONDRUG or name in self.drug_lookup:
+                continue
+            spans.append((name, m.start(1), m.end(1)))
+        for m in _DRUG_CUE_RE.finditer(sent_lower):
+            toks = m.group(1).split()
+            while toks and toks[0] in _DRUG_NONDRUG:
+                toks = toks[1:]
+            if not toks:
+                continue
+            name = " ".join(toks)
+            head = toks[-1]
+            if head in _DRUG_NONDRUG or len(head) < 4 or name in self.drug_lookup:
+                continue
+            # locate the cleaned phrase within the sentence for negation/dosage
+            idx = sent_lower.find(name, m.start(1))
+            if idx < 0:
+                idx = m.start(1)
+            spans.append((name, idx, idx + len(name)))
+        return spans
 
     def extract_from_sentences(self, sentences: List[str]) -> List[dict]:
         """Extract drug mentions from clinical sentences.
@@ -138,6 +206,31 @@ class DrugExtractor:
                     "neg_trigger": trigger,
                     "sentence": sent[:200],
                 })
+
+            # ── Corpus discovery pass (drugs not in the config dictionary) ──
+            if self._discovery:
+                for drug_name, ds, de in self._discover_candidates(sent_lower):
+                    is_neg, trigger = neg.is_negated(sent, ds, de)
+                    key = (drug_name, is_neg)
+                    if key in seen:
+                        continue
+                    dosage = None
+                    dose_match = self.DOSAGE_PAT.search(sent_lower[max(0, ds - 20):de + 80])
+                    if dose_match:
+                        dosage = dose_match.group(0).strip()
+                    route_match = self.ROUTE_PAT.search(sent_lower)
+                    freq_match = self.FREQ_PAT.search(sent_lower)
+                    seen.add(key)
+                    results.append({
+                        "drug": drug_name,
+                        "drug_class": "discovered",
+                        "dosage": dosage,
+                        "route": route_match.group(1).lower() if route_match else None,
+                        "frequency": freq_match.group(1).lower() if freq_match else None,
+                        "negated": is_neg,
+                        "neg_trigger": trigger,
+                        "sentence": sent[:200],
+                    })
 
         return results
 
@@ -452,6 +545,13 @@ class MeasurementExtractor:
         results = {}
 
         for meas_name, meas_conf in self.measurement_config.items():
+            # tilt_table_hr_increase needs the *increase* (delta), not the
+            # absolute final HR, and must be gated to a postural context.
+            if meas_name == "tilt_table_hr_increase":
+                results[meas_name] = self._extract_tilt_increase(
+                    sentences, neg, meas_conf.get("unit", "bpm"))
+                continue
+
             results[meas_name] = []
             patterns = meas_conf.get("patterns", [])
             unit = meas_conf.get("unit", "")
@@ -483,6 +583,58 @@ class MeasurementExtractor:
                         })
 
         return results
+
+    # Postural cues that qualify a heart-rate change as orthostatic/tilt-table
+    # (rather than exercise, ablation, ECG monitoring, etc.).
+    _POSTURAL_CUES = (
+        "stand", "upright", "tilt", "head-up", "head up", "orthostat",
+        "active standing", "postural tachycardia", "autonomic function test",
+        "-degree", "pots",
+    )
+
+    def _extract_tilt_increase(self, sentences: List[str], neg, unit: str) -> List[dict]:
+        """Extract the orthostatic heart-rate *increase* (bpm).
+
+        Handles both "increased by N" (N is the delta) and "increased from X to
+        Y" (delta = Y - X), and only accepts sentences with a postural context.
+        """
+        by_pat = re.compile(
+            r"(?:heart\s+rate|hr|pulse)\s+(?:increased?|rose|increment(?:ed)?|went\s+up|increase)\s+by\s+(\d{1,3})\s*(?:bpm|beats)",
+            re.IGNORECASE)
+        from_pat = re.compile(
+            r"(?:heart\s+rate|hr|pulse)\s+(?:increased?|rose|increase|went\s+up)\s+from\s+(\d{1,3})\s+to\s+(\d{1,3})",
+            re.IGNORECASE)
+        out = []
+        seen = set()
+
+        def _add(delta, sent, start, end):
+            key = (delta, sent[:120])
+            if key in seen:
+                return
+            seen.add(key)
+            out.append(self._tilt_entry(delta, sent, start, neg, end, unit))
+
+        for sent in sentences:
+            low = sent.lower()
+            if not any(cue in low for cue in self._POSTURAL_CUES):
+                continue
+            for m in by_pat.finditer(sent):
+                _add(int(m.group(1)), sent, m.start(), m.end())
+            for m in from_pat.finditer(sent):
+                x, y = int(m.group(1)), int(m.group(2))
+                if y > x:
+                    _add(y - x, sent, m.start(), m.end())
+        return out
+
+    def _tilt_entry(self, delta: int, sent: str, start: int, neg, end: int, unit: str) -> dict:
+        is_neg, _ = neg.is_negated(sent, start, end)
+        return {
+            "value": str(delta),
+            "unit": unit,
+            "context": "standing",
+            "negated": is_neg,
+            "sentence": sent[:200],
+        }
 
     def _get_context(self, sentence: str, match_start: int) -> str:
         """Determine measurement context (supine, standing, etc.)."""
@@ -821,12 +973,55 @@ class TreatmentResponseLinker:
 
 # ── Comorbidity extraction ────────────────────────────────────────────
 
+# Generic disease-mention recognisers for corpus-driven comorbidity discovery.
+# These are morphological / relational — NOT tied to any specific disease — so
+# they surface whatever other conditions the papers actually mention.
+_CMRB_HEAD = (
+    r"syndrome|disease|disorder|deficiency|insufficiency|failure|neuropathy|"
+    r"myopathy|cardiomyopathy|nephropathy|retinopathy|malformation|hypertension|"
+    r"hypotension|diabetes|asthma|epilepsy|migraine|depression|anxiety|apn[oe]a|"
+    r"arthritis|colitis|dermatitis|hepatitis|carcinoma|lymphoma|leukaemia|leukemia|"
+    r"anaemia|anemia|cancer|tumou?r|obesity|hypothyroidism|hyperthyroidism|"
+    r"osteoporosis|fibromyalgia|psoriasis|psychosis|seizures?|encephalitis|"
+    r"encephalopathy|myocarditis|pneumonia|thrombocytopenia|hypersomnia"
+)
+_CMRB_HEAD_RE = re.compile(r"\b((?:[a-z][a-z\-]+\s+){0,3}(?:" + _CMRB_HEAD + r"))\b", re.I)
+_CMRB_SUFFIX_RE = re.compile(
+    r"\b([a-z][a-z\-]{3,}(?:itis|aemia|emia|opathy|plasia|sclerosis|fibrosis|"
+    r"stenosis|thrombosis|embolism))\b", re.I)
+_CMRB_CUE_RE = re.compile(
+    r"(?:history of|h/o|known|pre-?existing|underlying|comorbid|co-?morbid|"
+    r"coexisting|concurrent|concomitant|background of|complicated by|secondary to|"
+    r"diagnosed with|diagnosis of|suffer(?:ed|ing)? from)\s+"
+    r"((?:[a-z0-9][a-z0-9\-]+\s+){0,4}[a-z0-9][a-z0-9\-]+)", re.I)
+# Words that are not diseases even though they may match the patterns above.
+_CMRB_STOP = {
+    "disease", "disorder", "syndrome", "condition", "symptoms", "symptom", "history",
+    "illness", "surgery", "trauma", "injury", "infection", "fever", "pain", "smoking",
+    "alcohol", "pregnancy", "treatment", "therapy", "medication", "family", "episodes",
+    "problems", "abnormality", "abnormalities", "findings", "diagnosis", "prognosis",
+    "diagnoses", "process", "complaint", "complaints", "disease process",
+}
+# Leading filler stripped from a candidate phrase (determiners, severity, conjunctions).
+_CMRB_LEAD = re.compile(
+    r"^(?:a|an|the|his|her|their|its|chronic|acute|severe|mild|moderate|recurrent|"
+    r"known|possible|suspected|presumed|probable|underlying|significant|multiple|"
+    r"other|some|this|that|new|recent|and|or|with|of|both|including|namely|no|prior|"
+    r"past|longstanding|long-standing|bilateral|left|right)\s+", re.I)
+
+
 class ComorbidityExtractor:
     """Extract comorbidities from case reports.
 
-    Reads patterns from config (schema v3 comorbidity_patterns from
-    MONDO synonyms) with a hardcoded fallback for the EDS/POTS/MCAS
-    triad's known comorbidities.
+    Three modes, chosen in __init__:
+      * Configured: use comorbidity_patterns supplied in the config (when the
+        user named specific comorbidities to detect).
+      * Discovery (default when none are supplied): mine *other* diseases
+        actually mentioned in the papers via morphological + relational cues,
+        excluding the primary condition(s). This replaces the old behaviour of
+        falling back to a hardcoded EDS/POTS/MCAS triad list.
+      * Legacy triad list: only when config sets
+        ``use_legacy_comorbidity_patterns`` true (kept for the original project).
     """
 
     # Legacy hardcoded patterns (fallback when config has no comorbidity_patterns)
@@ -898,12 +1093,15 @@ class ComorbidityExtractor:
     def __init__(self, config: Optional[dict] = None):
         """Initialise with optional config dict.
 
-        If config contains comorbidity_patterns (schema v3), those are used.
-        Otherwise falls back to _LEGACY_PATTERNS for backward compatibility.
+        Picks configured patterns if present, the legacy triad list only when
+        explicitly requested, otherwise corpus-driven discovery (the default).
         """
         self._patterns = {}
+        self._discovery = False
+        self._primary_re = None
+        config = config or {}
 
-        if config and config.get("comorbidity_patterns"):
+        if config.get("comorbidity_patterns"):
             cp = config["comorbidity_patterns"]
             for slug, entry in cp.items():
                 if isinstance(entry, dict) and "patterns" in entry:
@@ -912,8 +1110,67 @@ class ComorbidityExtractor:
                 elif isinstance(entry, list):
                     # Simple list of patterns
                     self._patterns[slug] = entry
-        else:
+        elif config.get("use_legacy_comorbidity_patterns"):
             self._patterns = dict(self._LEGACY_PATTERNS)
+        else:
+            # Discovery mode: detect other diseases mentioned in the papers,
+            # excluding the primary condition(s) so the disease under study is
+            # never reported as its own comorbidity.
+            self._discovery = True
+            prim = []
+            for slug, entry in (config.get("condition_terms") or {}).items():
+                prim.extend((entry or {}).get("patterns", []) or [])
+                canon = (entry or {}).get("canonical")
+                if canon:
+                    prim.append(re.escape(canon.lower()))
+                prim.append(re.escape(slug.lower().replace("_", " ")))
+            if prim:
+                try:
+                    self._primary_re = re.compile("|".join(p for p in prim if p), re.I)
+                except re.error:
+                    self._primary_re = None
+
+    def _clean_candidate(self, phrase: str) -> Optional[str]:
+        """Normalise a discovered disease phrase; return None if it's not a
+        plausible, non-primary disease mention."""
+        p = re.sub(r"\s+", " ", (phrase or "").strip().lower())
+        prev = None
+        while prev != p:                       # strip leading filler repeatedly
+            prev = p
+            p = _CMRB_LEAD.sub("", p)
+        # If a relational cue word slipped in, keep only the tail after it.
+        if "history" in p.split():
+            p = p.split("history")[-1].lstrip(" of")
+        p = p.strip(" ,.;:")
+        toks = p.split()
+        if not toks or len(toks) > 5 or len(p) < 4:
+            return None
+        if p in _CMRB_STOP or toks[-1] in _CMRB_STOP:
+            return None
+        if self._primary_re and self._primary_re.search(p):
+            return None
+        return p
+
+    def _discover(self, sentences: List[str]) -> dict:
+        """Mine disease mentions from the corpus text (one article's sentences)."""
+        neg = get_detector()
+        results = {}
+        for sent in sentences:
+            low = sent.lower()
+            for rx in (_CMRB_CUE_RE, _CMRB_HEAD_RE, _CMRB_SUFFIX_RE):
+                for m in rx.finditer(low):
+                    name = self._clean_candidate(m.group(1))
+                    if not name:
+                        continue
+                    neg_status, _ = neg.is_negated(sent, m.start(1), m.end(1))
+                    prev = results.get(name)
+                    if prev is None or (prev["negated"] and not neg_status):
+                        results[name] = {
+                            "mentioned": True,
+                            "negated": neg_status,
+                            "sentence": sent[:200],
+                        }
+        return results
 
     def extract_from_sentences(self, sentences: List[str]) -> dict:
         """Extract comorbidity mentions with negation awareness.
@@ -921,6 +1178,9 @@ class ComorbidityExtractor:
         Returns dict of {comorbidity_name: {mentioned: bool, negated: bool,
                          sentence: str}}.
         """
+        if self._discovery:
+            return self._discover(sentences)
+
         neg = get_detector()
         results = {}
 

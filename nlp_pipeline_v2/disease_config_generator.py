@@ -127,12 +127,15 @@ def _hpo_name_to_patterns(hpo_name: str) -> List[str]:
             # Without this, a truncated first stem followed by \s+ can never
             # match the full word (e.g. "mitra\s+" never matches "mitral ").
             stems.append(stem + r"\w*")
-        # Join stems with a separator that matches whitespace, hyphen or slash,
-        # plus up to two optional intervening words. The intervening-word slack
-        # absorbs both dropped stopwords ("dilatation OF AN abdominal artery")
-        # and hyphen-joined infixes ("cafe-AU-lait"), while still requiring the
-        # first and last anchor stems to be present (keeps it specific).
-        sep = r"[\s/\-]+(?:\w+[\s/\-]+){0,2}"
+        # Join stems with a separator that matches any run of non-alphanumeric
+        # characters, plus up to two optional intervening words. Using
+        # [^a-zA-Z0-9]+ (not just [\s/-]+) means punctuated/possessive forms in
+        # real text still match: "Parkinson's disease", "Wernicke's aphasia",
+        # "Crohn's disease", "cafe-au-lait", "dilatation, of the aorta". The
+        # intervening-word slack also absorbs dropped stopwords ("dilatation OF
+        # AN abdominal artery"), while still requiring the first and last anchor
+        # stems to be present (keeps it specific).
+        sep = r"[^a-zA-Z0-9]+(?:\w+[^a-zA-Z0-9]+){0,2}"
         pat = sep.join(stems)
         patterns.append(pat)
 
