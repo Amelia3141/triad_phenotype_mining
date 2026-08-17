@@ -69,9 +69,12 @@ the disease, not a susceptibility locus), and pulls the disease's HPO (Human
 Phenotype Ontology) annotations via the JAX API. Each HPO phenotype name is
 converted into a regular expression, and MONDO synonyms become the condition
 detectors and the search terms. The output is a complete `config.json`:
-condition patterns, symptom patterns, a universal drug list, measurement
-patterns, and negation triggers. No manual dictionary building is required, and
-the same machinery works for any disease with HPO coverage.
+condition patterns, symptom patterns, a seed drug list, measurement patterns,
+and negation triggers. No manual dictionary building is required, and the same
+machinery works for any disease with HPO coverage. The seed drug list and the
+comorbidity detectors are deliberately generic — at extraction time they are
+augmented by corpus-driven discovery so the results adapt to the actual disease
+(see Extraction).
 
 ### 2. Retrieval (`web_app.py` search route)
 
@@ -106,6 +109,20 @@ quality:
 - **Negation awareness.** A pure-Python implementation of the ConText algorithm
   classifies each finding as affirmed, negated, or not mentioned, so the dataset
   records what was tested and ruled out, not only positives.
+- **Corpus-driven discovery with ontology validation.** Drugs and comorbidities
+  are not limited to the config dictionaries — they are also mined directly from
+  each paper. Drugs are found via generic drug-name morphology (INN stems such
+  as `-mab`, `-statin`, `-azepam`) and treatment cues ("started on…", "treated
+  with…"); comorbidities via disease morphology and relational cues ("history
+  of…", "diagnosed with…"), with the primary disease excluded so it is never
+  reported as its own comorbidity. Discovered candidates are then validated
+  against authoritative ontologies — drugs against RxNorm (NIH RxNav),
+  comorbidities against Mondo (EBI OLS4) — and anything that does not resolve is
+  dropped (`ontology_validation.py`, cached, parallelised). This captures
+  disease-specific medications and co-occurring conditions without a hand-built
+  per-disease list, and is still rule-based + ontology lookup — **not** an LLM.
+  It is on by default ("Ontology validation · max precision" in the UI) and can
+  be disabled per run.
 
 ### 5. Dataset build (`dataset_builder.py`)
 
@@ -123,7 +140,74 @@ human can spot errors and submit structured corrections that persist to disk.
 
 A SPELL-style hybrid step can call an LLM to fill gaps the rules miss
 (off by default). The rule-based core runs with no API keys, no cost, and
-deterministic output; the LLM is additive, not load-bearing.
+deterministic output; the LLM is additive, not load-bearing. See "Two
+extraction modes" below for exactly what it does and does not touch.
+
+---
+
+## Two extraction modes: rule-based vs. optional LLM
+
+Extraction has two layers. **Mode 1 always runs; Mode 2 is an optional refinement
+on top of it.**
+
+### Mode 1 — rule-based (default, no API key)
+
+Deterministic regex/dictionary extraction over section- and negation-aware
+sentences, plus the corpus-driven discovery + ontology validation described
+above. No network is needed for extraction itself (only ontology validation
+makes calls, and that is cacheable/skippable), output is reproducible, and there
+is no cost. This is the load-bearing path and the one with (preliminary) human
+validation.
+
+### Mode 2 — LLM enhancement (opt-in: toggle + API key)
+
+When enabled, the LLM does **not** re-extract everything and does **not** touch
+symptoms, drugs, comorbidities, demographics or measurements. It is a *targeted
+second pass* over only the three subtasks where regex is weakest:
+
+1. **Temporal reasoning** — onset/diagnosis ages, diagnostic delay, duration,
+   including arithmetic across sentences ("diagnosed 10 years after onset at age
+   25" → onset 15).
+2. **Family-history relations** — who is affected, with what, and the implied
+   inheritance pattern.
+3. **Multi-sentence treatment chains** — drug → response linked across sentences
+   ("after failing metoprolol, switched to ivabradine" → metoprolol = no
+   improvement).
+
+How it works, and why it is safe to add:
+
+- **Snippet-based, not whole-paper.** For each subtask the rule-based pass first
+  selects the relevant sentences with a keyword regex, and *only those snippets*
+  (≤15–20 sentences) are sent to the model. The LLM never sees the full article,
+  which keeps calls cheap and shrinks the hallucination surface.
+- **Rule-based wins; the LLM fills gaps.** Deterministic values take precedence.
+  The LLM only supplies a value where the rules found none. If the LLM disagrees
+  with a rule-based value it is recorded as `_<field>_llm_alternative` but the
+  rule-based value is kept.
+- **Full provenance.** Every field is tagged with its source — `rule_based`,
+  `llm_only`, `llm_enhanced`, or `llm_confirmed` — and each extraction carries
+  `_llm_enhanced`, `_llm_model`, `_llm_provider`, `_llm_calls`. You can always
+  tell which method produced a value and compare the two.
+- **Cost/shape.** Three API calls per article (one per subtask), `temperature=0`
+  for reproducibility, `max_tokens=1024`, rate-limited. Works with Anthropic
+  (Claude) or any OpenAI-compatible endpoint over raw HTTP — no SDK dependency.
+- **Human-in-the-loop.** Corrections submitted in the Review tab are stored
+  (`correction_memory.py`) and injected into the relevant subtask's system
+  prompt on later runs, so the LLM pass improves from feedback.
+
+The two modes are independent of the discovery/validation work: discovery and
+RxNorm/Mondo validation are rule-based + ontology lookups and run in **both**
+modes. The LLM toggle only changes the three subtasks above.
+
+> Status: the LLM mode is unvalidated here (no LLM-based extraction has been
+> measured against human labels). Treat it as an exploratory refinement, and
+> report rule-based numbers as the system's validated performance.
+
+### No fabricated data
+
+The web UI never invents data. If the backend is unreachable it shows an
+explicit "backend not reachable" state rather than placeholder/sample numbers,
+so a demo view can never be mistaken for real extraction output.
 
 ---
 

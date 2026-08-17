@@ -129,11 +129,17 @@ def build_pubmed_term(query: str, pub_types: List[str]) -> str:
 # Backwards-compatible alias (older callers/tests).
 build_pmc_term = build_pubmed_term
 
+class DownloadRequest(BaseModel):
+    # PMCIDs the user de-selected in the Search-results review tab. Optional so
+    # older callers that POST no body keep working.
+    exclude: List[str] = []
+
 class RunPipelineRequest(BaseModel):
     enable_llm: bool = False
     llm_provider: str = "anthropic"  # "anthropic" or "openai"
     llm_model: str = ""              # blank = use default for provider
     llm_api_key: str = ""
+    validate_ontology: bool = True   # filter discovered drugs/comorbidities via RxNorm/Mondo
 
 class CorrectionRequest(BaseModel):
     subtask: str           # "temporal", "family_history", "treatment", "general"
@@ -158,11 +164,16 @@ async def serve_frontend():
 @app.get("/api/status")
 async def get_status():
     config = _state.get("config")
+    conditions = []
+    if config:
+        for slug, entry in (config.get("condition_terms") or {}).items():
+            conditions.append((entry or {}).get("canonical") or slug.replace("_", " "))
     return {
         "status": _state["status"],
         "progress": _state["progress"],
         "config_ready": config is not None,
         "search_terms": config.get("search_terms", []) if config else [],
+        "conditions": conditions,   # authoritative disease names for run labelling
         "articles_count": len(glob.glob(os.path.join(_state.get("articles_dir") or "/tmp/nonexistent", "*.xml"))),
         "extractions_count": len(_state["extractions"]),
     }
@@ -235,7 +246,11 @@ async def api_search_pmc(req: PMCSearchRequest, background_tasks: BackgroundTask
     """Search PMC for articles matching query."""
     _state["status"] = "running"
     _state["progress"] = "Searching PMC..."
+    # Reset ALL prior search state so a new search can't expose a stale total /
+    # id list while the fresh preview is still empty.
     _state["pmc_results"] = []
+    _state["_pmc_ids"] = []
+    _state["_pmc_total"] = 0
 
     term = build_pubmed_term(req.query, req.pub_types)
     ua = {"User-Agent": "phenotype-pipeline/1.0"}
@@ -247,22 +262,41 @@ async def api_search_pmc(req: PMCSearchRequest, background_tasks: BackgroundTask
                 _emit(f"Publication-type filter: {', '.join(req.pub_types)}")
             else:
                 _emit("Publication-type filter: all types")
-            _emit(f"Max results: {req.max_results}")
+            # max_results <= 0 means "retrieve everything that matches".
+            want = req.max_results if req.max_results and req.max_results > 0 else None
+            _emit(f"Max results: {'all matches' if want is None else want}")
 
-            # 1) ESearch PubMed (publication-type / MeSH indexing lives here)
-            params = {
-                "db": "pubmed",
-                "term": term,
-                "retmax": req.max_results,
-                "retmode": "json",
-            }
-            url = NCBI_BASE + "esearch.fcgi?" + urllib.parse.urlencode(params)
-            with urllib.request.urlopen(urllib.request.Request(url, headers=ua), timeout=30) as resp:
-                data = json.loads(resp.read().decode("utf-8", "ignore"), strict=False)
-
-            result = data.get("esearchresult", {})
-            count = int(result.get("count", 0))
-            pmids = result.get("idlist", [])
+            # 1) ESearch PubMed (publication-type / MeSH indexing lives here).
+            #    A single ESearch returns at most 10,000 IDs, so page through the
+            #    result set with retstart to support large (or unbounded) requests.
+            PAGE = 9999
+            pmids = []
+            count = 0
+            retstart = 0
+            while True:
+                batch_size = PAGE if want is None else min(PAGE, want - len(pmids))
+                if batch_size <= 0:
+                    break
+                params = {
+                    "db": "pubmed",
+                    "term": term,
+                    "retmax": batch_size,
+                    "retstart": retstart,
+                    "retmode": "json",
+                }
+                url = NCBI_BASE + "esearch.fcgi?" + urllib.parse.urlencode(params)
+                with urllib.request.urlopen(urllib.request.Request(url, headers=ua), timeout=30) as resp:
+                    data = json.loads(resp.read().decode("utf-8", "ignore"), strict=False)
+                result = data.get("esearchresult", {})
+                count = int(result.get("count", 0))
+                ids = result.get("idlist", [])
+                if not ids:
+                    break
+                pmids.extend(ids)
+                retstart += len(ids)
+                if retstart >= count or len(ids) < batch_size:
+                    break
+                time.sleep(NCBI_RATE_LIMIT)
             _emit(f"PubMed: {count} matching records, retrieved {len(pmids)} PMIDs")
 
             # 2) Map PMIDs -> PMCIDs via the PMC ID Converter API (batched, max
@@ -346,14 +380,26 @@ async def get_pmc_results():
 async def api_download_articles(
     background_tasks: BackgroundTasks,
     max_articles: int = Query(default=100),
+    req: Optional[DownloadRequest] = None,
 ):
-    """Download full-text XML from PMC OA."""
+    """Download full-text XML from PMC OA.
+
+    An optional JSON body ``{"exclude": ["PMC123", ...]}`` drops articles the
+    user de-selected in the review tab before the max-articles cap is applied.
+    """
     _state["status"] = "running"
     _state["progress"] = "Downloading articles..."
 
+    exclude = {x.upper() for x in (req.exclude if req else [])}
+
     def _run():
         try:
-            pmc_ids = _state.get("_pmc_ids", [])[:max_articles]
+            all_ids = _state.get("_pmc_ids", [])
+            kept = [p for p in all_ids if p.upper() not in exclude]
+            if exclude:
+                _emit(f"Excluding {len(all_ids) - len(kept)} de-selected article(s) from download")
+            # max_articles <= 0 means "download all retrieved (non-excluded)".
+            pmc_ids = kept if max_articles <= 0 else kept[:max_articles]
             if not pmc_ids:
                 _emit("No PMCIDs to download. Run a search first.", "error")
                 _state["status"] = "error"
@@ -430,6 +476,7 @@ async def api_run_pipeline(req: RunPipelineRequest, background_tasks: Background
     llm_provider = req.llm_provider
     llm_model = req.llm_model
     llm_api_key = req.llm_api_key
+    validate_ontology = req.validate_ontology
 
     def _run():
         try:
@@ -513,6 +560,49 @@ async def api_run_pipeline(req: RunPipelineRequest, background_tasks: Background
                           f"({rate:.1f} articles/sec, ETA {eta:.0f}s)")
 
             pipeline.finalise_log()
+
+            # ── Ontology validation (maximum-precision mode) ──
+            # Filter corpus-discovered drugs/comorbidities to those that resolve
+            # against RxNorm / Mondo, dropping heuristic false positives. Only
+            # touches *discovered* terms — configured/known terms are untouched.
+            if validate_ontology:
+                try:
+                    from nlp_pipeline_v2.ontology_validation import validate_terms
+                    cfg = config or {}
+                    comorb_discovery = (not cfg.get("comorbidity_patterns")
+                                        and not cfg.get("use_legacy_comorbidity_patterns"))
+
+                    drug_cands = {
+                        d["drug"] for e in extractions
+                        for d in (e.get("drugs_affirmed", []) + e.get("drugs_negated", []))
+                        if d.get("drug_class") == "discovered"
+                    }
+                    if drug_cands:
+                        _emit(f"Validating {len(drug_cands)} discovered drug(s) against RxNorm...")
+                        ok = validate_terms(drug_cands, "drug", log_fn=_emit)
+                        for e in extractions:
+                            for key in ("drugs_affirmed", "drugs_negated"):
+                                e[key] = [
+                                    d for d in e.get(key, [])
+                                    if d.get("drug_class") != "discovered"
+                                    or d["drug"].lower() in ok
+                                ]
+                            e["drug_count"] = len(e.get("drugs_affirmed", []))
+
+                    if comorb_discovery:
+                        comb_cands = {name for e in extractions for name in e.get("comorbidities", {})}
+                        if comb_cands:
+                            _emit(f"Validating {len(comb_cands)} discovered comorbidit(y/ies) against Mondo...")
+                            ok = validate_terms(comb_cands, "disease", log_fn=_emit)
+                            for e in extractions:
+                                e["comorbidities"] = {
+                                    k: v for k, v in e.get("comorbidities", {}).items()
+                                    if k.lower() in ok
+                                }
+                    _emit("Ontology validation complete.", "success")
+                except Exception as ve:
+                    _emit(f"Ontology validation skipped ({ve}); keeping unvalidated terms.", "warn")
+
             _state["extractions"] = extractions
 
             # Build dataset outputs
@@ -634,6 +724,68 @@ async def get_results():
     top_drugs = sorted(all_drugs.items(), key=lambda x: -x[1])[:20]
     top_comorbidities = sorted(all_comorbidities.items(), key=lambda x: -x[1])[:15]
 
+    # ── Condition co-occurrence ──
+    # For each user-defined (top-level) condition, count the articles where it
+    # is affirmed, then count how often the conditions appear together. This
+    # generalises the EDS/POTS/MCAS triad view to any set of conditions.
+    valid = [e for e in extractions if not e.get("error")]
+    n_valid = len(valid)
+    config = _state.get("config") or {}
+    condition_terms = config.get("condition_terms", {})
+
+    def _present_conditions(e):
+        cmap = e.get("conditions", {})
+        return {
+            slug for slug in condition_terms
+            if cmap.get(slug, {}).get("mentioned") and not cmap.get(slug, {}).get("negated")
+        }
+
+    condition_presence = []
+    for slug, conf in condition_terms.items():
+        cnt = sum(1 for e in valid if slug in _present_conditions(e))
+        condition_presence.append({
+            "name": slug,
+            "full_name": (conf or {}).get("canonical") or slug,
+            "count": cnt,
+            "pct": round(cnt / n_valid * 100, 1) if n_valid else 0,
+        })
+
+    cooccurrence = []
+    if len(condition_terms) >= 2:
+        import itertools
+        keys = list(condition_terms.keys())
+        present_sets = [_present_conditions(e) for e in valid]
+        for a, b in itertools.combinations(keys, 2):
+            cnt = sum(1 for ps in present_sets if a in ps and b in ps)
+            cooccurrence.append({"name": f"{a} + {b}", "count": cnt,
+                                 "pct": round(cnt / n_valid * 100, 1) if n_valid else 0})
+        cooccurrence.sort(key=lambda x: -x["count"])
+        cooccurrence = cooccurrence[:10]
+        if len(keys) > 2:
+            allcnt = sum(1 for ps in present_sets if set(keys) <= ps)
+            cooccurrence.append({
+                "name": f"All {len(keys)} ({' + '.join(keys)})", "count": allcnt,
+                "pct": round(allcnt / n_valid * 100, 1) if n_valid else 0, "full": True,
+            })
+
+    # ── Comorbidity analysis ──
+    # Rate (% of cases) for each detected comorbidity, plus the share of cases
+    # that report at least one comorbidity (i.e. the patient had other diseases).
+    comorbidity_rates = [
+        {"name": name, "count": cnt,
+         "pct": round(cnt / n_valid * 100, 1) if n_valid else 0}
+        for name, cnt in top_comorbidities
+    ]
+    any_comorb = sum(
+        1 for e in valid
+        if any(d.get("mentioned") and not d.get("negated")
+               for d in e.get("comorbidities", {}).values())
+    )
+    comorbidity_any = {
+        "count": any_comorb,
+        "pct": round(any_comorb / n_valid * 100, 1) if n_valid else 0,
+    }
+
     return {
         "count": total,
         "errors": has_error,
@@ -645,6 +797,10 @@ async def get_results():
             "top_symptoms": top_symptoms,
             "top_drugs": top_drugs,
             "top_comorbidities": top_comorbidities,
+            "condition_presence": condition_presence,
+            "cooccurrence": cooccurrence,
+            "comorbidity_rates": comorbidity_rates,
+            "comorbidity_any": comorbidity_any,
         },
     }
 
@@ -766,7 +922,9 @@ async def list_reviewable_articles():
 @app.get("/api/review/{pmcid}")
 async def get_article_for_review(pmcid: str):
     """Get a single article's extraction for review."""
-    extractions = _state.get("extractions", [])
+    # Use the same source as the list endpoint (in-memory, else last run on
+    # disk) so a detail lookup never 404s for an article the list returned.
+    extractions = _load_extractions()
     for e in extractions:
         if e.get("pmcid") == pmcid:
             return {"extraction": e}

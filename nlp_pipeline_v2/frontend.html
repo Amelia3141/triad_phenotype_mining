@@ -3,1063 +3,1332 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Case Report Phenotyping Pipeline</title>
+<title>Phenotype Mining — Pipeline Console</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
 <style>
   :root {
-    --bg: #0f1117;
-    --surface: #1a1d27;
-    --surface2: #242836;
-    --border: #2e3345;
-    --text: #e2e4eb;
-    --text-dim: #8b8fa3;
-    --accent: #6c8cff;
-    --accent-dim: #4a5fa0;
-    --green: #4ade80;
-    --yellow: #facc15;
-    --red: #f87171;
-    --orange: #fb923c;
-    --font: 'SF Mono', 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
-    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --bg: #f5f6f9;
+    --panel: #ffffff;
+    --panel-2: #fbfcfe;
+    --ink: #161922;
+    --ink-2: #565d6b;
+    --ink-3: #899; 
+    --ink-3: #8a909e;
+    --line: #e7e9f0;
+    --line-2: #eef0f5;
+    --brand: #4b57d4;
+    --brand-ink: #3742ad;
+    --brand-tint: #edeefc;
+    --brand-tint-2: #f6f6fe;
+    --ok: #15803d;
+    --ok-tint: #e7f5ec;
+    --warn: #b45309;
+    --warn-tint: #fbf0df;
+    --err: #c0241f;
+    --err-tint: #fae9e8;
+    --ink-on-dark: #d6dae6;
+    --dark: #11141f;
+    --dark-2: #1a1e2c;
+    --dark-line: #272c3d;
+    --t1: #4b57d4;
+    --t2: #0d9488;
+    --t3: #c2410c;
+    --t4: #9333ea;
+    --t5: #ca8a04;
+    --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", "Fira Code", Consolas, monospace;
+    --r: 10px;
+    --r-sm: 7px;
+    --shadow: 0 1px 2px rgba(20,24,40,.04), 0 4px 16px rgba(20,24,40,.05);
+    --shadow-pop: 0 8px 28px rgba(20,24,40,.14);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
 
   body {
     background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-sans);
+    color: var(--ink);
+    font-family: var(--sans);
     font-size: 14px;
-    line-height: 1.6;
-    min-height: 100vh;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
   }
 
-  .app-container {
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: #d2d6e0; border-radius: 6px; border: 2px solid transparent; background-clip: padding-box; }
+  ::-webkit-scrollbar-thumb:hover { background: #bcc2cf; background-clip: padding-box; }
+
+  .app {
     display: grid;
-    grid-template-columns: 360px 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-columns: 230px minmax(380px, 460px) 1fr;
+    grid-template-rows: 56px 1fr;
     height: 100vh;
-    gap: 0;
+    overflow: hidden;
   }
 
-  .header {
+  /* ── Header ── */
+  .topbar {
     grid-column: 1 / -1;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 12px 24px;
     display: flex;
     align-items: center;
     gap: 16px;
+    padding: 0 18px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--line);
+    z-index: 30;
   }
+  .brand-mark {
+    width: 26px; height: 26px; border-radius: 7px;
+    background: linear-gradient(135deg, var(--t1), var(--t2));
+    display: grid; place-items: center; flex-shrink: 0;
+    position: relative;
+  }
+  .brand-mark::before, .brand-mark::after {
+    content: ""; position: absolute; border-radius: 50%;
+    border: 1.6px solid rgba(255,255,255,.92);
+  }
+  .brand-mark::before { width: 12px; height: 12px; left: 5px; top: 7px; }
+  .brand-mark::after { width: 12px; height: 12px; right: 5px; top: 7px; }
+  .brand-dot { width: 12px; height: 12px; border-radius: 50%; border: 1.6px solid rgba(255,255,255,.92); position: absolute; left: 50%; transform: translateX(-50%); bottom: 5px; }
+  .topbar .titles { display: flex; flex-direction: column; line-height: 1.2; }
+  .topbar h1 { font-size: 14.5px; font-weight: 650; letter-spacing: -0.2px; }
+  .topbar .sub { font-size: 11.5px; color: var(--ink-3); font-weight: 500; }
 
-  .header h1 {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text);
-    letter-spacing: -0.3px;
-  }
+  .topbar-right { margin-left: auto; display: flex; align-items: center; gap: 14px; }
 
-  .header .subtitle {
-    color: var(--text-dim);
-    font-size: 12px;
-  }
-
-  .status-badge {
-    margin-left: auto;
-    padding: 4px 12px;
-    border-radius: 12px;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .status-idle { background: var(--surface2); color: var(--text-dim); }
-  .status-running { background: #1e3a5f; color: var(--accent); animation: pulse 2s infinite; }
-  .status-done { background: #1a3d2e; color: var(--green); }
-  .status-error { background: #3d1a1a; color: var(--red); }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.6; }
-  }
-
-  /* Left panel */
-  .control-panel {
-    background: var(--surface);
-    border-right: 1px solid var(--border);
-    overflow-y: auto;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .panel-section {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 14px;
-  }
-
-  .panel-section h3 {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--text-dim);
-    margin-bottom: 10px;
-  }
-
-  .step-number {
-    display: inline-flex;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--accent-dim);
-    color: white;
-    font-size: 11px;
-    font-weight: 700;
-    align-items: center;
-    justify-content: center;
-    margin-right: 6px;
-  }
-
-  .step-number.done { background: var(--green); }
-  .step-number.active { background: var(--accent); animation: pulse 2s infinite; }
-
-  label {
-    display: block;
-    font-size: 12px;
-    color: var(--text-dim);
-    margin-bottom: 4px;
-    font-weight: 500;
-  }
-
-  input, textarea {
-    width: 100%;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    color: var(--text);
-    padding: 8px 10px;
-    font-size: 13px;
-    font-family: var(--font-sans);
-    outline: none;
-    transition: border-color 0.2s;
-  }
-
-  input:focus, textarea:focus {
-    border-color: var(--accent);
-  }
-
-  textarea {
-    resize: vertical;
-    min-height: 60px;
-    font-family: var(--font);
-    font-size: 12px;
-  }
-
-  .hint {
-    font-size: 11px;
-    color: var(--text-dim);
-    margin-top: 3px;
-    font-style: italic;
-  }
-
-  .checkbox-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px 14px;
-    margin-top: 4px;
-  }
-  .checkbox-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    color: var(--text);
-    cursor: pointer;
-    font-weight: 500;
-  }
-  .checkbox-item input {
-    width: auto;
-    margin: 0;
-    cursor: pointer;
-  }
-
-  .files-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .files-header .section-title {
-    border-bottom: none;
-    margin: 16px 0 10px;
-    padding-bottom: 0;
-  }
-  a.download-all-btn {
-    display: inline-block;
-    width: auto;
-    padding: 8px 14px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-    background: var(--accent);
-    color: white;
-    white-space: nowrap;
-  }
-  a.download-all-btn:hover {
-    background: #7d9bff;
-  }
-
-  button {
-    width: 100%;
-    padding: 8px 14px;
-    border: none;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.15s;
-    font-family: var(--font-sans);
-  }
-
-  button.primary {
-    background: var(--accent);
-    color: white;
-  }
-  button.primary:hover:not(:disabled) {
-    background: #7d9bff;
-  }
-  button.primary:disabled {
-    background: var(--accent-dim);
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  button.secondary {
-    background: var(--surface2);
-    color: var(--text);
-    border: 1px solid var(--border);
-  }
-  button.secondary:hover:not(:disabled) {
-    background: var(--border);
-  }
-
-  .input-group {
-    margin-bottom: 10px;
-  }
-
-  /* Right panel: log + results */
-  .main-panel {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-
-  .tab-bar {
-    display: flex;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 0 16px;
-  }
-
-  .tab {
-    padding: 10px 16px;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-dim);
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    transition: all 0.15s;
-  }
-
-  .tab:hover { color: var(--text); }
-  .tab.active {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-  }
-
-  .tab-content {
-    flex: 1;
-    overflow-y: auto;
-    padding: 16px;
-  }
-
-  /* Log view */
-  .log-container {
-    font-family: var(--font);
-    font-size: 12px;
-    line-height: 1.7;
-  }
-
-  .log-line {
-    padding: 1px 0;
-    white-space: pre-wrap;
-    word-break: break-word;
-  }
-
-  .log-line .time {
-    color: var(--text-dim);
-    margin-right: 8px;
-    user-select: none;
-  }
-
-  .log-line.info .msg { color: var(--text); }
-  .log-line.success .msg { color: var(--green); }
-  .log-line.warn .msg { color: var(--yellow); }
-  .log-line.error .msg { color: var(--red); }
-  .log-line.log .msg { color: var(--text-dim); font-size: 11px; }
-
-  /* Results view */
-  .results-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-
-  .stat-card {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 14px;
-  }
-
-  .stat-card .stat-label {
-    font-size: 11px;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 4px;
-  }
-
-  .stat-card .stat-value {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--accent);
-  }
-
-  .stat-card .stat-detail {
-    font-size: 12px;
-    color: var(--text-dim);
-    margin-top: 4px;
-  }
-
-  .bar-chart {
-    margin-top: 16px;
-  }
-
-  .bar-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 4px;
-    font-size: 12px;
-  }
-
-  .bar-label {
+  .global-progress {
     width: 200px;
-    color: var(--text-dim);
-    text-overflow: ellipsis;
+    display: flex; flex-direction: column; gap: 3px;
+  }
+  .global-progress .gp-meta { display: flex; justify-content: space-between; font-size: 10.5px; color: var(--ink-3); font-family: var(--mono); }
+  .gp-track { height: 5px; background: var(--line-2); border-radius: 4px; overflow: hidden; }
+  .gp-fill { height: 100%; background: var(--brand); border-radius: 4px; transition: width .4s ease; }
+  .gp-fill.indet {
+    width: 35% !important;
+    background: linear-gradient(90deg, transparent, var(--brand), transparent);
+    animation: slide 1.1s infinite;
+  }
+  @keyframes slide { 0% { margin-left: -35%; } 100% { margin-left: 100%; } }
+
+  .status-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 11px 5px 9px; border-radius: 20px;
+    font-size: 11.5px; font-weight: 600; letter-spacing: .2px;
+  }
+  .status-pill .ico { width: 7px; height: 7px; border-radius: 50%; }
+  .sp-idle { background: var(--line-2); color: var(--ink-2); }
+  .sp-idle .ico { background: var(--ink-3); }
+  .sp-running { background: var(--brand-tint); color: var(--brand-ink); }
+  .sp-running .ico { background: var(--brand); animation: blink 1.1s infinite; }
+  .sp-done { background: var(--ok-tint); color: var(--ok); }
+  .sp-done .ico { background: var(--ok); }
+  .sp-error { background: var(--err-tint); color: var(--err); }
+  .sp-error .ico { background: var(--err); }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+
+  /* ── Runs rail ── */
+  .runs-rail {
+    background: var(--panel);
+    border-right: 1px solid var(--line);
+    display: flex; flex-direction: column;
     overflow: hidden;
-    white-space: nowrap;
-    flex-shrink: 0;
   }
-
-  .bar-track {
-    flex: 1;
-    height: 16px;
-    background: var(--bg);
-    border-radius: 3px;
-    margin: 0 8px;
-    overflow: hidden;
+  .rail-head { padding: 14px 14px 8px; display: flex; align-items: center; justify-content: space-between; }
+  .rail-head .lbl { font-size: 10.5px; font-weight: 700; letter-spacing: .9px; text-transform: uppercase; color: var(--ink-3); }
+  .new-run-btn {
+    border: 1px solid var(--line); background: var(--panel); color: var(--ink);
+    border-radius: 7px; padding: 4px 9px; font-size: 12px; font-weight: 600; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 5px; transition: all .12s;
   }
-
-  .bar-fill {
-    height: 100%;
-    background: var(--accent);
-    border-radius: 3px;
-    transition: width 0.5s ease;
+  .new-run-btn:hover { background: var(--brand-tint); border-color: var(--brand); color: var(--brand-ink); }
+  .runs-list { flex: 1; overflow-y: auto; padding: 4px 8px 12px; display: flex; flex-direction: column; gap: 4px; }
+  .run-card {
+    border: 1px solid var(--line); background: var(--panel-2); border-radius: 9px;
+    padding: 9px 11px; cursor: pointer; transition: all .12s; position: relative;
   }
+  .run-card:hover { border-color: #d3d7e3; background: #fff; }
+  .run-card.active { border-color: var(--brand); background: var(--brand-tint-2); box-shadow: inset 2px 0 0 var(--brand); }
+  .run-card .rc-title { font-size: 12.5px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .run-card .rc-meta { font-size: 10.5px; color: var(--ink-3); margin-top: 2px; font-family: var(--mono); }
+  .run-card .rc-stat { font-size: 11px; color: var(--ink-2); margin-top: 4px; display: flex; gap: 8px; }
+  .run-card .rc-del { position: absolute; top: 7px; right: 7px; width: 18px; height: 18px; border-radius: 5px; border: none; background: transparent; color: var(--ink-3); cursor: pointer; font-size: 14px; line-height: 1; opacity: 0; display: grid; place-items: center; }
+  .run-card:hover .rc-del { opacity: 1; }
+  .run-card .rc-del:hover { background: var(--err-tint); color: var(--err); }
+  .rail-empty { color: var(--ink-3); font-size: 12px; padding: 16px 12px; text-align: center; line-height: 1.5; }
 
-  .bar-count {
-    width: 40px;
-    text-align: right;
-    color: var(--text);
-    font-family: var(--font);
-    font-size: 11px;
-    flex-shrink: 0;
-  }
-
-  .section-title {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text);
-    margin: 20px 0 10px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .file-list {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .file-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 8px 12px;
-    font-size: 12px;
-  }
-
-  .file-item .fname {
-    font-family: var(--font);
-    color: var(--text);
-  }
-
-  .file-item .fsize {
-    color: var(--text-dim);
-    font-family: var(--font);
-    font-size: 11px;
-  }
-
-  .file-item a {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 11px;
-  }
-
-  .file-item a:hover { text-decoration: underline; }
-
-  .empty-state {
-    text-align: center;
-    color: var(--text-dim);
-    padding: 60px 20px;
-    font-size: 13px;
-  }
-
-  .empty-state .icon { font-size: 40px; margin-bottom: 12px; opacity: 0.4; }
-
-  .pmc-preview {
-    max-height: 200px;
+  /* ── Control column (stepper) ── */
+  .control-col {
+    background: var(--panel);
+    border-right: 1px solid var(--line);
     overflow-y: auto;
-    font-size: 11px;
-    margin-top: 8px;
+    padding: 16px 16px 40px;
   }
+  .stepper { position: relative; }
+  .step {
+    position: relative;
+    padding-left: 38px;
+    padding-bottom: 14px;
+  }
+  .step:last-child { padding-bottom: 0; }
+  .step .rail-line {
+    position: absolute; left: 13px; top: 28px; bottom: -2px; width: 2px; background: var(--line);
+  }
+  .step.done .rail-line { background: var(--ok); }
+  .step .node {
+    position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%;
+    display: grid; place-items: center; font-size: 12px; font-weight: 700;
+    background: var(--panel); border: 2px solid var(--line); color: var(--ink-3);
+    z-index: 2; transition: all .15s;
+  }
+  .step.active .node { border-color: var(--brand); color: var(--brand); background: var(--brand-tint); }
+  .step.done .node { border-color: var(--ok); background: var(--ok); color: #fff; }
+  .step.locked .node { background: var(--panel-2); }
 
-  .pmc-preview-item {
-    padding: 4px 0;
-    border-bottom: 1px solid var(--border);
-    color: var(--text-dim);
+  .step-card {
+    border: 1px solid var(--line); border-radius: var(--r); background: var(--panel);
+    overflow: hidden; transition: border-color .15s, box-shadow .15s;
   }
+  .step.active .step-card { border-color: #cfd4e6; box-shadow: var(--shadow); }
+  .step.locked .step-card { background: var(--panel-2); opacity: .72; }
+  .step-header {
+    display: flex; align-items: center; gap: 8px;
+    padding: 11px 13px; cursor: pointer; user-select: none;
+  }
+  .step.locked .step-header { cursor: not-allowed; }
+  .step-header .st-title { font-size: 13.5px; font-weight: 650; letter-spacing: -.1px; }
+  .step-header .st-sum { font-size: 11.5px; color: var(--ink-3); margin-left: auto; font-family: var(--mono); white-space: nowrap; max-width: 150px; overflow: hidden; text-overflow: ellipsis; }
+  .step-header .chev { margin-left: 8px; color: var(--ink-3); transition: transform .18s; font-size: 11px; }
+  .step.active .step-header .chev { transform: rotate(90deg); }
+  .step.done .step-header .st-title { color: var(--ink-2); }
+  .badge-done { font-size: 10px; font-weight: 700; color: var(--ok); background: var(--ok-tint); padding: 2px 7px; border-radius: 10px; letter-spacing: .3px; }
 
-  .pmc-preview-item .pmc-title {
-    color: var(--text);
-    font-weight: 500;
-  }
+  .step-body { padding: 0 13px 14px; }
+  .step-body.collapsed { display: none; }
 
-  .slider-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+  label.field-label { display: block; font-size: 11.5px; color: var(--ink-2); margin-bottom: 5px; font-weight: 600; }
+  .field { margin-bottom: 13px; }
+  .hint { font-size: 11px; color: var(--ink-3); margin-top: 5px; line-height: 1.45; }
 
-  .slider-row input[type="range"] {
-    flex: 1;
-    padding: 0;
-    height: auto;
-    background: transparent;
-    border: none;
+  input[type=text], input[type=password], input[type=number], textarea, select {
+    width: 100%; background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--r-sm); color: var(--ink); padding: 8px 10px;
+    font-size: 13px; font-family: var(--sans); outline: none; transition: all .15s;
   }
+  input[type=number].count-input { width: 88px; flex: none; text-align: right; font-family: var(--mono); font-weight: 600; padding: 7px 9px; }
+  textarea { resize: vertical; min-height: 56px; font-family: var(--mono); font-size: 12px; line-height: 1.5; }
+  input:focus, textarea:focus, select:focus { border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-tint); }
+  input:disabled, textarea:disabled, select:disabled { background: var(--panel-2); color: var(--ink-3); cursor: not-allowed; }
 
-  .slider-val {
-    font-family: var(--font);
-    font-size: 12px;
-    color: var(--accent);
-    min-width: 40px;
-    text-align: right;
+  /* chips */
+  .chip-input {
+    display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+    border: 1px solid var(--line); border-radius: var(--r-sm); padding: 7px 8px;
+    background: var(--panel); transition: all .15s; cursor: text; min-height: 38px;
   }
+  .chip-input.focus { border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-tint); }
+  .chip-input.disabled { background: var(--panel-2); cursor: not-allowed; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--brand-tint); color: var(--brand-ink); border-radius: 6px;
+    padding: 3px 4px 3px 9px; font-size: 12px; font-weight: 600; max-width: 100%;
+  }
+  .chip .ct { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .chip.comorb { background: #eaf3f1; color: #0c6b60; }
+  .chip .x { border: none; background: transparent; color: inherit; cursor: pointer; font-size: 14px; line-height: 1; padding: 0 3px; border-radius: 4px; opacity: .65; }
+  .chip .x:hover { opacity: 1; background: rgba(0,0,0,.07); }
+  .chip-input input { border: none; outline: none; box-shadow: none; flex: 1; min-width: 90px; padding: 2px; font-size: 12.5px; background: transparent; }
+  .chip-input input:focus { box-shadow: none; }
+
+  .preset-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+  .preset {
+    border: 1px dashed var(--line); background: var(--panel-2); color: var(--ink-2);
+    border-radius: 20px; padding: 4px 11px; font-size: 11.5px; font-weight: 600; cursor: pointer; transition: all .12s;
+  }
+  .preset:hover { border-color: var(--brand); color: var(--brand-ink); background: var(--brand-tint); border-style: solid; }
+
+  .checkbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 12px; margin-top: 2px; }
+  .cbx { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--ink); cursor: pointer; font-weight: 500; padding: 3px 0; }
+  .cbx input { width: auto; }
+  .cbx.disabled { color: var(--ink-3); cursor: not-allowed; }
+
+  .switch-row { display: flex; align-items: center; gap: 10px; padding: 9px 11px; border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--panel-2); }
+  .switch { position: relative; width: 38px; height: 22px; flex-shrink: 0; }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .switch .track { position: absolute; inset: 0; background: #cfd3df; border-radius: 20px; transition: .18s; cursor: pointer; }
+  .switch .track::before { content: ""; position: absolute; width: 16px; height: 16px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: .18s; box-shadow: 0 1px 2px rgba(0,0,0,.2); }
+  .switch input:checked + .track { background: var(--brand); }
+  .switch input:checked + .track::before { transform: translateX(16px); }
+  .switch-row .sw-label { font-size: 12.5px; font-weight: 600; }
+  .switch-row .sw-sub { font-size: 11px; color: var(--ink-3); }
+
+  .slider-row { display: flex; align-items: center; gap: 12px; }
+  input[type=range] { flex: 1; -webkit-appearance: none; appearance: none; height: 5px; background: var(--line); border-radius: 4px; padding: 0; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 17px; height: 17px; border-radius: 50%; background: var(--brand); cursor: pointer; border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25); }
+  input[type=range]:disabled::-webkit-slider-thumb { background: var(--ink-3); }
+  .slider-val { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--brand-ink); min-width: 42px; text-align: right; }
+
+  .btn {
+    width: 100%; padding: 9px 14px; border: none; border-radius: var(--r-sm);
+    font-size: 13px; font-weight: 650; cursor: pointer; transition: all .14s;
+    font-family: var(--sans); display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  }
+  .btn.primary { background: var(--brand); color: #fff; box-shadow: 0 1px 2px rgba(75,87,212,.3); }
+  .btn.primary:hover:not(:disabled) { background: var(--brand-ink); }
+  .btn.primary:disabled { background: #c7cbe6; cursor: not-allowed; box-shadow: none; }
+  .btn.ghost { background: var(--panel); color: var(--ink); border: 1px solid var(--line); }
+  .btn.ghost:hover:not(:disabled) { background: var(--panel-2); border-color: #d3d7e3; }
+  .btn.sm { width: auto; padding: 5px 11px; font-size: 11.5px; }
+
+  .gate-hint {
+    display: flex; align-items: center; gap: 7px; margin-top: 9px;
+    font-size: 11.5px; color: var(--warn); background: var(--warn-tint);
+    padding: 7px 10px; border-radius: var(--r-sm); font-weight: 500;
+  }
+  .gate-hint.ready { color: var(--ok); background: var(--ok-tint); }
+
+  /* in-step progress */
+  .step-progress { margin-top: 11px; padding: 10px 11px; border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--panel-2); }
+  .step-progress .sp-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+  .step-progress .sp-phase { font-size: 11.5px; font-weight: 600; color: var(--ink); }
+  .step-progress .sp-count { font-size: 11px; font-family: var(--mono); color: var(--ink-2); }
+  .step-progress .sp-track { height: 6px; background: var(--line-2); border-radius: 4px; overflow: hidden; }
+  .step-progress .sp-fill { height: 100%; background: var(--brand); border-radius: 4px; transition: width .4s ease; }
+  .step-progress .sp-eta { font-size: 10.5px; color: var(--ink-3); margin-top: 5px; font-family: var(--mono); }
+
+  /* search preview list (in step) */
+  .search-summary { margin-top: 12px; border: 1px solid var(--line); border-radius: var(--r-sm); overflow: hidden; }
+  .search-summary .ss-head { padding: 9px 11px; background: var(--ok-tint); color: var(--ok); font-size: 12px; font-weight: 650; display: flex; align-items: center; gap: 7px; }
+  .search-summary .ss-sub { font-weight: 500; color: var(--ink-2); margin-left: auto; font-family: var(--mono); font-size: 11px; }
+
+  /* ── Output column ── */
+  .output-col { display: flex; flex-direction: column; overflow: hidden; background: var(--bg); }
+  .tabbar { display: flex; align-items: center; gap: 2px; padding: 0 14px; background: var(--panel); border-bottom: 1px solid var(--line); }
+  .tab {
+    padding: 13px 14px 12px; font-size: 12.5px; font-weight: 600; color: var(--ink-3);
+    cursor: pointer; border-bottom: 2px solid transparent; transition: all .12s; display: flex; align-items: center; gap: 7px;
+  }
+  .tab:hover { color: var(--ink); }
+  .tab.active { color: var(--brand-ink); border-bottom-color: var(--brand); }
+  .tab .cnt { font-size: 10.5px; background: var(--line-2); color: var(--ink-2); border-radius: 9px; padding: 1px 7px; font-family: var(--mono); font-weight: 600; }
+  .tab.active .cnt { background: var(--brand-tint); color: var(--brand-ink); }
+  .tab-tools { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+  .tab-content { flex: 1; overflow-y: auto; padding: 18px; }
+
+  /* log (engine room) */
+  .log-shell { background: var(--dark); border-radius: var(--r); border: 1px solid var(--dark-line); overflow: hidden; height: 100%; display: flex; flex-direction: column; }
+  .log-shell .log-bar { padding: 8px 13px; border-bottom: 1px solid var(--dark-line); display: flex; align-items: center; gap: 8px; }
+  .log-shell .log-bar .dot { width: 9px; height: 9px; border-radius: 50%; }
+  .log-shell .log-bar .lbl { color: #9aa1b5; font-size: 11px; font-weight: 600; font-family: var(--mono); letter-spacing: .3px; }
+  .log-body { flex: 1; overflow-y: auto; padding: 12px 14px; font-family: var(--mono); font-size: 12px; line-height: 1.7; }
+  .log-body::-webkit-scrollbar-thumb { background: #333a4f; }
+  .log-line { white-space: pre-wrap; word-break: break-word; display: flex; gap: 10px; }
+  .log-line .lt { color: #5a627a; flex-shrink: 0; user-select: none; }
+  .log-line .lm { flex: 1; }
+  .ll-info .lm { color: var(--ink-on-dark); }
+  .ll-success .lm { color: #5fd996; }
+  .ll-warn .lm { color: #f0c548; }
+  .ll-error .lm { color: #f78b85; }
+  .ll-log .lm { color: #707892; font-size: 11px; }
+
+  /* results */
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 8px; }
+  .stat-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 15px; box-shadow: var(--shadow); }
+  .stat-card .sl { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .5px; font-weight: 600; }
+  .stat-card .sv { font-size: 27px; font-weight: 700; color: var(--ink); margin-top: 5px; letter-spacing: -.5px; line-height: 1.1; }
+  .stat-card .sv.brand { color: var(--brand-ink); }
+  .stat-card .sd { font-size: 11.5px; color: var(--ink-3); margin-top: 3px; }
+  .stat-card .spark { display: flex; gap: 4px; align-items: flex-end; margin-top: 8px; height: 22px; }
+  .stat-card .spark > div { flex: 1; background: var(--brand-tint); border-radius: 2px 2px 0 0; min-height: 2px; }
+
+  .panel-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); margin-top: 16px; overflow: hidden; }
+  .panel-card .pc-head { padding: 13px 16px; border-bottom: 1px solid var(--line-2); display: flex; align-items: center; gap: 9px; }
+  .panel-card .pc-head h3 { font-size: 13.5px; font-weight: 650; }
+  .panel-card .pc-head .pc-note { font-size: 11.5px; color: var(--ink-3); margin-left: auto; }
+  .panel-card .pc-body { padding: 14px 16px; }
+
+  .bars { display: flex; flex-direction: column; gap: 7px; }
+  .bar-row { display: flex; align-items: center; gap: 10px; font-size: 12.5px; }
+  .bar-label { width: 180px; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 0; text-transform: capitalize; }
+  .bar-track { flex: 1; height: 20px; background: var(--line-2); border-radius: 5px; overflow: hidden; position: relative; }
+  .bar-fill { height: 100%; border-radius: 5px; transition: width .6s cubic-bezier(.2,.7,.2,1); min-width: 2px; }
+  .bar-count { width: 38px; text-align: right; font-family: var(--mono); font-size: 12px; color: var(--ink); flex-shrink: 0; font-weight: 600; }
+
+  /* triad / co-occurrence */
+  .triad-wrap { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+  .venn { position: relative; width: 260px; height: 220px; flex-shrink: 0; }
+  .venn .circle { position: absolute; width: 150px; height: 150px; border-radius: 50%; mix-blend-mode: multiply; opacity: .55; }
+  .venn .lbl { position: absolute; font-size: 12px; font-weight: 700; }
+  .venn .cnt-bubble { position: absolute; font-family: var(--mono); font-weight: 700; font-size: 13px; transform: translate(-50%,-50%); color: var(--ink); }
+  .cooc-legend { display: flex; flex-direction: column; gap: 9px; flex: 1; min-width: 200px; }
+  .cooc-item { display: flex; align-items: center; gap: 10px; font-size: 12.5px; }
+  .cooc-item .sw { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+  .cooc-item .nm { color: var(--ink-2); }
+  .cooc-item .vv { margin-left: auto; font-family: var(--mono); font-weight: 700; color: var(--ink); }
+  .cooc-item .vv small { color: var(--ink-3); font-weight: 500; }
+
+  /* files */
+  .files-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+  .file-list { display: flex; flex-direction: column; gap: 7px; }
+  .file-item { display: flex; align-items: center; gap: 12px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 10px 13px; box-shadow: var(--shadow); }
+  .file-item .ficon { width: 30px; height: 30px; border-radius: 7px; background: var(--brand-tint); color: var(--brand-ink); display: grid; place-items: center; font-size: 10px; font-weight: 700; font-family: var(--mono); flex-shrink: 0; }
+  .file-item .fname { font-family: var(--mono); font-size: 12.5px; color: var(--ink); flex: 1; }
+  .file-item .fsize { color: var(--ink-3); font-family: var(--mono); font-size: 11.5px; }
+  .file-item .fdl { color: var(--brand); text-decoration: none; font-weight: 650; font-size: 12px; padding: 5px 11px; border-radius: 6px; border: 1px solid var(--line); transition: all .12s; }
+  .file-item .fdl:hover { background: var(--brand-tint); border-color: var(--brand); }
+  a.dl-all { display: inline-flex; align-items: center; gap: 7px; padding: 9px 15px; border-radius: var(--r-sm); background: var(--brand); color: #fff; text-decoration: none; font-weight: 650; font-size: 13px; box-shadow: 0 1px 2px rgba(75,87,212,.3); }
+  a.dl-all:hover { background: var(--brand-ink); }
+
+  /* search results tab */
+  .sr-toolbar { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+  .sr-toolbar .grow { flex: 1; }
+  .sel-pill { font-size: 12px; color: var(--ink-2); font-weight: 600; }
+  .sr-row { display: flex; align-items: flex-start; gap: 12px; padding: 11px 13px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--r-sm); margin-bottom: 7px; box-shadow: var(--shadow); }
+  .sr-row.excluded { opacity: .5; }
+  .sr-row .sr-cb { margin-top: 2px; }
+  .sr-row .sr-main { flex: 1; min-width: 0; }
+  .sr-row .sr-title { font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1.4; }
+  .sr-row .sr-meta { font-size: 11.5px; color: var(--ink-3); margin-top: 3px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .sr-row .sr-meta .pmcid { font-family: var(--mono); color: var(--brand-ink); font-weight: 600; }
+  .sr-row a.sr-link { font-size: 11.5px; color: var(--brand); text-decoration: none; font-weight: 600; flex-shrink: 0; }
+  .sr-row a.sr-link:hover { text-decoration: underline; }
+
+  /* review */
+  .review-grid { display: grid; grid-template-columns: 260px 1fr; gap: 16px; }
+  .art-list { display: flex; flex-direction: column; gap: 4px; max-height: calc(100vh - 230px); overflow-y: auto; padding-right: 4px; }
+  .art-item { padding: 9px 11px; border: 1px solid var(--line); border-radius: var(--r-sm); cursor: pointer; background: var(--panel); transition: all .12s; }
+  .art-item:hover { border-color: #d3d7e3; }
+  .art-item.active { border-color: var(--brand); background: var(--brand-tint-2); }
+  .art-item .ai-id { font-family: var(--mono); font-weight: 650; font-size: 12px; }
+  .art-item .ai-meta { font-size: 11px; color: var(--ink-3); margin-top: 2px; display: flex; gap: 9px; }
+  .art-item .ai-llm { color: var(--brand-ink); font-weight: 600; }
+  .field-row { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--line-2); font-size: 12.5px; align-items: flex-start; }
+  .field-row .fr-name { width: 190px; flex-shrink: 0; font-family: var(--mono); font-size: 11.5px; color: var(--ink-2); }
+  .field-row .fr-name.meta { color: var(--brand-ink); }
+  .field-row .fr-val { flex: 1; word-break: break-word; }
+  .sec-label { font-size: 10.5px; font-weight: 700; color: var(--ink-3); text-transform: uppercase; letter-spacing: .6px; margin: 14px 0 4px; }
+  .flag-btn { border: 1px solid var(--line); background: var(--panel); color: var(--ink-2); border-radius: 5px; padding: 2px 8px; font-size: 10.5px; font-weight: 600; cursor: pointer; flex-shrink: 0; }
+  .flag-btn:hover { background: var(--warn-tint); border-color: var(--warn); color: var(--warn); }
+  .corr-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 10px 12px; margin-bottom: 7px; font-size: 12px; display: flex; justify-content: space-between; gap: 10px; box-shadow: var(--shadow); }
+  .corr-card .cc-tag { font-family: var(--mono); font-size: 10.5px; font-weight: 700; color: var(--brand-ink); background: var(--brand-tint); padding: 1px 7px; border-radius: 9px; }
+  .corr-form { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 15px; margin-bottom: 16px; box-shadow: var(--shadow); }
+  .corr-form .cf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+
+  .empty { text-align: center; color: var(--ink-3); padding: 70px 24px; }
+  .empty .ei { width: 46px; height: 46px; border-radius: 13px; background: var(--panel); border: 1px solid var(--line); display: grid; place-items: center; margin: 0 auto 14px; font-size: 22px; box-shadow: var(--shadow); }
+  .empty .et { font-size: 14px; font-weight: 600; color: var(--ink-2); }
+  .empty .es { font-size: 12.5px; margin-top: 4px; max-width: 320px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+
+  .demo-banner { display: flex; align-items: center; gap: 8px; background: var(--warn-tint); color: var(--warn); font-size: 11.5px; font-weight: 600; padding: 6px 14px; border-bottom: 1px solid #f0dcb8; }
+  .demo-banner .x { margin-left: auto; cursor: pointer; border: none; background: transparent; color: inherit; font-weight: 700; font-size: 13px; }
 </style>
 </head>
 <body>
 <div id="root"></div>
-<script type="text/babel">
-const { useState, useEffect, useRef, useCallback } = React;
+<script type="text/babel" data-presets="react">
+const { useState, useEffect, useRef, useCallback, useMemo } = React;
+
+const PUB_TYPE_OPTIONS = [
+  { id: 'case_reports', label: 'Case reports' },
+  { id: 'review', label: 'Reviews' },
+  { id: 'systematic_review', label: 'Systematic reviews' },
+  { id: 'clinical_trial', label: 'Clinical trials' },
+  { id: 'meta_analysis', label: 'Meta-analyses' },
+  { id: 'observational', label: 'Observational studies' },
+  { id: 'comparative_study', label: 'Comparative studies' },
+];
+
+const PRESETS = [
+  { label: 'EDS / POTS / MCAS triad', diseases: ['Ehlers-Danlos syndrome', 'postural orthostatic tachycardia syndrome', 'mast cell activation syndrome'] },
+  { label: 'Dysautonomia spectrum', diseases: ['dysautonomia', 'orthostatic intolerance', 'vasovagal syncope'] },
+  { label: 'Hypermobility', diseases: ['hypermobility spectrum disorder', 'joint hypermobility syndrome', 'hypermobile Ehlers-Danlos syndrome'] },
+];
+
+const TRIAD_COLORS = ['var(--t1)', 'var(--t2)', 'var(--t3)', 'var(--t4)', 'var(--t5)'];
+
+const fmtSize = (b) => b == null ? '' : b < 1024 ? b + ' B' : b < 1048576 ? (b/1024).toFixed(1) + ' KB' : (b/1048576).toFixed(1) + ' MB';
+const fileExt = (n) => { const p = (n||'').split('.'); return (p.length > 1 ? p.pop() : '·').toUpperCase().slice(0,4); };
+
+// ── API helper. On any failure the backend is treated as unreachable and we
+// surface that explicitly — the UI NEVER fabricates data to fill the gap. ──
+let BACKEND_DOWN = { on: false };
+async function api(url, opts) {
+  try {
+    const r = await fetch(url, opts);
+    if (!r.ok) throw new Error('http ' + r.status);
+    const ct = r.headers.get('content-type') || '';
+    BACKEND_DOWN.on = false;
+    return ct.includes('json') ? await r.json() : await r.text();
+  } catch (e) {
+    BACKEND_DOWN.on = true;
+    return null;
+  }
+}
+
+// ── Run history (localStorage) ──
+const RUNS_KEY = 'phenotype_runs_v1';
+const loadRuns = () => { try { return JSON.parse(localStorage.getItem(RUNS_KEY)) || []; } catch { return []; } };
+const saveRuns = (runs) => { try { localStorage.setItem(RUNS_KEY, JSON.stringify(runs.slice(0, 40))); } catch {} };
 
 function App() {
+  // workflow / pipeline
   const [status, setStatus] = useState('idle');
   const [progress, setProgress] = useState('');
   const [logs, setLogs] = useState([]);
-  const [activeTab, setActiveTab] = useState('log');
+  const [activeStep, setActiveStep] = useState(1);
+  const [activeTab, setActiveTab] = useState('results');
+  const [disconnected, setDisconnected] = useState(false);   // backend not reachable
 
-  // Form state
-  const [diseases, setDiseases] = useState('');
-  const [comorbidities, setComorbidities] = useState('');
+  // inputs
+  const [diseases, setDiseases] = useState([]);
+  const [comorbidities, setComorbidities] = useState([]);
+  const [searchTerms, setSearchTerms] = useState([]);   // MONDO-resolved synonyms from the backend
   const [pmcQuery, setPmcQuery] = useState('');
+  const [advancedQuery, setAdvancedQuery] = useState(false);
+  const [pubTypes, setPubTypes] = useState({ case_reports: true });
   const [maxArticles, setMaxArticles] = useState(50);
   const [maxDownload, setMaxDownload] = useState(50);
 
-  // Publication-type filter (PMC). Case reports ticked by default since the
-  // extraction pipeline targets individual-patient case reports.
-  const PUB_TYPE_OPTIONS = [
-    { id: 'case_reports', label: 'Case reports' },
-    { id: 'review', label: 'Reviews' },
-    { id: 'systematic_review', label: 'Systematic reviews' },
-    { id: 'clinical_trial', label: 'Clinical trials' },
-    { id: 'meta_analysis', label: 'Meta-analyses' },
-    { id: 'observational', label: 'Observational studies' },
-    { id: 'comparative_study', label: 'Comparative studies' },
-  ];
-  const [pubTypes, setPubTypes] = useState({ case_reports: true });
-  const togglePubType = (id) =>
-    setPubTypes(prev => ({ ...prev, [id]: !prev[id] }));
-
-  // LLM enhancement state
+  // llm
   const [enableLLM, setEnableLLM] = useState(false);
   const [llmProvider, setLlmProvider] = useState('anthropic');
   const [llmModel, setLlmModel] = useState('');
   const [llmApiKey, setLlmApiKey] = useState('');
+  const [validateOntology, setValidateOntology] = useState(true);   // RxNorm/Mondo precision filter
 
-  // Pipeline state
+  // pipeline outputs
   const [configReady, setConfigReady] = useState(false);
   const [pmcResults, setPmcResults] = useState(null);
+  const [excluded, setExcluded] = useState({});      // pmcid -> true means excluded
   const [articlesCount, setArticlesCount] = useState(0);
   const [results, setResults] = useState(null);
   const [outputFiles, setOutputFiles] = useState([]);
   const [corrections, setCorrections] = useState([]);
 
+  // progress meter (parsed from logs)
+  const [meter, setMeter] = useState({ phase: '', cur: 0, total: 0, eta: null });
+
+  // runs
+  const [runs, setRuns] = useState(loadRuns);
+  const [activeRunId, setActiveRunId] = useState(null);
+
   const logEndRef = useRef(null);
-  const eventSourceRef = useRef(null);
-
-  // SSE connection
-  useEffect(() => {
-    const es = new EventSource('/api/stream-logs');
-    es.onmessage = (event) => {
-      try {
-        const msg = JSON.parse(event.data);
-        setLogs(prev => [...prev, msg]);
-      } catch (e) {}
-    };
-    eventSourceRef.current = es;
-    return () => es.close();
-  }, []);
-
-  // Auto-scroll log
-  useEffect(() => {
-    if (logEndRef.current && activeTab === 'log') {
-      logEndRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [logs, activeTab]);
-
-  // Poll status
-  useEffect(() => {
-    const interval = setInterval(async () => {
-      try {
-        const r = await fetch('/api/status');
-        const data = await r.json();
-        setStatus(data.status);
-        setProgress(data.progress);
-        setConfigReady(data.config_ready);
-        setArticlesCount(data.articles_count);
-      } catch (e) {}
-    }, 1500);
-    return () => clearInterval(interval);
-  }, []);
-
   const isRunning = status === 'running';
 
-  // Actions
+  // SSE log stream + live progress parsing
+  useEffect(() => {
+    let es;
+    try {
+      es = new EventSource('/api/stream-logs');
+      es.onmessage = (ev) => {
+        try {
+          const msg = JSON.parse(ev.data);
+          setLogs(prev => [...prev, msg]);
+          parseProgress(msg.message);
+        } catch {}
+      };
+      es.onerror = () => {};   // status poll is authoritative for connection state
+    } catch {}
+    return () => es && es.close();
+  }, []);
+
+  const parseProgress = (m) => {
+    if (!m) return;
+    let phase = null;
+    if (/Searching P(MC|ubMed)/i.test(m)) phase = 'Searching PubMed Central';
+    else if (/Downloading \d+ articles/i.test(m)) phase = 'Downloading full text';
+    else if (/Running extraction/i.test(m)) phase = 'Extracting phenotypes';
+    else if (/Resolving .*MONDO/i.test(m)) phase = 'Resolving ontology';
+    else if (/Building dataset/i.test(m)) phase = 'Building datasets';
+    const pm = m.match(/Progress:\s*(\d+)\s*\/\s*(\d+)/);
+    const em = m.match(/ETA\s*~?\s*(\d+)\s*s/);
+    setMeter(prev => ({
+      phase: phase || prev.phase,
+      cur: pm ? parseInt(pm[1]) : (phase ? 0 : prev.cur),
+      total: pm ? parseInt(pm[2]) : (phase ? 0 : prev.total),
+      eta: em ? parseInt(em[1]) : (pm ? prev.eta : null),
+    }));
+  };
+
+  // status polling — also the single source of truth for whether the backend
+  // is reachable. A failed poll flips to the disconnected state; a successful
+  // one clears it. No data is ever invented when disconnected.
+  useEffect(() => {
+    const tick = async () => {
+      const d = await api('/api/status');
+      if (!d) { setDisconnected(true); return; }
+      setDisconnected(false);
+      setStatus(s => d.status || s);
+      setProgress(d.progress || '');
+      setConfigReady(!!d.config_ready);
+      setArticlesCount(d.articles_count || 0);
+    };
+    tick();
+    const iv = setInterval(tick, 1500);
+    return () => clearInterval(iv);
+  }, []);
+
+  useEffect(() => { logEndRef.current && logEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' }); }, [logs]);
+
+  // Rehydrate from the backend on load so a page refresh (or reopening the app
+  // mid-workflow) restores the search results, results and output files instead
+  // of showing empty tabs while the server still holds the data.
+  useEffect(() => {
+    (async () => {
+      const d = await api('/api/pmc-results');
+      if (d && d.total > 0) setPmcResults(d);
+      const rr = await api('/api/results');
+      if (rr && rr.count > 0) {
+        setResults(rr);
+        const fr = await api('/api/output-files');
+        setOutputFiles((fr && fr.files) || []);
+      }
+    })();
+  }, []);
+
+  // auto-build the query from the conditions (unless the user took manual control).
+  // Prefer MONDO-resolved synonyms once the config is built (richer recall);
+  // fall back to the raw disease chips before then. Topic terms ONLY — the
+  // backend (build_pubmed_term) appends the publication-type and PMC
+  // open-access filters from the checkboxes, so baking them in here would
+  // double-filter the search.
+  useEffect(() => {
+    if (advancedQuery) return;
+    const terms = (searchTerms && searchTerms.length) ? searchTerms : diseases;
+    if (!terms.length) { setPmcQuery(''); return; }
+    const q = terms.map(d => `"${d}"`).join(' OR ');
+    setPmcQuery(`(${q})`);
+  }, [diseases, searchTerms, advancedQuery]);
+
+  // ── step gating ──
+  const stepDone = {
+    1: configReady,
+    2: !!(pmcResults && pmcResults.total > 0),
+    3: articlesCount > 0,
+    4: !!(results && results.count > 0),
+  };
+  const stepLocked = { 1: false, 2: !configReady, 3: !(pmcResults && pmcResults.total > 0), 4: !(articlesCount > 0) };
+
+  const goStep = (n) => { if (!stepLocked[n]) setActiveStep(n); };
+
+  // ── actions ──
   const generateConfig = async () => {
-    const diseaseList = diseases.split('\n').map(s => s.trim()).filter(Boolean);
-    const comorbList = comorbidities.split('\n').map(s => s.trim()).filter(Boolean);
-    if (!diseaseList.length) return;
-
-    setLogs([]);
-    setActiveTab('log');
-    await fetch('/api/generate-config', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ diseases: diseaseList, comorbidities: comorbList }),
+    if (!diseases.length) return;
+    setLogs([]); setSearchTerms([]); setMeter({ phase: 'Resolving ontology', cur: 0, total: 0, eta: null });
+    const r = await api('/api/generate-config', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ diseases, comorbidities }),
     });
+    if (!r) return;   // backend unreachable — disconnected banner will show
 
-    // Auto-generate PMC query: use raw names immediately, then upgrade with
-    // MONDO synonyms once the config finishes generating
-    if (!pmcQuery) {
-      const q = diseaseList.map(d => `"${d}"`).join(' OR ');
-      setPmcQuery(`(${q})`);
-    }
-    // Poll for config readiness and update query with synonyms
-    const pollForSynonyms = setInterval(async () => {
-      try {
-        const r = await fetch('/api/status');
-        const s = await r.json();
-        if (s.config_ready && s.search_terms && s.search_terms.length > 0) {
-          clearInterval(pollForSynonyms);
-          const q = s.search_terms.map(t => `"${t}"`).join(' OR ');
-          setPmcQuery(`(${q})`);
-        }
-        if (s.status === 'error') clearInterval(pollForSynonyms);
-      } catch(e) { clearInterval(pollForSynonyms); }
-    }, 2000);
+    // Poll for config readiness, then pull MONDO synonyms into the query and
+    // advance to step 2.
+    let tries = 0;
+    const poll = setInterval(async () => {
+      tries++;
+      const s = await api('/api/status');
+      if (s && s.config_ready) {
+        clearInterval(poll);
+        if (s.search_terms && s.search_terms.length) setSearchTerms(s.search_terms);
+        setConfigReady(true);
+        setActiveStep(2);
+      } else if (!s || s.status === 'error' || tries > 40) {
+        clearInterval(poll);
+      }
+    }, 1500);
   };
 
   const searchPMC = async () => {
     if (!pmcQuery.trim()) return;
-    setActiveTab('log');
-    const selectedPubTypes = Object.keys(pubTypes).filter(k => pubTypes[k]);
-    await fetch('/api/search-pmc', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query: pmcQuery, max_results: maxArticles, pub_types: selectedPubTypes }),
+    const sel = Object.keys(pubTypes).filter(k => pubTypes[k]);
+    setExcluded({});
+    setPmcResults(null);   // clear any prior search before the new one lands
+    const r = await api('/api/search-pmc', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query: pmcQuery, max_results: maxArticles, pub_types: sel }),
     });
-
-    // Poll for results
-    setTimeout(async () => {
-      const r = await fetch('/api/pmc-results');
-      const data = await r.json();
-      setPmcResults(data);
-    }, 3000);
+    if (!r) return;
+    // The search runs in the background (status='running'). Wait until it
+    // leaves 'running' before reading /api/pmc-results — reading mid-search
+    // could pick up an empty preview.
+    let tries = 0;
+    const poll = setInterval(async () => {
+      tries++;
+      const sd = await api('/api/status');
+      if (!sd) { clearInterval(poll); return; }
+      if (sd.status === 'running' && tries < 80) return;   // still searching
+      clearInterval(poll);
+      const d = await api('/api/pmc-results');
+      if (d) {
+        setPmcResults(d);
+        if (d.total > 0) { setActiveStep(3); setActiveTab('search'); }
+      }
+    }, 1500);
   };
 
   const downloadArticles = async () => {
-    setActiveTab('log');
-    await fetch(`/api/download-articles?max_articles=${maxDownload}`, { method: 'POST' });
+    setMeter({ phase: 'Downloading full text', cur: 0, total: includedCount(), eta: null });
+    const exclude = Object.keys(excluded).filter(k => excluded[k]);
+    await api(`/api/download-articles?max_articles=${maxDownload}`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ exclude }),
+    });
   };
 
   const runPipeline = async () => {
-    setActiveTab('log');
     setResults(null);
-    await fetch('/api/run-pipeline', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        enable_llm: enableLLM,
-        llm_provider: llmProvider,
-        llm_model: llmModel,
-        llm_api_key: llmApiKey,
-      }),
+    setMeter({ phase: 'Extracting phenotypes', cur: 0, total: articlesCount, eta: null });
+    const r = await api('/api/run-pipeline', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ enable_llm: enableLLM, llm_provider: llmProvider, llm_model: llmModel, llm_api_key: llmApiKey, validate_ontology: validateOntology }),
     });
-
-    // Poll for results when done
+    if (!r) return;
     const poll = setInterval(async () => {
-      try {
-        const sr = await fetch('/api/status');
-        const sd = await sr.json();
-        if (sd.status === 'done') {
-          clearInterval(poll);
-          const rr = await fetch('/api/results');
-          setResults(await rr.json());
-          const fr = await fetch('/api/output-files');
-          setOutputFiles((await fr.json()).files);
-          setActiveTab('results');
-        }
-      } catch (e) {}
+      const sd = await api('/api/status');
+      if (sd && sd.status === 'done') {
+        clearInterval(poll);
+        const rr = await api('/api/results'); setResults(rr);
+        const fr = await api('/api/output-files'); setOutputFiles((fr && fr.files) || []);
+        setActiveTab('results'); commitRun(rr);
+      } else if (!sd || sd.status === 'error') {
+        clearInterval(poll);
+      }
     }, 2000);
   };
 
-  const clearLogs = () => setLogs([]);
-
-  const loadCorrections = async () => {
-    try {
-      const r = await fetch('/api/corrections');
-      const data = await r.json();
-      setCorrections(data.corrections || []);
-    } catch (e) {}
+  const includedCount = () => {
+    const dl = (pmcResults && pmcResults.downloadable) || 0;
+    const ex = Object.keys(excluded).filter(k => excluded[k]).length;
+    const avail = Math.max(0, dl - ex);
+    return maxDownload === 0 ? avail : Math.min(maxDownload, avail);  // 0 = all retrieved
   };
 
-  const stepState = (step) => {
-    if (step === 1 && configReady) return 'done';
-    if (step === 2 && pmcResults?.total > 0) return 'done';
-    if (step === 3 && articlesCount > 0) return 'done';
-    if (step === 4 && results?.count > 0) return 'done';
-    return '';
+  // ── runs ──
+  const commitRun = async (res) => {
+    // Label the run from the backend's ACTUAL configured conditions (the disease
+    // the extraction config was built for), not the local chip state — which can
+    // be stale (e.g. after loading a previous run or editing the raw query).
+    const sd = await api('/api/status');
+    const names = (sd && sd.conditions && sd.conditions.length) ? sd.conditions
+                : (diseases.length ? diseases : []);
+    const run = {
+      id: 'run_' + Date.now(),
+      title: names.length ? names[0] + (names.length > 1 ? ` +${names.length - 1}` : '') : 'Untitled run',
+      diseases: names, ts: Date.now(),
+      corpus: articlesCount || (res && res.count) || 0,
+      extracted: (res && res.count) || 0,
+    };
+    setRuns(prev => { const next = [run, ...prev]; saveRuns(next); return next; });
+    setActiveRunId(run.id);
+  };
+  const newRun = () => {
+    setDiseases([]); setComorbidities([]); setPmcQuery(''); setAdvancedQuery(false);
+    setPubTypes({ case_reports: true }); setPmcResults(null); setExcluded({});
+    setResults(null); setOutputFiles([]); setConfigReady(false); setArticlesCount(0);
+    setLogs([]); setMeter({ phase: '', cur: 0, total: 0, eta: null });
+    setActiveStep(1); setActiveTab('results'); setActiveRunId(null); setStatus('idle');
+  };
+  const loadRun = (run) => {
+    setActiveRunId(run.id); setDiseases(run.diseases || []);
+  };
+  const deleteRun = (id, e) => { e.stopPropagation(); setRuns(prev => { const next = prev.filter(r => r.id !== id); saveRuns(next); return next; }); if (activeRunId === id) setActiveRunId(null); };
+
+  const loadCorrections = async () => {
+    const d = await api('/api/corrections');
+    setCorrections((d && d.corrections) || []);
+  };
+
+  const StepNode = ({ n }) => {
+    const cls = stepDone[n] ? 'done' : (activeStep === n ? 'active' : (stepLocked[n] ? 'locked' : ''));
+    return cls;
+  };
+  const llmBlocked = enableLLM && !llmApiKey;
+  const canRun = configReady && articlesCount > 0 && !llmBlocked;
+
+  const stepClass = (n) => {
+    if (stepDone[n] && activeStep !== n) return 'step done';
+    if (activeStep === n) return 'step active' + (stepDone[n] ? ' done' : '');
+    if (stepLocked[n]) return 'step locked';
+    return 'step';
   };
 
   return (
-    <div className="app-container">
-      <div className="header">
-        <h1>Case Report Phenotyping Pipeline</h1>
-        <span className="subtitle">Hybrid NLP extraction from PMC case reports</span>
-        <span className={`status-badge status-${status}`}>
-          {status === 'running' ? progress : status}
-        </span>
+    <div className="app">
+      {/* Topbar */}
+      <div className="topbar">
+        <div className="brand-mark"><span className="brand-dot"></span></div>
+        <div className="titles">
+          <h1>Phenotype Mining Console</h1>
+          <span className="sub">Literature phenotyping from PubMed Central case reports</span>
+        </div>
+        <div className="topbar-right">
+          {isRunning && (
+            <div className="global-progress">
+              <div className="gp-meta">
+                <span>{meter.phase || 'Working'}</span>
+                <span>{meter.total ? `${meter.cur}/${meter.total}` : ''}</span>
+              </div>
+              <div className="gp-track">
+                <div className={'gp-fill' + (meter.total ? '' : ' indet')} style={{ width: meter.total ? `${Math.min(100, meter.cur/meter.total*100)}%` : undefined }}></div>
+              </div>
+            </div>
+          )}
+          <span className={'status-pill sp-' + status}>
+            <span className="ico"></span>
+            {status === 'running' ? (progress || 'Running') : status === 'done' ? 'Complete' : status === 'error' ? 'Error' : 'Ready'}
+          </span>
+        </div>
       </div>
 
-      {/* Left: Controls */}
-      <div className="control-panel">
-
-        {/* Step 1: Config */}
-        <div className="panel-section">
-          <h3>
-            <span className={`step-number ${stepState(1)} ${isRunning && !configReady ? 'active' : ''}`}>1</span>
-            Disease Configuration
-          </h3>
-          <div className="input-group">
-            <label>Diseases (one per line)</label>
-            <textarea
-              value={diseases}
-              onChange={e => setDiseases(e.target.value)}
-              placeholder={"Ehlers-Danlos syndrome\npostural orthostatic tachycardia syndrome\nmast cell activation syndrome"}
-              rows={3}
-              disabled={isRunning}
-            />
-            <div className="hint">Auto-resolved via MONDO ontology with full synonym coverage</div>
-          </div>
-          <div className="input-group">
-            <label>Comorbidities to detect (optional, one per line)</label>
-            <textarea
-              value={comorbidities}
-              onChange={e => setComorbidities(e.target.value)}
-              placeholder={"Chiari malformation\ngastroparesis\nsmall fiber neuropathy"}
-              rows={2}
-              disabled={isRunning}
-            />
-          </div>
-          <button className="primary" onClick={generateConfig} disabled={isRunning || !diseases.trim()}>
-            Generate Config
-          </button>
+      {/* Runs rail */}
+      <div className="runs-rail">
+        <div className="rail-head">
+          <span className="lbl">Runs</span>
+          <button className="new-run-btn" onClick={newRun}>＋ New</button>
         </div>
+        <div className="runs-list">
+          {runs.length === 0 && <div className="rail-empty">No runs yet.<br/>Configure diseases and run the pipeline to save a run here.</div>}
+          {runs.map(run => (
+            <div key={run.id} className={'run-card' + (activeRunId === run.id ? ' active' : '')} onClick={() => loadRun(run)}>
+              <button className="rc-del" onClick={(e) => deleteRun(run.id, e)} title="Delete run">×</button>
+              <div className="rc-title">{run.title}</div>
+              <div className="rc-meta">{new Date(run.ts).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })} · {new Date(run.ts).toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' })}</div>
+              <div className="rc-stat"><span>📄 {run.corpus} corpus</span><span>✓ {run.extracted} extracted</span></div>
+            </div>
+          ))}
+        </div>
+      </div>
 
-        {/* Step 2: PMC Search */}
-        <div className="panel-section">
-          <h3>
-            <span className={`step-number ${stepState(2)}`}>2</span>
-            PMC Article Search
-          </h3>
-          <div className="input-group">
-            <label>Search query (topic)</label>
-            <textarea
-              value={pmcQuery}
-              onChange={e => setPmcQuery(e.target.value)}
-              placeholder='"Ehlers-Danlos syndrome" OR "POTS"'
-              rows={3}
-              disabled={isRunning}
-            />
-            <div className="hint">
-              Topic terms only. Searched in PubMed and restricted to PMC
-              open-access full text; paper-type filtering is applied below.
-            </div>
-          </div>
-          <div className="input-group">
-            <label>Filter by paper type</label>
-            <div className="checkbox-grid">
-              {PUB_TYPE_OPTIONS.map(opt => (
-                <label key={opt.id} className="checkbox-item">
-                  <input
-                    type="checkbox"
-                    checked={!!pubTypes[opt.id]}
-                    onChange={() => togglePubType(opt.id)}
-                    disabled={isRunning}
-                  />
-                  {opt.label}
-                </label>
-              ))}
-            </div>
-            <div className="hint">
-              Tick to include only those types (combined with OR). Leave all
-              unticked for every type. Note: extraction still processes case
-              reports only.
-            </div>
-          </div>
-          <div className="input-group">
-            <label>Max results</label>
-            <div className="slider-row">
-              <input type="range" min={10} max={1000} step={10} value={maxArticles}
-                onChange={e => setMaxArticles(parseInt(e.target.value))} disabled={isRunning} />
-              <span className="slider-val">{maxArticles}</span>
-            </div>
-          </div>
-          <button className="primary" onClick={searchPMC} disabled={isRunning || !pmcQuery.trim()}>
-            Search PMC
-          </button>
+      {/* Control column */}
+      <div className="control-col">
+        <div className="stepper">
 
-          {pmcResults && pmcResults.total > 0 && (
-            <div style={{ marginTop: 10 }}>
-              <div style={{ fontSize: 12, color: 'var(--green)', fontWeight: 600 }}>
-                {pmcResults.total.toLocaleString()} articles found ({pmcResults.downloadable} retrievable)
+          {/* Step 1 */}
+          <div className={stepClass(1)}>
+            <div className="rail-line"></div>
+            <div className="node">{stepDone[1] ? '✓' : '1'}</div>
+            <div className="step-card">
+              <div className="step-header" onClick={() => goStep(1)}>
+                <span className="st-title">Define conditions</span>
+                {stepDone[1] && activeStep !== 1 && <span className="st-sum">{diseases.length} disease{diseases.length!==1?'s':''}</span>}
+                <span className="chev">▸</span>
               </div>
-              <div className="pmc-preview">
-                {pmcResults.results.slice(0, 8).map((r, i) => (
-                  <div className="pmc-preview-item" key={i}>
-                    <span className="pmc-title">{r.pmcid}</span> {r.title?.substring(0, 80)}...
+              <div className={'step-body' + (activeStep === 1 ? '' : ' collapsed')}>
+                <div className="preset-row">
+                  {PRESETS.map(p => (
+                    <button key={p.label} className="preset" disabled={isRunning} onClick={() => { setDiseases(p.diseases); setAdvancedQuery(false); }}>{p.label}</button>
+                  ))}
+                </div>
+                <div className="field">
+                  <label className="field-label">Diseases of interest</label>
+                  <ChipInput values={diseases} onChange={setDiseases} placeholder="Type a disease, press Enter…" disabled={isRunning} kind="" />
+                  <div className="hint">Each is resolved through the MONDO ontology with full synonym coverage. Add as many as you like.</div>
+                </div>
+                <div className="field">
+                  <label className="field-label">Comorbidities to detect <span style={{ color: 'var(--ink-3)', fontWeight: 400 }}>(optional)</span></label>
+                  <ChipInput values={comorbidities} onChange={setComorbidities} placeholder="e.g. gastroparesis…" disabled={isRunning} kind="comorb" />
+                </div>
+                <button className="btn primary" onClick={generateConfig} disabled={isRunning || !diseases.length}>
+                  {stepDone[1] ? 'Regenerate config' : 'Generate config'}
+                </button>
+                {meter.phase === 'Resolving ontology' && isRunning && <ProgressMeter meter={meter} />}
+              </div>
+            </div>
+          </div>
+
+          {/* Step 2 */}
+          <div className={stepClass(2)}>
+            <div className="rail-line"></div>
+            <div className="node">{stepDone[2] ? '✓' : '2'}</div>
+            <div className="step-card">
+              <div className="step-header" onClick={() => goStep(2)}>
+                <span className="st-title">Search the literature</span>
+                {stepLocked[2] && <span className="st-sum">Locked</span>}
+                {stepDone[2] && activeStep !== 2 && <span className="st-sum">{pmcResults.total.toLocaleString()} found</span>}
+                <span className="chev">▸</span>
+              </div>
+              <div className={'step-body' + (activeStep === 2 ? '' : ' collapsed')}>
+                <div className="field">
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <label className="field-label" style={{ marginBottom: 0 }}>Query</label>
+                    <label className="cbx" style={{ fontSize: 11 }}><input type="checkbox" checked={advancedQuery} onChange={e => setAdvancedQuery(e.target.checked)} disabled={isRunning} /> Edit raw</label>
                   </div>
-                ))}
-                {pmcResults.results.length > 8 && (
-                  <div style={{ color: 'var(--text-dim)', padding: '4px 0', fontSize: 11 }}>
-                    ...and {pmcResults.downloadable - 8} more
+                  {advancedQuery ? (
+                    <textarea value={pmcQuery} onChange={e => setPmcQuery(e.target.value)} rows={4} disabled={isRunning} style={{ marginTop: 5 }} />
+                  ) : (
+                    <div style={{ marginTop: 5 }}>
+                      <div className="chip-input" style={{ cursor: 'default', flexWrap: 'wrap' }}>
+                        {diseases.length === 0 && <span style={{ color: 'var(--ink-3)', fontSize: 12 }}>Add diseases in step 1 to build a query</span>}
+                        {diseases.map((d,i) => <span key={i} className="chip"><span className="ct">{d}</span></span>)}
+                        {Object.keys(pubTypes).filter(k=>pubTypes[k]).map(k => <span key={k} className="chip comorb"><span className="ct">{PUB_TYPE_OPTIONS.find(o=>o.id===k)?.label}</span></span>)}
+                      </div>
+                      <div className="hint">Built automatically from your conditions + filters. Tick "Edit raw" to write a PubMed query by hand.</div>
+                    </div>
+                  )}
+                </div>
+                <div className="field">
+                  <label className="field-label">Restrict to publication types</label>
+                  <div className="checkbox-grid">
+                    {PUB_TYPE_OPTIONS.map(opt => (
+                      <label key={opt.id} className={'cbx' + (isRunning ? ' disabled' : '')}>
+                        <input type="checkbox" checked={!!pubTypes[opt.id]} disabled={isRunning} onChange={() => setPubTypes(p => ({ ...p, [opt.id]: !p[opt.id] }))} />
+                        {opt.label}
+                      </label>
+                    ))}
+                  </div>
+                  <div className="hint">None ticked = every type. Extraction still targets individual case reports.</div>
+                </div>
+                <div className="field">
+                  <label className="field-label">Max results to retrieve</label>
+                  <div className="slider-row">
+                    <input type="range" min={50} max={5000} step={50} value={Math.min(maxArticles || 50, 5000)} disabled={isRunning || maxArticles === 0} onChange={e => setMaxArticles(+e.target.value)} />
+                    <input type="number" className="count-input" min={0} value={maxArticles} disabled={isRunning || maxArticles === 0} onChange={e => setMaxArticles(Math.max(0, parseInt(e.target.value) || 0))} />
+                  </div>
+                  <label className="cbx" style={{ marginTop: 7 }}>
+                    <input type="checkbox" checked={maxArticles === 0} disabled={isRunning} onChange={e => setMaxArticles(e.target.checked ? 0 : 200)} />
+                    Retrieve every match
+                  </label>
+                  <div className="hint">Drag, type an exact number, or tick to pull <b>every</b> open-access match (it stops at the number actually found). Big corpora map &amp; download slowly — ~3 articles/sec under NCBI's rate limit.</div>
+                </div>
+                <button className="btn primary" onClick={searchPMC} disabled={isRunning || !pmcQuery.trim()}>Search PubMed Central</button>
+                {meter.phase === 'Searching PubMed Central' && isRunning && <ProgressMeter meter={meter} />}
+                {pmcResults && pmcResults.total > 0 && (
+                  <div className="search-summary">
+                    <div className="ss-head">✓ {pmcResults.total.toLocaleString()} articles found <span className="ss-sub">{pmcResults.downloadable} retrievable · {pmcResults.results.length} previewed</span></div>
+                  </div>
+                )}
+                {pmcResults && pmcResults.total > 0 && <div className="hint" style={{ marginTop: 8 }}>Review and de-select articles in the <b>Search results</b> tab →</div>}
+              </div>
+            </div>
+          </div>
+
+          {/* Step 3 */}
+          <div className={stepClass(3)}>
+            <div className="rail-line"></div>
+            <div className="node">{stepDone[3] ? '✓' : '3'}</div>
+            <div className="step-card">
+              <div className="step-header" onClick={() => goStep(3)}>
+                <span className="st-title">Fetch full text</span>
+                {stepLocked[3] && <span className="st-sum">Locked</span>}
+                {stepDone[3] && activeStep !== 3 && <span className="st-sum">{articlesCount} downloaded</span>}
+                <span className="chev">▸</span>
+              </div>
+              <div className={'step-body' + (activeStep === 3 ? '' : ' collapsed')}>
+                {pmcResults && <div className="hint" style={{ marginTop: 0, marginBottom: 11 }}><b style={{ color: 'var(--ink)' }}>{includedCount()}</b> articles will be fetched ({pmcResults.results.filter(r=>excluded[r.pmcid]).length} excluded in review).</div>}
+                <div className="field">
+                  <label className="field-label">Cap on articles to download</label>
+                  <div className="slider-row">
+                    <input type="range" min={5} max={2000} step={5} value={Math.min(maxDownload || 5, 2000)} disabled={isRunning || maxDownload === 0} onChange={e => setMaxDownload(+e.target.value)} />
+                    <input type="number" className="count-input" min={0} value={maxDownload} disabled={isRunning || maxDownload === 0} onChange={e => setMaxDownload(Math.max(0, parseInt(e.target.value) || 0))} />
+                  </div>
+                  <label className="cbx" style={{ marginTop: 7 }}>
+                    <input type="checkbox" checked={maxDownload === 0} disabled={isRunning} onChange={e => setMaxDownload(e.target.checked ? 0 : 50)} />
+                    Download all retrieved
+                  </label>
+                  <div className="hint">Full-text XML is pulled from the PMC open-access service. Tick to fetch every retrieved (non-excluded) article.</div>
+                </div>
+                <button className="btn primary" onClick={downloadArticles} disabled={isRunning || !(pmcResults && pmcResults.downloadable)}>Download full text</button>
+                {meter.phase === 'Downloading full text' && isRunning && <ProgressMeter meter={meter} />}
+                {articlesCount > 0 && <div className="gate-hint ready" style={{ marginTop: 9 }}>✓ {articlesCount} articles ready to extract</div>}
+              </div>
+            </div>
+          </div>
+
+          {/* Step 4 */}
+          <div className={stepClass(4)}>
+            <div className="node">{stepDone[4] ? '✓' : '4'}</div>
+            <div className="step-card">
+              <div className="step-header" onClick={() => goStep(4)}>
+                <span className="st-title">Extract phenotypes</span>
+                {stepLocked[4] && <span className="st-sum">Locked</span>}
+                {stepDone[4] && activeStep !== 4 && <span className="st-sum">{results.count} extracted</span>}
+                <span className="chev">▸</span>
+              </div>
+              <div className={'step-body' + (activeStep === 4 ? '' : ' collapsed')}>
+                <div className="switch-row" style={{ marginBottom: 12 }}>
+                  <label className="switch"><input type="checkbox" checked={validateOntology} disabled={isRunning} onChange={e => setValidateOntology(e.target.checked)} /><span className="track"></span></label>
+                  <div>
+                    <div className="sw-label">Ontology validation <span style={{ color: 'var(--ok)', fontWeight: 600 }}>· max precision</span></div>
+                    <div className="sw-sub">Keep only discovered drugs/comorbidities that resolve in RxNorm / Mondo</div>
+                  </div>
+                </div>
+                <div className="switch-row" style={{ marginBottom: 12 }}>
+                  <label className="switch"><input type="checkbox" checked={enableLLM} disabled={isRunning} onChange={e => setEnableLLM(e.target.checked)} /><span className="track"></span></label>
+                  <div>
+                    <div className="sw-label">LLM enhancement</div>
+                    <div className="sw-sub">Hybrid rule-based + LLM for temporal, family history & treatment chains</div>
+                  </div>
+                </div>
+                {enableLLM && (
+                  <div style={{ background: 'var(--panel-2)', border: '1px solid var(--line)', borderRadius: 8, padding: 12, marginBottom: 12 }}>
+                    <div className="field" style={{ marginBottom: 10 }}>
+                      <label className="field-label">Provider</label>
+                      <select value={llmProvider} disabled={isRunning} onChange={e => setLlmProvider(e.target.value)}>
+                        <option value="anthropic">Anthropic (Claude)</option>
+                        <option value="openai">OpenAI (GPT-4o)</option>
+                      </select>
+                    </div>
+                    <div className="field" style={{ marginBottom: 10 }}>
+                      <label className="field-label">API key</label>
+                      <input type="password" value={llmApiKey} disabled={isRunning} onChange={e => setLlmApiKey(e.target.value)} placeholder={llmProvider === 'anthropic' ? 'sk-ant-…' : 'sk-…'} />
+                    </div>
+                    <div className="field" style={{ marginBottom: 0 }}>
+                      <label className="field-label">Model <span style={{ color: 'var(--ink-3)', fontWeight: 400 }}>(blank = default)</span></label>
+                      <input type="text" value={llmModel} disabled={isRunning} onChange={e => setLlmModel(e.target.value)} placeholder={llmProvider === 'anthropic' ? 'claude-sonnet-4-20250514' : 'gpt-4o'} />
+                    </div>
+                  </div>
+                )}
+                <button className="btn primary" onClick={runPipeline} disabled={isRunning || !canRun}>
+                  {enableLLM ? '▸ Run hybrid pipeline' : '▸ Run pipeline (rule-based)'}
+                </button>
+                {meter.phase === 'Extracting phenotypes' && isRunning && <ProgressMeter meter={meter} />}
+                {!isRunning && (
+                  <div className={'gate-hint' + (canRun ? ' ready' : '')} style={{ marginTop: 9 }}>
+                    {!configReady ? '◷ Generate a config first'
+                      : articlesCount === 0 ? '◷ Download articles first'
+                      : llmBlocked ? '◷ Enter an API key to use LLM enhancement'
+                      : `✓ Ready: ${articlesCount} articles${enableLLM ? ', hybrid mode' : ', rule-based'}`}
                   </div>
                 )}
               </div>
             </div>
-          )}
-        </div>
-
-        {/* Step 3: Download */}
-        <div className="panel-section">
-          <h3>
-            <span className={`step-number ${stepState(3)}`}>3</span>
-            Download Articles
-          </h3>
-          <div className="input-group">
-            <label>Articles to download</label>
-            <div className="slider-row">
-              <input type="range" min={5} max={500} step={5} value={maxDownload}
-                onChange={e => setMaxDownload(parseInt(e.target.value))} disabled={isRunning} />
-              <span className="slider-val">{maxDownload}</span>
-            </div>
-          </div>
-          <button className="primary" onClick={downloadArticles}
-            disabled={isRunning || !pmcResults?.downloadable}>
-            Download Full Text
-          </button>
-          {articlesCount > 0 && (
-            <div style={{ marginTop: 6, fontSize: 12, color: 'var(--green)' }}>
-              {articlesCount} articles ready
-            </div>
-          )}
-        </div>
-
-        {/* Step 4: Extract */}
-        <div className="panel-section">
-          <h3>
-            <span className={`step-number ${stepState(4)}`}>4</span>
-            Run Extraction
-          </h3>
-
-          {/* LLM toggle */}
-          <div className="input-group" style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-            <input type="checkbox" id="llm-toggle" checked={enableLLM}
-              onChange={e => setEnableLLM(e.target.checked)} disabled={isRunning}
-              style={{ width: 'auto', margin: 0 }} />
-            <label htmlFor="llm-toggle" style={{ margin: 0, fontWeight: 600, color: enableLLM ? 'var(--accent)' : 'var(--text-dim)' }}>
-              LLM Enhancement (SPELL-style hybrid)
-            </label>
           </div>
 
-          {enableLLM && (
-            <div style={{ background: 'var(--bg)', borderRadius: 6, padding: 10, marginBottom: 10, border: '1px solid var(--border)' }}>
-              <div className="input-group">
-                <label>Provider</label>
-                <select value={llmProvider} onChange={e => setLlmProvider(e.target.value)}
-                  disabled={isRunning}
-                  style={{ width: '100%', background: 'var(--surface2)', border: '1px solid var(--border)',
-                    borderRadius: 6, color: 'var(--text)', padding: '6px 8px', fontSize: 13 }}>
-                  <option value="anthropic">Anthropic (Claude)</option>
-                  <option value="openai">OpenAI (GPT-4o)</option>
-                </select>
-              </div>
-              <div className="input-group">
-                <label>API Key</label>
-                <input type="password" value={llmApiKey}
-                  onChange={e => setLlmApiKey(e.target.value)}
-                  placeholder={llmProvider === 'anthropic' ? 'sk-ant-...' : 'sk-...'}
-                  disabled={isRunning} />
-              </div>
-              <div className="input-group">
-                <label>Model (blank = default)</label>
-                <input value={llmModel} onChange={e => setLlmModel(e.target.value)}
-                  placeholder={llmProvider === 'anthropic' ? 'claude-sonnet-4-20250514' : 'gpt-4o'}
-                  disabled={isRunning} />
-              </div>
-              <div className="hint">
-                Enhances: temporal reasoning, family history, treatment chains.
-                Each extraction tagged with method source for comparison.
-              </div>
-            </div>
-          )}
-
-          <button className="primary" onClick={runPipeline}
-            disabled={isRunning || !configReady || articlesCount === 0 || (enableLLM && !llmApiKey)}>
-            {enableLLM ? 'Run Hybrid Pipeline' : 'Run Pipeline (Rule-based)'}
-          </button>
-          <div className="hint" style={{ marginTop: 6 }}>
-            {!configReady && 'Generate config first'}
-            {configReady && articlesCount === 0 && 'Download articles first'}
-            {configReady && articlesCount > 0 && !enableLLM && `Ready to extract from ${articlesCount} articles (rule-based)`}
-            {configReady && articlesCount > 0 && enableLLM && !llmApiKey && 'Enter API key to enable LLM enhancement'}
-            {configReady && articlesCount > 0 && enableLLM && llmApiKey && `Ready: ${articlesCount} articles, hybrid mode (3 API calls/article)`}
-          </div>
         </div>
-
       </div>
 
-      {/* Right: Log + Results */}
-      <div className="main-panel">
-        <div className="tab-bar">
-          <div className={`tab ${activeTab === 'log' ? 'active' : ''}`} onClick={() => setActiveTab('log')}>
-            Live Log ({logs.length})
-          </div>
-          <div className={`tab ${activeTab === 'results' ? 'active' : ''}`} onClick={() => setActiveTab('results')}>
-            Results {results?.count > 0 ? `(${results.count})` : ''}
-          </div>
-          <div className={`tab ${activeTab === 'files' ? 'active' : ''}`} onClick={() => setActiveTab('files')}>
-            Output Files {outputFiles.length > 0 ? `(${outputFiles.length})` : ''}
-          </div>
-          <div className={`tab ${activeTab === 'review' ? 'active' : ''}`} onClick={() => { setActiveTab('review'); loadCorrections(); }}>
-            Review {corrections.length > 0 ? `(${corrections.length})` : ''}
-          </div>
-          <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
-            <button className="secondary" onClick={clearLogs}
-              style={{ width: 'auto', padding: '4px 12px', fontSize: 11 }}>
-              Clear Log
-            </button>
+      {/* Output column */}
+      <div className="output-col">
+        {disconnected && <div className="demo-banner">⚠ Backend not reachable — no data is shown. Start <code style={{fontFamily:'var(--mono)'}}>web_app.py</code> and open the app via that server (e.g. http://localhost:8010).</div>}
+        <div className="tabbar">
+          {[
+            ['results', 'Results', results && results.count ? results.count : null],
+            ['search', 'Search results', pmcResults && pmcResults.results ? pmcResults.results.length : null],
+            ['log', 'Live log', logs.length || null],
+            ['files', 'Output files', outputFiles.length || null],
+            ['review', 'Review', corrections.length || null],
+          ].map(([id, label, cnt]) => (
+            <div key={id} className={'tab' + (activeTab === id ? ' active' : '')} onClick={() => { setActiveTab(id); if (id === 'review') loadCorrections(); }}>
+              {label}{cnt ? <span className="cnt">{cnt}</span> : null}
+            </div>
+          ))}
+          <div className="tab-tools">
+            {activeTab === 'log' && <button className="btn ghost sm" onClick={() => setLogs([])}>Clear log</button>}
           </div>
         </div>
-
         <div className="tab-content">
-          {activeTab === 'log' && <LogView logs={logs} logEndRef={logEndRef} />}
           {activeTab === 'results' && <ResultsView results={results} />}
-          {activeTab === 'files' && <FilesView files={outputFiles} />}
-          {activeTab === 'review' && <ReviewView corrections={corrections} onCorrectionsChange={loadCorrections} />}
+          {activeTab === 'search' && <SearchView pmcResults={pmcResults} excluded={excluded} setExcluded={setExcluded} />}
+          {activeTab === 'log' && <LogView logs={logs} logEndRef={logEndRef} status={status} />}
+          {activeTab === 'files' && <FilesView files={outputFiles} disconnected={disconnected} />}
+          {activeTab === 'review' && <ReviewView corrections={corrections} reload={loadCorrections} />}
         </div>
       </div>
     </div>
   );
 }
 
-function LogView({ logs, logEndRef }) {
-  if (logs.length === 0) {
-    return (
-      <div className="empty-state">
-        <div className="icon">&#9654;</div>
-        <div>No log entries yet. Generate a config to start.</div>
+// ── Chip input ──
+function ChipInput({ values, onChange, placeholder, disabled, kind }) {
+  const [draft, setDraft] = useState('');
+  const [focus, setFocus] = useState(false);
+  const inputRef = useRef(null);
+  const commit = () => {
+    const v = draft.trim();
+    if (v && !values.includes(v)) onChange([...values, v]);
+    setDraft('');
+  };
+  const onKey = (e) => {
+    if ((e.key === 'Enter' || e.key === ',') ) { e.preventDefault(); commit(); }
+    else if (e.key === 'Backspace' && !draft && values.length) onChange(values.slice(0, -1));
+  };
+  return (
+    <div className={'chip-input' + (focus ? ' focus' : '') + (disabled ? ' disabled' : '')} onClick={() => !disabled && inputRef.current && inputRef.current.focus()}>
+      {values.map((v, i) => (
+        <span key={i} className={'chip' + (kind === 'comorb' ? ' comorb' : '')}>
+          <span className="ct">{v}</span>
+          {!disabled && <button className="x" onClick={(e) => { e.stopPropagation(); onChange(values.filter((_, j) => j !== i)); }}>×</button>}
+        </span>
+      ))}
+      <input ref={inputRef} value={draft} disabled={disabled} placeholder={values.length ? '' : placeholder}
+        onChange={e => setDraft(e.target.value)} onKeyDown={onKey} onBlur={() => { setFocus(false); commit(); }} onFocus={() => setFocus(true)} />
+    </div>
+  );
+}
+
+// ── In-step progress meter ──
+function ProgressMeter({ meter }) {
+  const pct = meter.total ? Math.min(100, Math.round(meter.cur / meter.total * 100)) : null;
+  return (
+    <div className="step-progress">
+      <div className="sp-top">
+        <span className="sp-phase">{meter.phase || 'Working…'}</span>
+        <span className="sp-count">{meter.total ? `${meter.cur} / ${meter.total}` : ''}</span>
       </div>
-    );
-  }
-
-  return (
-    <div className="log-container">
-      {logs.map((entry, i) => (
-        <div className={`log-line ${entry.level}`} key={i}>
-          <span className="time">{entry.time}</span>
-          <span className="msg">{entry.message}</span>
-        </div>
-      ))}
-      <div ref={logEndRef} />
+      <div className="sp-track">
+        <div className="sp-fill" style={{ width: pct != null ? pct + '%' : '40%', opacity: pct == null ? .5 : 1 }}></div>
+      </div>
+      <div className="sp-eta">{pct != null ? pct + '% complete' : 'In progress…'}{meter.eta != null && meter.eta > 0 ? `  ·  ~${meter.eta}s remaining` : ''}</div>
     </div>
   );
 }
 
-function BarChart({ data, maxVal }) {
-  if (!data || data.length === 0) return null;
-  const max = maxVal || Math.max(...data.map(d => d[1]));
-
-  return (
-    <div className="bar-chart">
-      {data.map(([label, count], i) => (
-        <div className="bar-row" key={i}>
-          <span className="bar-label" title={label}>
-            {label.replace(/_/g, ' ')}
-          </span>
-          <div className="bar-track">
-            <div className="bar-fill" style={{ width: `${(count / max) * 100}%` }} />
-          </div>
-          <span className="bar-count">{count}</span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
+// ── Results ──
 function ResultsView({ results }) {
-  if (!results || !results.summary) {
+  const [comorbAsPct, setComorbAsPct] = useState(true);   // "analyse comorbidity" — show rates as %
+  if (!results || !results.count) return (
+    <div className="empty">
+      <div className="ei">📊</div>
+      <div className="et">No results yet</div>
+      <div className="es">Run the full pipeline to see cohort demographics, symptom and drug frequencies, condition co-occurrence and comorbidity analysis.</div>
+    </div>
+  );
+  const s = results.summary || {};
+  const sex = s.sex_distribution || {};
+  const sexTotal = Object.values(sex).reduce((a, b) => a + b, 0) || 1;
+  const femPct = Math.round((sex.female || 0) / sexTotal * 100);
+  const maxOf = (arr) => Math.max(1, ...(arr || []).map(x => x[1]));
+
+  const BarBlock = ({ title, note, data, color }) => {
+    const max = maxOf(data);
     return (
-      <div className="empty-state">
-        <div className="icon">&#128202;</div>
-        <div>No results yet. Run the pipeline to see extraction results.</div>
+      <div className="panel-card">
+        <div className="pc-head"><h3>{title}</h3>{note && <span className="pc-note">{note}</span>}</div>
+        <div className="pc-body">
+          <div className="bars">
+            {(data || []).map(([label, n], i) => (
+              <div className="bar-row" key={i}>
+                <span className="bar-label" title={label}>{label}</span>
+                <div className="bar-track"><div className="bar-fill" style={{ width: (n / max * 100) + '%', background: color }}></div></div>
+                <span className="bar-count">{n}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     );
-  }
+  };
 
-  const s = results.summary;
+  // Condition co-occurrence (live `condition_presence`/`cooccurrence`, with a
+  // fallback to the older `triad`/`cooc` demo keys).
+  const presence = s.condition_presence || s.triad || [];
+  const cooc = s.cooccurrence || s.cooc || [];
+  const coocMax = Math.max(1, ...cooc.map(c => c.count));
+  const showCooc = presence.length >= 2 || cooc.length > 0;
+
+  // Comorbidity analysis. Prefer rate objects; fall back to [name,count] pairs.
+  const validN = Math.max(1, (results.count || 0) - (results.errors || 0));
+  const comorbRates = (s.comorbidity_rates && s.comorbidity_rates.length)
+    ? s.comorbidity_rates
+    : (s.top_comorbidities || []).map(([name, count]) => ({ name, count, pct: Math.round(count / validN * 1000) / 10 }));
+  const comorbAny = s.comorbidity_any || (comorbRates.length
+    ? { count: null, pct: null }
+    : null);
+  const comorbMax = comorbAsPct
+    ? Math.max(1, ...comorbRates.map(c => c.pct || 0))
+    : Math.max(1, ...comorbRates.map(c => c.count || 0));
 
   return (
     <div>
-      <div className="results-grid">
+      <div className="stat-grid">
         <div className="stat-card">
-          <div className="stat-label">Articles Processed</div>
-          <div className="stat-value">{results.count}</div>
-          <div className="stat-detail">{results.errors} errors</div>
+          <div className="sl">Cases extracted</div>
+          <div className="sv brand">{results.count}</div>
+          <div className="sd">{results.errors ? results.errors + ' parse errors' : 'no parse errors'}</div>
         </div>
         <div className="stat-card">
-          <div className="stat-label">Mean Age</div>
-          <div className="stat-value">{s.age_mean ?? 'N/A'}</div>
-          <div className="stat-detail">
-            {s.age_range ? `Range: ${s.age_range[0]}–${s.age_range[1]}` : ''}
-          </div>
+          <div className="sl">Mean age</div>
+          <div className="sv">{s.age_mean != null ? s.age_mean.toFixed(1) : '—'}<span style={{ fontSize: 14, color: 'var(--ink-3)', fontWeight: 500 }}> yrs</span></div>
+          <div className="sd">range {s.age_range ? s.age_range[0] + '–' + s.age_range[1] : '—'}</div>
         </div>
         <div className="stat-card">
-          <div className="stat-label">Sex Distribution</div>
-          <div className="stat-value" style={{ fontSize: 16 }}>
-            {Object.entries(s.sex_distribution || {}).map(([k, v]) => `${k}: ${v}`).join(', ')}
-          </div>
+          <div className="sl">Sex distribution</div>
+          <div className="sv">{femPct}%<span style={{ fontSize: 14, color: 'var(--ink-3)', fontWeight: 500 }}> F</span></div>
+          <div className="sd">{sex.female || 0}F · {sex.male || 0}M{sex.unknown ? ' · ' + sex.unknown + '?' : ''}</div>
         </div>
         <div className="stat-card">
-          <div className="stat-label">Mean Completeness</div>
-          <div className="stat-value">{(s.avg_completeness * 100).toFixed(1)}%</div>
+          <div className="sl">Mean completeness</div>
+          <div className="sv">{s.avg_completeness != null ? Math.round(s.avg_completeness * 100) + '%' : '—'}</div>
+          <div className="sd">fields populated per case</div>
         </div>
       </div>
 
-      <div className="section-title">Top Symptoms (by article count)</div>
-      <BarChart data={s.top_symptoms} />
+      {showCooc && (
+        <div className="panel-card">
+          <div className="pc-head"><h3>Condition co-occurrence</h3><span className="pc-note">how often the defined conditions appear together</span></div>
+          <div className="pc-body">
+            <div className="triad-wrap">
+              <div className="cooc-legend" style={{ flex: '1 1 240px' }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--ink-3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: 2 }}>Condition presence</div>
+                {presence.map((t, i) => (
+                  <div className="cooc-item" key={i} title={t.full_name || t.name}>
+                    <span className="sw" style={{ background: TRIAD_COLORS[i % TRIAD_COLORS.length] }}></span>
+                    <span className="nm">{t.name}</span>
+                    <span className="vv">{t.count} <small>cases{t.pct != null ? ' · ' + t.pct + '%' : ''}</small></span>
+                  </div>
+                ))}
+                {cooc.length > 0 && <>
+                  <div style={{ height: 1, background: 'var(--line-2)', margin: '4px 0' }}></div>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--ink-3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: 2 }}>Overlap</div>
+                </>}
+                {cooc.map((c, i) => {
+                  const full = c.full != null ? c.full : /\ball\b|three|full/i.test(c.name);
+                  return (
+                    <div key={i}>
+                      <div className="cooc-item" style={{ marginBottom: 3 }}>
+                        <span className="nm" style={{ fontWeight: full ? 700 : 500, color: full ? 'var(--ink)' : 'var(--ink-2)' }}>{c.name}</span>
+                        <span className="vv">{c.count}{c.pct != null ? <small> · {c.pct}%</small> : null}</span>
+                      </div>
+                      <div className="bar-track" style={{ height: 8 }}><div className="bar-fill" style={{ width: (c.count / coocMax * 100) + '%', background: full ? 'linear-gradient(90deg, var(--t1), var(--t2), var(--t3))' : 'var(--brand)' }}></div></div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
-      <div className="section-title">Top Drugs</div>
-      <BarChart data={s.top_drugs} />
+      {s.top_symptoms && <BarBlock title="Top symptoms" note={s.top_symptoms.length + ' tracked'} data={s.top_symptoms.slice(0, 12)} color="var(--t1)" />}
+      {s.top_drugs && <BarBlock title="Top treatments" note="medications detected" data={s.top_drugs.slice(0, 12)} color="var(--t2)" />}
 
-      {s.top_comorbidities?.length > 0 && (
-        <>
-          <div className="section-title">Comorbidities</div>
-          <BarChart data={s.top_comorbidities} />
-        </>
+      {comorbRates.length > 0 && (
+        <div className="panel-card">
+          <div className="pc-head">
+            <h3>Comorbidity analysis</h3>
+            <span className="pc-note">other diseases reported alongside the case</span>
+            <div className="switch-row" style={{ marginLeft: 'auto', padding: '5px 9px', gap: 8 }}>
+              <label className="switch" style={{ width: 34, height: 20 }}>
+                <input type="checkbox" checked={comorbAsPct} onChange={e => setComorbAsPct(e.target.checked)} />
+                <span className="track"></span>
+              </label>
+              <span className="sw-label" style={{ fontSize: 12 }}>Show as %</span>
+            </div>
+          </div>
+          <div className="pc-body">
+            {comorbAny && comorbAny.pct != null && (
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginBottom: 14, paddingBottom: 12, borderBottom: '1px solid var(--line-2)' }}>
+                <span style={{ fontSize: 28, fontWeight: 700, color: 'var(--brand-ink)', letterSpacing: '-.5px' }}>{comorbAny.pct}%</span>
+                <span style={{ fontSize: 12.5, color: 'var(--ink-2)' }}>
+                  of cases report at least one comorbidity{comorbAny.count != null ? ` (${comorbAny.count} of ${validN})` : ''}
+                </span>
+              </div>
+            )}
+            <div className="bars">
+              {comorbRates.slice(0, 12).map((c, i) => {
+                const val = comorbAsPct ? (c.pct || 0) : (c.count || 0);
+                return (
+                  <div className="bar-row" key={i}>
+                    <span className="bar-label" title={c.name}>{c.name}</span>
+                    <div className="bar-track"><div className="bar-fill" style={{ width: (val / comorbMax * 100) + '%', background: 'var(--t3)' }}></div></div>
+                    <span className="bar-count">{comorbAsPct ? (c.pct != null ? c.pct + '%' : '—') : c.count}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
 }
 
-function FilesView({ files }) {
-  if (!files || files.length === 0) {
-    return (
-      <div className="empty-state">
-        <div className="icon">&#128193;</div>
-        <div>No output files yet.</div>
-      </div>
-    );
-  }
-
-  const formatSize = (bytes) => {
-    if (bytes < 1024) return `${bytes} B`;
-    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
-  };
-
-  const totalSize = files.reduce((s, f) => s + (f.size || 0), 0);
-
+// ── Search results (reviewable) ──
+function SearchView({ pmcResults, excluded, setExcluded }) {
+  const [filter, setFilter] = useState('');
+  if (!pmcResults || !pmcResults.results || !pmcResults.results.length) return (
+    <div className="empty">
+      <div className="ei">🔍</div>
+      <div className="et">No search yet</div>
+      <div className="es">Run a PubMed Central search in step 2. Matching articles appear here so you can review titles and de-select any you don't want before downloading.</div>
+    </div>
+  );
+  const rows = pmcResults.results;
+  const visible = rows.filter(r => !filter || (r.title || '').toLowerCase().includes(filter.toLowerCase()) || (r.pmcid || '').toLowerCase().includes(filter.toLowerCase()));
+  const includedN = rows.filter(r => !excluded[r.pmcid]).length;
+  const setAll = (val) => { const m = {}; if (val) rows.forEach(r => m[r.pmcid] = true); setExcluded(m); };
   return (
     <div>
-      <div className="files-header">
-        <div className="section-title">Download Output Files</div>
-        <a className="primary download-all-btn" href="/api/download-all" download>
-          &#11015; Download all ({files.length} files, {formatSize(totalSize)})
-        </a>
+      <div className="sr-toolbar">
+        <input type="text" placeholder="Filter previewed titles…" value={filter} onChange={e => setFilter(e.target.value)} style={{ maxWidth: 280 }} />
+        <span className="grow"></span>
+        <span className="sel-pill">{includedN} / {rows.length} included</span>
+        <button className="btn ghost sm" onClick={() => setAll(false)}>Include all</button>
+        <button className="btn ghost sm" onClick={() => setAll(true)}>Exclude all</button>
+      </div>
+      <div style={{ fontSize: 11.5, color: 'var(--ink-3)', marginBottom: 12 }}>{pmcResults.total.toLocaleString()} total matches · showing first {rows.length} for review. Exclusions here reduce what gets downloaded in step 3.</div>
+      {visible.map((r, i) => {
+        const ex = !!excluded[r.pmcid];
+        return (
+          <div className={'sr-row' + (ex ? ' excluded' : '')} key={r.pmcid || i}>
+            <input className="sr-cb" type="checkbox" checked={!ex} onChange={() => setExcluded(m => ({ ...m, [r.pmcid]: !m[r.pmcid] }))} />
+            <div className="sr-main">
+              <div className="sr-title">{r.title || 'Untitled'}</div>
+              <div className="sr-meta">
+                <span className="pmcid">{r.pmcid}</span>
+                {r.source && <span>{r.source}</span>}
+                {r.pubdate && <span>{r.pubdate}</span>}
+              </div>
+            </div>
+            <a className="sr-link" href={`https://www.ncbi.nlm.nih.gov/pmc/articles/${r.pmcid}/`} target="_blank" rel="noreferrer">Open ↗</a>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// ── Live log ──
+function LogView({ logs, logEndRef, status }) {
+  if (!logs.length) return (
+    <div className="log-shell">
+      <div className="log-bar"><span className="dot" style={{ background: '#3a4258' }}></span><span className="dot" style={{ background: '#444b63' }}></span><span className="lbl">pipeline.log — idle</span></div>
+      <div className="log-body"><div className="log-line ll-log"><span className="lm">Waiting for pipeline activity… log output streams here in real time.</span></div></div>
+    </div>
+  );
+  return (
+    <div className="log-shell">
+      <div className="log-bar">
+        <span className="dot" style={{ background: status === 'running' ? '#5fd996' : '#444b63' }}></span>
+        <span className="lbl">pipeline.log — {status} · {logs.length} lines</span>
+      </div>
+      <div className="log-body">
+        {logs.map((l, i) => (
+          <div key={i} className={'log-line ll-' + (l.level || 'info')}>
+            <span className="lt">{l.time || ''}</span>
+            <span className="lm">{l.message}</span>
+          </div>
+        ))}
+        <div ref={logEndRef}></div>
+      </div>
+    </div>
+  );
+}
+
+// ── Output files ──
+function FilesView({ files, disconnected }) {
+  if (!files || !files.length) return (
+    <div className="empty">
+      <div className="ei">📁</div>
+      <div className="et">No output files yet</div>
+      <div className="es">Datasets, summaries and logs generated by the pipeline will be listed here, each individually downloadable.</div>
+    </div>
+  );
+  return (
+    <div>
+      <div className="files-head">
+        <span style={{ fontSize: 12.5, color: 'var(--ink-2)', fontWeight: 600 }}>{files.length} files</span>
+        <a className="dl-all" href={disconnected ? undefined : '/api/download-all'} onClick={disconnected ? (e)=>e.preventDefault() : undefined}>⤓ Download all (.zip)</a>
       </div>
       <div className="file-list">
         {files.map((f, i) => (
           <div className="file-item" key={i}>
+            <span className="ficon">{fileExt(f.name)}</span>
             <span className="fname">{f.name}</span>
-            <span className="fsize">{formatSize(f.size)}</span>
-            <a href={`/api/download/${f.name}`} download>Download</a>
+            <span className="fsize">{fmtSize(f.size)}</span>
+            <a className="fdl" href={disconnected ? undefined : ('/api/download/' + encodeURIComponent(f.name))} onClick={disconnected ? (e)=>e.preventDefault() : undefined}>Download</a>
           </div>
         ))}
       </div>
@@ -1067,236 +1336,203 @@ function FilesView({ files }) {
   );
 }
 
-function ReviewView({ corrections, onCorrectionsChange }) {
+// ── Review ──
+const blankCorrection = () => ({
+  subtask: 'general', pattern: '', error_description: '', fix_instruction: '',
+  pmcid: '', field: '', example_wrong: '', example_right: '',
+});
+
+function ReviewView({ corrections, reload }) {
   const [articles, setArticles] = useState([]);
-  const [selectedArticle, setSelectedArticle] = useState(null);
+  const [sel, setSel] = useState(null);          // selected pmcid
   const [extraction, setExtraction] = useState(null);
   const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState({
-    subtask: 'general', pattern: '', error_description: '',
-    fix_instruction: '', pmcid: '', field: '',
-    example_wrong: '', example_right: '',
-  });
+  const [form, setForm] = useState(blankCorrection());
 
+  // Load the reviewable article list (real extractions, demo fallback offline).
   useEffect(() => {
-    fetch('/api/review').then(r => r.json()).then(d => setArticles(d.articles || [])).catch(() => {});
+    api('/api/review').then(d => {
+      const arts = (d && d.articles) || [];
+      setArticles(arts);
+      if (arts.length) loadArticle(arts[0].pmcid);
+    });
   }, []);
 
   const loadArticle = async (pmcid) => {
-    setSelectedArticle(pmcid);
-    try {
-      const r = await fetch(`/api/review/${pmcid}`);
-      const data = await r.json();
-      setExtraction(data.extraction);
-    } catch (e) {}
+    setSel(pmcid);
+    const d = await api('/api/review/' + encodeURIComponent(pmcid));
+    setExtraction((d && d.extraction) || null);
+  };
+
+  const flag = (field, subtask) => {
+    setForm({ ...blankCorrection(), pmcid: sel || '', field: field || '', subtask: subtask || 'general' });
+    setShowForm(true);
   };
 
   const submitCorrection = async () => {
-    if (!formData.pattern || !formData.error_description || !formData.fix_instruction) return;
-    await fetch('/api/correction', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
-    setFormData({ subtask: 'general', pattern: '', error_description: '',
-      fix_instruction: '', pmcid: selectedArticle || '', field: '',
-      example_wrong: '', example_right: '' });
-    setShowForm(false);
-    onCorrectionsChange();
+    if (!form.pattern || !form.error_description || !form.fix_instruction) return;
+    await api('/api/correction', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form),
+    }, () => ({}));
+    setShowForm(false); setForm(blankCorrection());
+    reload && reload();
   };
 
   const deleteCorrection = async (id) => {
-    await fetch(`/api/correction/${id}`, { method: 'DELETE' });
-    onCorrectionsChange();
+    if (!id) return;
+    await api('/api/correction/' + encodeURIComponent(id), { method: 'DELETE' }, () => ({}));
+    reload && reload();
   };
 
-  const renderValue = (val) => {
-    if (val === null || val === undefined) return <span style={{ color: 'var(--text-dim)' }}>null</span>;
-    if (typeof val === 'boolean') return <span style={{ color: val ? 'var(--green)' : 'var(--red)' }}>{String(val)}</span>;
-    if (typeof val === 'object') return <pre style={{ margin: 0, fontSize: 11, color: 'var(--text)', whiteSpace: 'pre-wrap' }}>{JSON.stringify(val, null, 1)}</pre>;
-    return String(val);
+  const renderValue = (v) => {
+    if (v === null || v === undefined) return <span style={{ color: 'var(--ink-3)' }}>null</span>;
+    if (typeof v === 'boolean') return <span style={{ color: v ? 'var(--ok)' : 'var(--err)', fontWeight: 600 }}>{String(v)}</span>;
+    if (typeof v === 'object') return <pre style={{ margin: 0, fontSize: 11, whiteSpace: 'pre-wrap', fontFamily: 'var(--mono)', color: 'var(--ink)' }}>{JSON.stringify(v, null, 1)}</pre>;
+    return String(v);
   };
 
-  const reviewableFields = extraction ? [
-    { section: 'Temporal', fields: [
+  const fh = (extraction && extraction.family_history) || {};
+  const sections = extraction ? [
+    { label: 'Demographics', subtask: 'general', fields: [
+      ['age_at_presentation', extraction.age_at_presentation],
+      ['sex', extraction.sex],
+    ]},
+    { label: 'Temporal', subtask: 'temporal', fields: [
       ['age_at_onset', extraction.age_at_onset],
       ['symptom_duration_years', extraction.symptom_duration_years],
       ['diagnostic_delay_years', extraction.diagnostic_delay_years],
       ['_temporal_method', extraction._temporal_method],
     ]},
-    { section: 'Family History', fields: [
-      ['has_family_history', extraction.family_history?.has_family_history],
-      ['family_members_detailed', extraction.family_history?.family_members_detailed],
-      ['inheritance_pattern', extraction.family_history?.inheritance_pattern],
-      ['_family_history_method', extraction.family_history?._family_history_method],
+    { label: 'Family history', subtask: 'family_history', fields: [
+      ['has_family_history', fh.has_family_history],
+      ['family_members_detailed', fh.family_members_detailed],
+      ['inheritance_pattern', fh.inheritance_pattern],
+      ['_family_history_method', fh._family_history_method],
     ]},
-    { section: 'Treatment Responses', fields: [
-      ['treatment_count', extraction.treatment_responses?.length || 0],
+    { label: 'Treatment responses', subtask: 'treatment', fields: [
+      ['treatment_count', (extraction.treatment_responses || []).length],
       ['treatments', extraction.treatment_responses],
-    ]},
-    { section: 'Demographics', fields: [
-      ['age_at_presentation', extraction.age_at_presentation],
-      ['sex', extraction.sex],
     ]},
   ] : [];
 
+  const canSave = form.pattern && form.error_description && form.fix_instruction;
+  const inputStyle = { marginTop: 5 };
+
   return (
     <div>
-      {/* Correction form */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-        <div className="section-title" style={{ margin: 0, border: 'none', paddingBottom: 0 }}>
-          Review Extractions & Submit Corrections
-        </div>
-        <button className="primary" onClick={() => setShowForm(!showForm)}
-          style={{ width: 'auto', padding: '6px 14px' }}>
-          {showForm ? 'Cancel' : '+ Add Correction'}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+        <div style={{ fontSize: 14, fontWeight: 650 }}>Review extractions &amp; submit corrections</div>
+        <button className="btn primary sm" onClick={() => { if (showForm) { setShowForm(false); } else { flag('', 'general'); } }}>
+          {showForm ? 'Cancel' : '＋ Add correction'}
         </button>
       </div>
 
       {showForm && (
-        <div style={{ background: 'var(--surface2)', border: '1px solid var(--border)', borderRadius: 8, padding: 14, marginBottom: 16 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
-            <div className="input-group">
-              <label>Subtask</label>
-              <select value={formData.subtask} onChange={e => setFormData({...formData, subtask: e.target.value})}
-                style={{ width: '100%', background: 'var(--bg)', border: '1px solid var(--border)',
-                  borderRadius: 6, color: 'var(--text)', padding: '6px 8px', fontSize: 13 }}>
+        <div className="corr-form">
+          <div className="cf-grid">
+            <div className="field" style={{ marginBottom: 0 }}>
+              <label className="field-label">Subtask</label>
+              <select value={form.subtask} onChange={e => setForm({ ...form, subtask: e.target.value })} style={inputStyle}>
                 <option value="temporal">Temporal reasoning</option>
                 <option value="family_history">Family history</option>
                 <option value="treatment">Treatment chains</option>
                 <option value="general">General</option>
               </select>
             </div>
-            <div className="input-group">
-              <label>Pattern slug (short identifier)</label>
-              <input value={formData.pattern} onChange={e => setFormData({...formData, pattern: e.target.value})}
-                placeholder="e.g. possessive_family_ref" />
+            <div className="field" style={{ marginBottom: 0 }}>
+              <label className="field-label">Pattern slug</label>
+              <input type="text" value={form.pattern} onChange={e => setForm({ ...form, pattern: e.target.value })} placeholder="e.g. possessive_family_ref" style={inputStyle} />
             </div>
-            <div className="input-group" style={{ gridColumn: '1 / -1' }}>
-              <label>What went wrong?</label>
-              <input value={formData.error_description}
-                onChange={e => setFormData({...formData, error_description: e.target.value})}
-                placeholder="e.g. Missed family history when relatives described possessively" />
+            <div className="field" style={{ marginBottom: 0, gridColumn: '1 / -1' }}>
+              <label className="field-label">What went wrong?</label>
+              <input type="text" value={form.error_description} onChange={e => setForm({ ...form, error_description: e.target.value })} placeholder="e.g. Missed family history when relatives described possessively" style={inputStyle} />
             </div>
-            <div className="input-group" style={{ gridColumn: '1 / -1' }}>
-              <label>How to fix it (instruction for the LLM)</label>
-              <input value={formData.fix_instruction}
-                onChange={e => setFormData({...formData, fix_instruction: e.target.value})}
-                placeholder="e.g. Treat possessive references to relatives as evidence of family history" />
+            <div className="field" style={{ marginBottom: 0, gridColumn: '1 / -1' }}>
+              <label className="field-label">How to fix it (instruction for the LLM)</label>
+              <input type="text" value={form.fix_instruction} onChange={e => setForm({ ...form, fix_instruction: e.target.value })} placeholder="e.g. Treat possessive references to relatives as family history" style={inputStyle} />
             </div>
-            <div className="input-group">
-              <label>Example wrong output (optional)</label>
-              <input value={formData.example_wrong}
-                onChange={e => setFormData({...formData, example_wrong: e.target.value})}
-                placeholder='e.g. {"has_family_history": null}' />
+            <div className="field" style={{ marginBottom: 0 }}>
+              <label className="field-label">Example wrong output <span style={{ color: 'var(--ink-3)', fontWeight: 400 }}>(optional)</span></label>
+              <input type="text" value={form.example_wrong} onChange={e => setForm({ ...form, example_wrong: e.target.value })} placeholder='{"has_family_history": null}' style={inputStyle} />
             </div>
-            <div className="input-group">
-              <label>Example correct output (optional)</label>
-              <input value={formData.example_right}
-                onChange={e => setFormData({...formData, example_right: e.target.value})}
-                placeholder='e.g. {"has_family_history": true}' />
+            <div className="field" style={{ marginBottom: 0 }}>
+              <label className="field-label">Example correct output <span style={{ color: 'var(--ink-3)', fontWeight: 400 }}>(optional)</span></label>
+              <input type="text" value={form.example_right} onChange={e => setForm({ ...form, example_right: e.target.value })} placeholder='{"has_family_history": true}' style={inputStyle} />
             </div>
           </div>
-          <button className="primary" onClick={submitCorrection}
-            disabled={!formData.pattern || !formData.error_description || !formData.fix_instruction}
-            style={{ marginTop: 10 }}>
-            Save Correction
-          </button>
+          {(form.pmcid || form.field) && (
+            <div className="hint" style={{ marginTop: 8 }}>Flagged from {form.pmcid || 'article'}{form.field ? ' · field ' + form.field : ''}</div>
+          )}
+          <button className="btn primary" onClick={submitCorrection} disabled={!canSave} style={{ marginTop: 12 }}>Save correction</button>
         </div>
       )}
 
-      {/* Existing corrections */}
-      {corrections.length > 0 && (
-        <div style={{ marginBottom: 20 }}>
-          <div className="section-title">Active Corrections ({corrections.length})</div>
-          {corrections.map((c, i) => (
-            <div key={i} style={{ background: 'var(--surface2)', border: '1px solid var(--border)',
-              borderRadius: 6, padding: '8px 12px', marginBottom: 6, fontSize: 12, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-              <div>
-                <span style={{ color: 'var(--accent)', fontWeight: 600, fontFamily: 'var(--font)', fontSize: 11 }}>
-                  [{c.subtask}]
-                </span>{' '}
-                <span style={{ fontWeight: 600 }}>{c.pattern}</span>
-                <span style={{ color: 'var(--text-dim)' }}> x{c.recurrence_count}</span>
-                <div style={{ color: 'var(--text-dim)', marginTop: 2 }}>{c.error_description}</div>
-                <div style={{ color: 'var(--green)', marginTop: 2 }}>Fix: {c.fix_instruction}</div>
-              </div>
-              <button className="secondary" onClick={() => deleteCorrection(c.id)}
-                style={{ width: 'auto', padding: '2px 8px', fontSize: 10, flexShrink: 0 }}>
-                Remove
-              </button>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Article list */}
-      <div style={{ display: 'grid', gridTemplateColumns: '240px 1fr', gap: 12 }}>
-        <div>
-          <div className="section-title">Articles ({articles.length})</div>
-          <div style={{ maxHeight: 500, overflowY: 'auto' }}>
-            {articles.map((a, i) => (
-              <div key={i} onClick={() => loadArticle(a.pmcid)}
-                style={{ padding: '6px 10px', cursor: 'pointer', fontSize: 12, borderRadius: 4,
-                  background: selectedArticle === a.pmcid ? 'var(--accent-dim)' : 'transparent',
-                  borderBottom: '1px solid var(--border)' }}>
-                <div style={{ fontFamily: 'var(--font)', fontWeight: 600 }}>{a.pmcid}</div>
-                <div style={{ color: 'var(--text-dim)', fontSize: 11 }}>
-                  {a.symptom_count}sym {a.drug_count}drugs {(a.completeness * 100).toFixed(0)}%
-                  {a.llm_enhanced && <span style={{ color: 'var(--accent)' }}> +LLM</span>}
+      {corrections && corrections.length > 0 && (
+        <div className="panel-card" style={{ marginTop: 0, marginBottom: 16 }}>
+          <div className="pc-head"><h3>Saved corrections</h3><span className="pc-note">fed back into the LLM enhancer</span></div>
+          <div className="pc-body">
+            {corrections.map((c, i) => (
+              <div className="corr-card" key={c.id || i}>
+                <div>
+                  <span className="cc-tag">{c.subtask}{c.pattern ? ' · ' + c.pattern : ''}</span>
+                  <div style={{ marginTop: 5, color: 'var(--ink-2)' }}>{c.error_description}</div>
+                  <div style={{ marginTop: 3, color: 'var(--ink)', fontWeight: 500 }}>→ {c.fix_instruction}</div>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 6, flexShrink: 0 }}>
+                  {c.recurrence_count != null && <span style={{ fontSize: 11, color: 'var(--ink-3)', whiteSpace: 'nowrap' }}>seen ×{c.recurrence_count}</span>}
+                  {c.id && <button className="btn ghost sm" onClick={() => deleteCorrection(c.id)}>Remove</button>}
                 </div>
               </div>
             ))}
-            {articles.length === 0 && (
-              <div style={{ color: 'var(--text-dim)', fontSize: 12, padding: 10 }}>
-                Run the pipeline first to see articles here.
-              </div>
-            )}
           </div>
         </div>
+      )}
 
-        <div>
-          {extraction ? (
-            <div>
-              <div className="section-title">
-                {selectedArticle}
-                {extraction._llm_enhanced && <span style={{ color: 'var(--accent)', fontSize: 11, marginLeft: 8 }}>LLM enhanced</span>}
+      <div className="review-grid">
+        <div className="art-list">
+          {articles.length === 0 && <div style={{ color: 'var(--ink-3)', fontSize: 12, padding: '10px 4px' }}>Run the pipeline first to populate reviewable articles.</div>}
+          {articles.map((a) => (
+            <div className={'art-item' + (sel === a.pmcid ? ' active' : '')} key={a.pmcid} onClick={() => loadArticle(a.pmcid)}>
+              <div className="ai-id">{a.pmcid}</div>
+              <div className="ai-meta">
+                <span>{a.age != null ? a.age + 'y' : '—'} {a.sex ? a.sex[0].toUpperCase() : '?'}</span>
+                <span>{a.symptom_count != null ? a.symptom_count : 0} sx</span>
+                <span>{Math.round((a.completeness || 0) * 100)}%</span>
+                {a.llm_enhanced && <span className="ai-llm">LLM</span>}
               </div>
-              {reviewableFields.map((sec, si) => (
-                <div key={si} style={{ marginBottom: 12 }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-dim)', textTransform: 'uppercase',
-                    letterSpacing: '0.5px', marginBottom: 4 }}>{sec.section}</div>
-                  {sec.fields.map(([fname, fval], fi) => (
-                    <div key={fi} style={{ display: 'flex', gap: 8, padding: '3px 0', borderBottom: '1px solid var(--border)',
-                      fontSize: 12, alignItems: 'flex-start' }}>
-                      <span style={{ width: 200, flexShrink: 0, fontFamily: 'var(--font)', fontSize: 11,
-                        color: fname.startsWith('_') ? 'var(--accent)' : 'var(--text-dim)' }}>{fname}</span>
-                      <span style={{ flex: 1 }}>{renderValue(fval)}</span>
-                      {!fname.startsWith('_') && (
-                        <button className="secondary" onClick={() => {
-                          setFormData({...formData, pmcid: selectedArticle, field: fname,
-                            subtask: sec.section === 'Temporal' ? 'temporal' :
-                              sec.section === 'Family History' ? 'family_history' :
-                              sec.section === 'Treatment Responses' ? 'treatment' : 'general',
-                          });
-                          setShowForm(true);
-                        }}
-                        style={{ width: 'auto', padding: '1px 6px', fontSize: 10, flexShrink: 0 }}>
-                          Flag
-                        </button>
-                      )}
-                    </div>
-                  ))}
+            </div>
+          ))}
+        </div>
+        {extraction ? (
+          <div className="panel-card" style={{ marginTop: 0 }}>
+            <div className="pc-head"><h3>{sel}</h3><span className="pc-note">{extraction._llm_enhanced ? 'rule-based + LLM' : 'rule-based'}</span></div>
+            <div className="pc-body">
+              {sections.map((sec) => (
+                <div key={sec.label}>
+                  <div className="sec-label">{sec.label}</div>
+                  {sec.fields.map(([fname, fval]) => {
+                    const isMeta = fname.startsWith('_');
+                    return (
+                      <div className="field-row" key={fname}>
+                        <span className={'fr-name' + (isMeta ? ' meta' : '')}>{fname}</span>
+                        <span className="fr-val">{renderValue(fval)}</span>
+                        {!isMeta && <button className="flag-btn" onClick={() => flag(fname, sec.subtask)}>⚑ Flag</button>}
+                      </div>
+                    );
+                  })}
                 </div>
               ))}
+              <div style={{ marginTop: 14, fontSize: 11.5, color: 'var(--ink-3)' }}>Flagging a field opens a correction form that is saved to <code style={{ fontFamily: 'var(--mono)' }}>corrections.json</code> and applied to future LLM passes.</div>
             </div>
-          ) : (
-            <div className="empty-state">
-              <div className="icon">&#128269;</div>
-              <div>Select an article to review its extraction.</div>
-            </div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className="empty" style={{ padding: '50px 24px' }}>
+            <div className="ei">🔍</div>
+            <div className="et">Select an article</div>
+            <div className="es">Pick an article on the left to inspect its extracted demographics, temporal reasoning, family history and treatment chains.</div>
+          </div>
+        )}
       </div>
     </div>
   );
